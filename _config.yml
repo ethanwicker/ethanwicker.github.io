@@ -7,7 +7,7 @@ highlighter: rouge
 markdown: kramdown
 disqus: dbyll
 google_analytics: dbyll
-title: This is my personal blog; I'm glad you're here.
+title: Ethan Wicker
 
 defaults:
   -

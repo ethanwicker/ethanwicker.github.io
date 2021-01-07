@@ -14,7 +14,7 @@ defaults:
     scope:
       path: "" # empty string for all files
     values:
-      title: dbyll
+      title: Welcome to my data science blog; I'm glad you're here.
 
 description: Stylish Jekyll Theme
 author:

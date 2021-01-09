@@ -164,7 +164,7 @@ E\{(TSS - RSS)/p\} = \sigma^2,
 \end{aligned}
 $$
 
-where \[E\{X\}\] indicates the *expected value*.
+where \\(E\{X\}\\) indicates the *expected value*.
 
 When there is no relationship between the response and the predictors, we expect the F-statistic to be close to 1.  However, when $H_a$ is true, then $E\{(TSS - RSS)/p\} > \sigma^2$, and we expect F to be greater than 1.
 
@@ -194,7 +194,7 @@ The least squares plane
 
 $$
 \begin{aligned}
-Y = \hat{\beta_0} + \hat{\beta_1}X_1 + \hat{\beta_2}X_2 + ... + \hat{\beta_p}X_p + \epsilon
+\hat{Y} = \hat{\beta_0} + \hat{\beta_1}X_1 + \hat{\beta_2}X_2 + ... + \hat{\beta_p}X_p
 \end{aligned}
 $$
 
@@ -202,15 +202,15 @@ is only an estimate for *true population regression plane*
 
 $$
 \begin{aligned} 
-f(X) = \beta_0 + \beta_1X_1 + \beta_2X_2 + ... + \beta_pX_p + \epsilon 
+f(X) = \beta_0 + \beta_1X_1 + \beta_2X_2 + ... + \beta_pX_p
 \end{aligned}
 $$
 
-The coefficient estimates $\hat{\beta_0}$, $\hat{\beta_1}$,..., $\hat{\beta_p}$ will have some inaccuracies and is thus related to the *reducible error*.  That is, it would be possible to estimate the true population regression plane more accurately.  For example, if we had more data, this might lead to a more accurate estimation.  To quantify this error, we can calculate a confidence interval that determines how close $\hat{Y}$ will be to $f(X).
+The coefficient estimates $\hat{\beta_0}$, $\hat{\beta_1}$,..., $\hat{\beta_p}$ will have some inaccuracies and is thus related to the *reducible error*.  That is, it might be possible to estimate the true population regression plane more accurately under different conditions.  For example, if we had more data, this might lead to a more accurate estimation.  To quantify this error, we can calculate a confidence interval that determines how close $\hat{Y}$ will be to $f(X)$.
 
 #### Model Bias
 
-Another source of potentially reducible error is *model bias*.  In practice, assuming a linear model for $f(X)$ is almost always an approximation.  Thus, the assumed linear model may be biased and perhaps a better model could *reduce* the error.
+Another source of potentially reducible error is *model bias*.  In practice, assuming a linear model for $f(X)$ is almost always an approximation.  Thus, the assumed linear model may be biased and perhaps a better model could *reduce the error*.
 
 #### Irreducible Error
 

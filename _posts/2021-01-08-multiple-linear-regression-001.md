@@ -136,7 +136,7 @@ versus the alternative
 
 $$
 \begin{aligned}
-H_a: \text{at least one} \beta_j \text{is non-zero}.
+H_a: \text{at least one } \beta_j \text{ is non-zero}.
 \end{aligned}
 $$
 

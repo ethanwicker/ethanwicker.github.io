@@ -5,6 +5,8 @@ subtitle: An Exploration and Comparison of scikit-learn vs. statsmodels
 comments: false
 ---
 
+### Maybe in this post mention inspiration and modeled after ISL text
+
 Multiple linear regression is an extension of the simple linear regression model.  In its simplest form it is a relatively inflexible method that can produce insightful results and accurate predictions under certain conditions.  However, multiple linear regression has also been shown to be highly extensible, and many of these extensions (such as ridge regression, lasso regression, and logistic regression) vastly expand the usefulness and applicability of the linear regression paradigm.
 
 In this post, I'll briefly introduce the multiple linear regression model.  I'll discuss fitting of the model, estimating coefficients, and assessing model accuracy.  Lastly, I'll also compare and contrast the Python packages scikit-learn and statsmodels as they relate to statistical inference and prediction using the multiple linear regression model.  For this brief introduction, I'll constrain myself to only considering quantitative predictors.  In future posts, qualitative predictors as well as interaction terms will be explored.
@@ -35,9 +37,15 @@ For simple linear regression in a two-dimensional space, this fitting method res
 After finding our estimated coefficients $\hat{\beta_0}$, $\hat{\beta_1}$,..., $\hat{\beta_p}$, it is natural to wonder how accurately each value estimates the true values $\beta_0$, $\beta_1$,..., $\beta_p$.  In general, the *standard error* of the estimate can be calculated to answer this question.  To continue with the comparison to simple linear regression, the intercept estimate $\hat{\beta_0}$ and the coefficient estimate $\hat{\beta_1}$ under this model can be computed via the following formulas:
 
 $$
-\begin{aligned} SE(\hat{beta_0})^2 = \sigma^2[1/n + ] \end{aligned}.
+\begin{aligned} 
+SE(\hat{\beta_0})^2 = \sigma^2\left[\frac{1}{n} + \frac{\bar{x}^2} {\sum_{i=1}^{n}(x_i-\bar{x})^2}\right],
+SE(\hat{\beta_1})^2 = \frac{\sigma^2}{\sum_{i=1}^{n}(x_i - \bar{x})^2}
+\end{aligned}
 $$
 
+where $\sigma^2 = Var(\varepsilon)$.  
+
+Note, these standard error formulas assume that the errors $\varepsilon_i$ for each observation are uncorrelated and have the same variance $\sigma^2$.  This assumption is not true in practice, but these standard error estimations still turn out to be a good approximation.  Similarly, in general, $\sigma^2$ is not known in practice, but can be estimated from the data.  This estimation is known as the *residual standard error* and is given by $RSE = \sqrt{RSS/(n-2)}$.
 
 
 

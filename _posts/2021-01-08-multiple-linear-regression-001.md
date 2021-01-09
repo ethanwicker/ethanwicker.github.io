@@ -13,26 +13,25 @@ Multiple linear regression is an extension of the simple linear regression model
 
 In this post, I'll briefly introduce the multiple linear regression model.  I'll discuss fitting of the model, estimating coefficients, and assessing model accuracy.  Lastly, I'll also compare and contrast the Python packages scikit-learn and statsmodels as they relate to statistical inference and prediction using the multiple linear regression model.  For this brief introduction, I'll constrain myself to only considering quantitative predictors.  In future posts, qualitative predictors as well as interaction terms will be explored.
 
-## Brief Introduction to Multiple Linear Regression
+### Brief Introduction to Multiple Linear Regression
 
 In contrast to simple linear regression, multiple linear regression is able to handle multiple predictor variables, which is a much more common situation in practice.  In general, the multiple linear regression model takes the form 
 
-**NOTE: Make sure LaTeX is correct**
 $$
 \begin{aligned} Y = \beta_0 + \beta_1X_1 + \beta_2X_2 + ... + \beta_pX_p + \varepsilon \end{aligned}
 $$
 
 where $X_j$ represents the $j$th predictor and $\beta_j$ quantifies the association between that variable and the response.  $\beta_j$ is interpreted as the average effect on $Y$ of a one unit increase in $X_j$ *holding all other predictors fixed*.
 
-### Estimating Coefficients
+#### Estimating Coefficients
 
 The multiple linear regression model is typically fit via the least squares method.  This method approximates the values $\beta_0$, $\beta_1$,..., $\beta_p$ by determining the values $\hat{\beta_0}$, $\hat{\beta_1}$,..., $\hat{\beta_p}$ that minimize the sum of squared residuals 
 
 $$
-\begin{aligned} RSS = \sum_{i=1}^{n} (y_i) - \hat{y_i})^2 \end{aligned}.
+\begin{aligned} RSS = \sum_{i=1}^{n} (y_i - \hat{y_i})^2 \end{aligned}.
 $$
 
-For simple linear regression in a two-dimensional space, this fitting method results in a line passing through the data.  However, for multiple linear regression, the method of least squares fitting results in a hyperplane that minimizes the squared distance between each point and the closest point on the plane.
+For simple linear regression in a two-dimensional space, this fitting method results in a line passing through the data.  However, for multiple linear regression, the method of least squares fitting results in a hyperplane that minimizes the squared distance between each point and the closest point on the plane.  For the event where we have two predictor variables and one response variable, we can visualize the hyperplane as a two-dimensional plane in a three-dimensional space.
 
 **NOTE: Insert 3D graph from book here (provide the exact source -> p. 73, title, authers or maybe James et al.)**
 
@@ -40,12 +39,12 @@ After finding our estimated coefficients $\hat{\beta_0}$, $\hat{\beta_1}$,..., $
 
 $$
 \begin{aligned} 
-SE(\hat{\beta_0})^2 = \sigma^2\left[\frac{1}{n} + \frac{\bar{x}^2} {\sum_{i=1}^{n}(x_i-\bar{x})^2}\right],
-SE(\hat{\beta_1})^2 = \frac{\sigma^2}{\sum_{i=1}^{n}(x_i - \bar{x})^2}
+SE(\hat{\beta_0})^2 = \sigma^2\left[\frac{1}{n} + \frac{\bar{x}^2} {\sum_{i=1}^{n}(x_i-\bar{x})^2}\right], 
+SE(\hat{\beta_1})^2 = \frac{\sigma^2}{\sum_{i=1}^{n}(x_i - \bar{x})^2},
 \end{aligned}
 $$
 
-where $\sigma^2 = Var(\varepsilon)$.  
+where $\sigma^2 = Var(\epsilon)$.  
 
 Note, these standard error formulas assume that the errors $\varepsilon_i$ for each observation are uncorrelated and have the same variance $\sigma^2$.  This assumption is rarely not in practice, but these standard error estimations still turn out to be a good approximation.  Similarly, in general, $\sigma^2$ is typically not known, but can be estimated from the data.  This estimation is known as the *residual standard error* and is given by $RSE = \sqrt{RSS/(n-2)}$.
 

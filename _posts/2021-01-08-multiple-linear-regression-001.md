@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Multiple Linear Regression in Python, \#1 
+title: Multiple Linear Regression in Python, &#351 
 subtitle: An Exploration and Comparison of scikit-learn vs. statsmodels
 comments: false
 ---

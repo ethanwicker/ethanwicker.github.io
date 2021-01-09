@@ -76,7 +76,7 @@ To test the null hypothesis, we need to quantify how far our estimated coefficie
 
 $$
 \begin{aligned}
-t = \frac{\hat{beta_j-0}{SE(\hat{beta_j})}
+t = \frac {\hat{\beta_j-0}} {SE(\hat{beta_j})}
 \end{aligned}.
 $$
 
@@ -88,17 +88,12 @@ This t-statistic is a measurement of the number of standard deviations that $\ha
 
 
 # Notes for blog post #1 below ========
-* introduction to multivariable linear regression (in practice, often more than one predictor)
-* intro the data sets and where I got it from
-* introduce what I'll cover (fitting the model, estimating coefficients, assessing model accuracy, comparison of scikit-learn and statsmodels)
 
-* this post will focus on only quantitative predictors
-* in a future post, will explore qualitative predictors and interactions
 
-* notes on multivariable linear regression
-    - extension of the simple linear regression model (estimating regression coefficienets -> 3D model of plane)
-    - minimizing the squared distance
-* note on estimating coefficients: discuss getting SE for slope term and confidence interval and p-values & hypothesis test
+
+
+
+
 * note on assessing model accuracy: 
     - "extent to which the model fits the data"
     - R-squared & RSS 

@@ -152,7 +152,7 @@ If the assumptions of the linear model are correct, we can show that
 
 $$
 \begin{aligned}
-E{RSS/n-p-1} = \sigma^2
+E\{RSS/n-p-1\} = \sigma^2
 \end{aligned}
 $$
 
@@ -160,11 +160,11 @@ and that, provided $H_0$ is true,
 
 $$
 \begin{aligned}
-E{(TSS - RSS)/p} = \sigma^2,
+E\{(TSS - RSS)/p\} = \sigma^2,
 \end{aligned}
 $$
 
-where $E{X}$ indicates the *expected value*.
+where $E\{X\}$ indicates the *expected value*.
 
 When there is no relationship between the response and the predictors, we expect the F-statistic to be close to 1.  However, when $H_a$ is true, then $E{(TSS - RSS)/p} > \sigma^2$, and we expect F to be greater than 1.
 

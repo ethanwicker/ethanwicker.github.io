@@ -152,7 +152,7 @@ If the assumptions of the linear model are correct, we can show that
 
 $$
 \begin{aligned}
-E\{RSS/n-p-1\} = \sigma^2
+E\{RSS/(n-p-1)\} = \sigma^2
 \end{aligned}
 $$
 
@@ -166,7 +166,7 @@ $$
 
 where $E\{X\}$ indicates the *expected value*.
 
-When there is no relationship between the response and the predictors, we expect the F-statistic to be close to 1.  However, when $H_a$ is true, then $E{(TSS - RSS)/p} > \sigma^2$, and we expect F to be greater than 1.
+When there is no relationship between the response and the predictors, we expect the F-statistic to be close to 1.  However, when $H_a$ is true, then $E\{(TSS - RSS)/p\} > \sigma^2$, and we expect F to be greater than 1.
 
 To determine whether to reject the null hypothesis, we can calculate a p-value from the resulting F-statistic.  When $H_0$ is true and either the errors $\epsilon_i$ have a normal distribution, or the sample size $n$ is large, the F-statistic follows an F-distribution.  Dependent on the calculated p-value, we can either reject the null hypothesis and claim there is a relationship between the response and the predictors, or not reject the null hypothesis and make so such claim.
 

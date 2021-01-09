@@ -164,7 +164,7 @@ E\{(TSS - RSS)/p\} = \sigma^2,
 \end{aligned}
 $$
 
-where \\(E\{X\}\\) indicates the *expected value*.
+where $E\\{X\\}$ indicates the *expected value*.
 
 When there is no relationship between the response and the predictors, we expect the F-statistic to be close to 1.  However, when $H_a$ is true, then $E\{(TSS - RSS)/p\} > \sigma^2$, and we expect F to be greater than 1.
 

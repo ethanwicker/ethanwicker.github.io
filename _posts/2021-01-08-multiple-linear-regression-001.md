@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Multiple Linear Regression in Python, #1
+title: Multiple Linear Regression in Python, #1 #
 subtitle: An Exploration and Comparison of scikit-learn vs. statsmodels
 comments: false
 ---
@@ -15,7 +15,7 @@ In contrast to simple linear regression, multiple linear regression is able to h
 
 **NOTE: Make sure LaTeX is correct**
 $$
-\begin{aligned} Y = \beta_0 + \beta_1X_1 + \beta_2X_2 + ... + \beta_pX_p + \varepsilon \end{alighned}
+\begin{aligned} Y = \beta_0 + \beta_1X_1 + \beta_2X_2 + ... + \beta_pX_p + \varepsilon \end{aligned}
 $$
 
 where $X_j$ represents the $j$th predictor and $\beta_j$ quantifies the association between that variable and the response.  $\beta_j$ is interpreted as the average effect on $Y$ of a one unit increase in $X_j$ *holding all other predictors fixed*.
@@ -25,7 +25,7 @@ where $X_j$ represents the $j$th predictor and $\beta_j$ quantifies the associat
 The multiple linear regression model is typically fit via the least squares method.  This method approximates the values $\beta_0$, $\beta_1$,..., $\beta_p$ by determining the values $\hat{\beta_0}$, $\hat{\beta_1}$,..., $\hat{\beta_p}$ that minimize the sum of squared residuals 
 
 $$
-\begin{aligned} \sum_{i=1}^{n} ((y_i) - \hat{y_i})^2 \end{alighned}.
+\begin{aligned} \sum_{i=1}^{n} ((y_i) - \hat{y_i})^2 \end{aligned}.
 $$
 
 For simple linear regression in a two-dimensional space, this fitting method results in a line passing through the data.  However, for multiple linear regression, the method of least squares fitting results in a hyperplane that minimizes the squared distance between each point and the closest point on the plane.
@@ -35,7 +35,7 @@ For simple linear regression in a two-dimensional space, this fitting method res
 After finding our estimated coefficients $\hat{\beta_0}$, $\hat{\beta_1}$,..., $\hat{\beta_p}$, it is natural to wonder how accurately each value estimates the true values $\beta_0$, $\beta_1$,..., $\beta_p$.  In general, the *standard error* of the estimate can be calculated to answer this question.  To continue with the comparison to simple linear regression, the intercept estimate $\hat{\beta_0}$ and the coefficient estimate $\hat{\beta_1}$ under this model can be computed via the following formulas:
 
 $$
-\begin{aligned} SE(\hat{beta_0})^2 = \sigma^2[1/n + ] \end{alighned}.
+\begin{aligned} SE(\hat{beta_0})^2 = \sigma^2[1/n + ] \end{aligned}.
 $$
 
 

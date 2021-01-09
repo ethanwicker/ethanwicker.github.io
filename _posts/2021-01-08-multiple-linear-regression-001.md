@@ -1,11 +1,11 @@
 ---
 layout: post
-title: "Multiple Linear Regression #1, An Introduction"
-subtitle: An Exploration and Comparison of scikit-learn vs. statsmodels
+title: "Multiple Linear Regression #1"
+subtitle: A Brief Introduction
 comments: false
 ---
 
-Multiple linear regression is an extension of the simple linear regression model.  In its simplest form it is a relatively inflexible method that can produce insightful results and accurate predictions under certain conditions.  However, multiple linear regression has also been shown to be highly extensible, and many of these extensions (such as ridge regression, lasso regression, and logistic regression) vastly expand the usefulness and applicability of the linear regression paradigm.
+Multiple linear regression is an extension of the simple linear regression model.  In its simplest form it is a relatively inflexible method that can produce insightful results and accurate predictions under certain conditions.  However, multiple linear regression has also been shown to be highly extensible, and many of these extensions (such as *ridge regression*, *lasso regression*, and *logistic regression*) vastly expand the usefulness and applicability of the linear regression paradigm.
 
 In this post, I'll briefly introduce the multiple linear regression model.  I'll discuss fitting of the model, estimating coefficients, assessing model accuracy, and considerations for prediction.  
 
@@ -35,7 +35,7 @@ RSS = \sum_{i=1}^{n} (y_i - \hat{y_i})^2
 \end{aligned}.
 $$
 
-For simple linear regression in a two-dimensional space, this fitting method results in a line passing through the data.  However, for multiple linear regression, the method of least squares fitting results in a hyperplane that minimizes the squared distance between each point and the closest point on the plane.  For the event where we have two predictor variables and one response variable, we can visualize the hyperplane as a two-dimensional plane in a three-dimensional space, but the multiple linear regression model is applicable to higher dimensional spaces as well.
+For simple linear regression in a two-dimensional space, this fitting method results in a line passing through the data.  However, for multiple linear regression, the method of least squares fitting results in a hyperplane that minimizes the squared distance between each point and the closest point on the plane.  For the event where we have two predictor variables and one response variable, we can visualize the hyperplane as a two-dimensional plane in a three-dimensional space.  In general, the multiple linear regression model is applicable to higher dimensional spaces as well.
 
 | ![multiple-linear-regression-3d-plot-isl-ch3.png](/assets/img/multiple-linear-regression-3d-plot-isl-ch3.png){: .mx-auto.d-block :} |
 | :--: |
@@ -43,7 +43,7 @@ For simple linear regression in a two-dimensional space, this fitting method res
 
 #### Standard Errors
 
-After finding our estimated coefficients $\hat{\beta_0}$, $\hat{\beta_1}$,..., $\hat{\beta_p}$, it is natural to wonder how accurately each value estimates the true values $\beta_0$, $\beta_1$,..., $\beta_p$.  In general, the *standard error* of the estimate can be calculated to answer this question.  To continue with the comparison to simple linear regression, the intercept estimate $\hat{\beta_0}$ and the coefficient estimate $\hat{\beta_1}$ under this model can be computed via the following formulas:
+After finding our estimated coefficients $\hat{\beta_0}$, $\hat{\beta_1}$,..., $\hat{\beta_p}$, it is natural to wonder how accurately each value estimates the true values $\beta_0$, $\beta_1$,..., $\beta_p$.  In general, the *standard error* of the estimate can be calculated to answer this question.  Continuing with the comparison to simple linear regression, the intercept estimate $\hat{\beta_0}$ and the coefficient estimate $\hat{\beta_1}$ under the simple linear regression model can be computed via the following formulas:
 
 $$
 \begin{aligned} 
@@ -90,15 +90,15 @@ t = \frac {\hat{\beta_j}-0} {SE(\hat{\beta_j})}
 \end{aligned}.
 $$
 
-This t-statistic is a measurement of the number of standard deviations that $\hat{\beta_j}$ is away from 0.  Via the Central Limit Theorem, we know that for large sample sizes, the t-distribution will approximate a Gaussian distribution, and thus we can calculate a *p-value* for $\hat{\beta_j}$.  For p-values below a predefined significance level - typically 0.05 or 0.01 - we *reject the null hypothesis*. 
+This t-statistic is a measurement of the number of standard deviations that $\hat{\beta_j}$ is away from 0.  From the Central Limit Theorem, we know that for large sample sizes, the t-distribution will approximate a Gaussian distribution, and thus we can calculate a *p-value* for $\hat{\beta_j}$.  For p-values below a predefined significance level - commonly 0.05 or 0.01 - we *reject the null hypothesis*. 
 
 ### Assessing Model Accuracy
 
-The quality of a multiple linear regression fit is typically assessed via two values: the residual standard error (RSE) and the $R^2$ statistic.  These values are included as standard output in most statistical software, including Python's statsmodels module and the base R distribution.  In future post, I'll explore examples and discuss these values, but for now I'll constrain my discussion to only theory.
+The quality of a multiple linear regression fit is typically assessed via two values: the residual standard error (RSE) and the $R^2$ statistic.  These values are included as standard output in most statistical software, including Python's statsmodels module and the base R distribution.  In a future post, I'll explore examples and discuss these values in detail, but for now I'll constrain my discussion to only theory.
 
 #### Residual Standard Error
 
-The residual standard error was briefly introduced above in the context of calculating standard error values.  RSE, as defined above, is a measure of the standard deviation of the *irreducible error* term $\epsilon$.  If a model fit is quite accurate and predictions obtained from the model are very close to the true response values, RSE is quite small.  However, is a model fit is poor and predictions obtained from the model are far from the true response values, we can expect RSE to be quite high.  This, RSE is considered a measure of the *lack of fit* of the model.
+The residual standard error was briefly introduced above in the context of calculating standard error values.  RSE, as defined above, is a measure of the standard deviation of the *irreducible error* term $\epsilon$.  If a model fit is quite accurate and predictions obtained from the model are very close to the true response values, RSE is quite small.  However, is a model fit is poor and predictions obtained from the model are far from the true response values, we can expect RSE to be quite high.  Thus, RSE is considered a measure of the *lack of fit* of the model.
 
 Note, the RSE is measured in the units of $Y$, and what is considered *high* or *low* is dependent on the problem at hand.
 
@@ -112,11 +112,11 @@ R^2 = \frac{TSS - RSS}{TSS} = 1 - \frac{RSS}{TSS}
 \end{aligned}
 $$
 
-where $TSS = \sum_(y_i - \bar{y})^2 is the *total sum of squares* and is a measure of the total variance in the response $Y$.
+where $TSS = \sum_(y_i - \bar{y})^2$ is the *total sum of squares* and is a measure of the total variance in the response $Y$.
 
 The $R^2$ statistic measures the *proportion of variability in* $Y$ *that can be explained using* $X$.  A value close to 1 indicates that a large proportion of the variability in the response has been explained by the regression, while a value close to 0 indicates that the regression did not explain much of the variability in the response.  A low $R^2$ value can occur when a linear model is not a good approximation of the data, or the variance of $\epsilon$ is inherently high, or both.
 
-An extension of the $R^2$ statistic known as Adjusted $R^2$ and denoted $R_adj^2$ will be discussed in a future post.
+An extension of the $R^2$ statistic known as *adjusted* $R^2$ and denoted $R_{adj}^2$ will be discussed in a future post.
 
 ### Determining if a Relationship Exists Between $X$ and $Y$
 

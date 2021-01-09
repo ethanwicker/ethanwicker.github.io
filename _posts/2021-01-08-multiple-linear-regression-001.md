@@ -7,6 +7,8 @@ comments: false
 
 ### Maybe in this post mention inspiration and modeled after ISL text
 
+### Maybe write this intro and have my test post be a comparison of Python methods with code
+
 Multiple linear regression is an extension of the simple linear regression model.  In its simplest form it is a relatively inflexible method that can produce insightful results and accurate predictions under certain conditions.  However, multiple linear regression has also been shown to be highly extensible, and many of these extensions (such as ridge regression, lasso regression, and logistic regression) vastly expand the usefulness and applicability of the linear regression paradigm.
 
 In this post, I'll briefly introduce the multiple linear regression model.  I'll discuss fitting of the model, estimating coefficients, and assessing model accuracy.  Lastly, I'll also compare and contrast the Python packages scikit-learn and statsmodels as they relate to statistical inference and prediction using the multiple linear regression model.  For this brief introduction, I'll constrain myself to only considering quantitative predictors.  In future posts, qualitative predictors as well as interaction terms will be explored.
@@ -27,7 +29,7 @@ where $X_j$ represents the $j$th predictor and $\beta_j$ quantifies the associat
 The multiple linear regression model is typically fit via the least squares method.  This method approximates the values $\beta_0$, $\beta_1$,..., $\beta_p$ by determining the values $\hat{\beta_0}$, $\hat{\beta_1}$,..., $\hat{\beta_p}$ that minimize the sum of squared residuals 
 
 $$
-\begin{aligned} \sum_{i=1}^{n} ((y_i) - \hat{y_i})^2 \end{aligned}.
+\begin{aligned} RSS = \sum_{i=1}^{n} (y_i) - \hat{y_i})^2 \end{aligned}.
 $$
 
 For simple linear regression in a two-dimensional space, this fitting method results in a line passing through the data.  However, for multiple linear regression, the method of least squares fitting results in a hyperplane that minimizes the squared distance between each point and the closest point on the plane.
@@ -45,10 +47,41 @@ $$
 
 where $\sigma^2 = Var(\varepsilon)$.  
 
-Note, these standard error formulas assume that the errors $\varepsilon_i$ for each observation are uncorrelated and have the same variance $\sigma^2$.  This assumption is not true in practice, but these standard error estimations still turn out to be a good approximation.  Similarly, in general, $\sigma^2$ is not known in practice, but can be estimated from the data.  This estimation is known as the *residual standard error* and is given by $RSE = \sqrt{RSS/(n-2)}$.
+Note, these standard error formulas assume that the errors $\varepsilon_i$ for each observation are uncorrelated and have the same variance $\sigma^2$.  This assumption is rarely not in practice, but these standard error estimations still turn out to be a good approximation.  Similarly, in general, $\sigma^2$ is typically not known, but can be estimated from the data.  This estimation is known as the *residual standard error* and is given by $RSE = \sqrt{RSS/(n-2)}$.
 
+Returning to the multiple linear regression model, standard errors can also be used to computer confidence intervals and perform hypothesis tests.  For linear regression, a 95% confidence interval for $\beta_j$ is approximately equivalent to 
 
+$$
+\begin(aligned)
+\hat{\beta_j} \pm 2 \dot SE(\hat{\beta_j})
+\end(aligned).
+$$
 
+The most common hypothesis test involves testing the *null hypothesis* that there is no relationship between $X$ and $Y$.  Mathematically, this is equivalent to testing
+
+$$
+\begin(aligned)
+H_0: \beta_j = 0
+\end(aligned)
+$$
+
+versus 
+
+$$
+\begin(aligned)
+H_a: \beta_j \neq 0
+\end(aligned).
+$$
+
+To test the null hypothesis, we need to quantify how far our estimated coefficient $\beta_j$ is from 0.  This can be determined by calculating a *t-statistic* given by
+
+$$
+\begin(aligned)
+t = \frac{\hat{beta_j-0}{SE(\hat{beta_j})}
+\end(aligned).
+$$
+
+This t-statistic is a measurement of the number of standard deviations that $\hat{\beta_j}$ is away from 0.  Via the Central Limit Theorem, we know that for large sample sizes, the t-distribution will approximate a Gaussian distribution, and thus we can calculate a *p-value* for $\hat{\beta_j}$.  For p-values below a predefined significance level (typically 0.05 or 0.01), we *reject the null hypothesis*. 
 
 
 

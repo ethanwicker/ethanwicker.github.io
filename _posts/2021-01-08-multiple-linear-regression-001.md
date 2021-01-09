@@ -116,7 +116,7 @@ where $TSS = \sum_(y_i - \bar{y})^2$ is the *total sum of squares* and is a meas
 
 The $R^2$ statistic measures the *proportion of variability in* $Y$ *that can be explained using* $X$.  A value close to 1 indicates that a large proportion of the variability in the response has been explained by the regression, while a value close to 0 indicates that the regression did not explain much of the variability in the response.  A low $R^2$ value can occur when a linear model is not a good approximation of the data, or the variance of $\epsilon$ is inherently high, or both.
 
-An extension of the $R^2$ statistic known as *adjusted* $R^2$ and denoted $R_{adj}^2$ will be discussed in a future post.
+An extension of the $R^2$ statistic known as $\text{adjusted }R^2$ and denoted $R_{adj}^2$ will be discussed in a future post.
 
 ### Determining if a Relationship Exists Between $X$ and $Y$
 

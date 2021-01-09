@@ -31,16 +31,19 @@ $$
 \begin{aligned} RSS = \sum_{i=1}^{n} (y_i - \hat{y_i})^2 \end{aligned}.
 $$
 
-For simple linear regression in a two-dimensional space, this fitting method results in a line passing through the data.  However, for multiple linear regression, the method of least squares fitting results in a hyperplane that minimizes the squared distance between each point and the closest point on the plane.  For the event where we have two predictor variables and one response variable, we can visualize the hyperplane as a two-dimensional plane in a three-dimensional space.
+For simple linear regression in a two-dimensional space, this fitting method results in a line passing through the data.  However, for multiple linear regression, the method of least squares fitting results in a hyperplane that minimizes the squared distance between each point and the closest point on the plane.  For the event where we have two predictor variables and one response variable, we can visualize the hyperplane as a two-dimensional plane in a three-dimensional space, but the multiple linear regression model is applicable to higher dimensional spaces as well.
 
 **NOTE: Insert 3D graph from book here (provide the exact source -> p. 73, title, authers or maybe James et al.)**
+
+![3D Multiple Linear Regression](/assets/img/multiple-linear-regression-3d-plot-isl-ch3.png){: .mx-auto.d-block :}
+
 
 After finding our estimated coefficients $\hat{\beta_0}$, $\hat{\beta_1}$,..., $\hat{\beta_p}$, it is natural to wonder how accurately each value estimates the true values $\beta_0$, $\beta_1$,..., $\beta_p$.  In general, the *standard error* of the estimate can be calculated to answer this question.  To continue with the comparison to simple linear regression, the intercept estimate $\hat{\beta_0}$ and the coefficient estimate $\hat{\beta_1}$ under this model can be computed via the following formulas:
 
 $$
 \begin{aligned} 
 SE(\hat{\beta_0})^2 = \sigma^2\left[\frac{1}{n} + \frac{\bar{x}^2} {\sum_{i=1}^{n}(x_i-\bar{x})^2}\right], 
-SE(\hat{\beta_1})^2 = \frac{\sigma^2}{\sum_{i=1}^{n}(x_i - \bar{x})^2},
+SE(\hat{\beta_1})^2 = \frac{\sigma^2}{\sum_{i=1}^{n}(x_i - \bar{x})^2}
 \end{aligned}
 $$
 
@@ -52,7 +55,7 @@ Returning to the multiple linear regression model, standard errors can also be u
 
 $$
 \begin{aligned}
-\hat{\beta_j} \pm 2 \dot SE(\hat{\beta_j})
+\hat{\beta_j} \pm 2 \cdot SE(\hat{\beta_j})
 \end{aligned}.
 $$
 
@@ -76,11 +79,11 @@ To test the null hypothesis, we need to quantify how far our estimated coefficie
 
 $$
 \begin{aligned}
-t = \frac {\hat{\beta_j-0}} {SE(\hat{beta_j})}
+t = \frac {\hat{\beta_j}-0} {SE(\hat{\beta_j})}
 \end{aligned}.
 $$
 
-This t-statistic is a measurement of the number of standard deviations that $\hat{\beta_j}$ is away from 0.  Via the Central Limit Theorem, we know that for large sample sizes, the t-distribution will approximate a Gaussian distribution, and thus we can calculate a *p-value* for $\hat{\beta_j}$.  For p-values below a predefined significance level (typically 0.05 or 0.01), we *reject the null hypothesis*. 
+This t-statistic is a measurement of the number of standard deviations that $\hat{\beta_j}$ is away from 0.  Via the Central Limit Theorem, we know that for large sample sizes, the t-distribution will approximate a Gaussian distribution, and thus we can calculate a *p-value* for $\hat{\beta_j}$.  For p-values below a predefined significance level - typically 0.05 or 0.01 - we *reject the null hypothesis*. 
 
 
 

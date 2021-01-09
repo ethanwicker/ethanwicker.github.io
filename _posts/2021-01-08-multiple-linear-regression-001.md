@@ -35,7 +35,7 @@ For simple linear regression in a two-dimensional space, this fitting method res
 
 | ![multiple-linear-regression-3d-plot-isl-ch3.png](/assets/img/multiple-linear-regression-3d-plot-isl-ch3.png){: .mx-auto.d-block :} |
 | :--: |
-| Source: Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani. An Introduction to Statistical Learning : with Applications in R. New York :Springer, 2013. |
+| <sub><sup>**Source:** *Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani. An Introduction to Statistical Learning : with Applications in R. New York :Springer, 2013./sup></sub>* |
 
 After finding our estimated coefficients $\hat{\beta_0}$, $\hat{\beta_1}$,..., $\hat{\beta_p}$, it is natural to wonder how accurately each value estimates the true values $\beta_0$, $\beta_1$,..., $\beta_p$.  In general, the *standard error* of the estimate can be calculated to answer this question.  To continue with the comparison to simple linear regression, the intercept estimate $\hat{\beta_0}$ and the coefficient estimate $\hat{\beta_1}$ under this model can be computed via the following formulas:
 

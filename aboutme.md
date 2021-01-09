@@ -10,10 +10,12 @@ Note to self, I should add a picture of myself here, and maybe my resume.
 
 As well as my a bit about my background, my degrees, and that I work in anomaly detection.
 
-BS in Mathematics
-BS in Mathematics Education
-Minor in Philosophy 
-from North Carolina State University
+Should also call out that many of my initial posts are inspired by Introduction to Statistical Learning, and many of the formulas are taken from it (which version of book?)
+
+BS in Mathematics,
+BS in Mathematics Education,
+Minor in Philosophy ,
+from North Carolina State University,
 
 Denver, CO
 

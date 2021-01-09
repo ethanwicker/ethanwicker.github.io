@@ -5,6 +5,8 @@ subtitle: An Exploration and Comparison of scikit-learn vs. statsmodels
 comments: false
 ---
 
+## SHOULD mention follows chapter 3
+
 Multiple linear regression is an extension of the simple linear regression model.  In its simplest form it is a relatively inflexible method that can produce insightful results and accurate predictions under certain conditions.  However, multiple linear regression has also been shown to be highly extensible, and many of these extensions (such as ridge regression, lasso regression, and logistic regression) vastly expand the usefulness and applicability of the linear regression paradigm.
 
 In this post, I'll briefly introduce the multiple linear regression model.  I'll discuss fitting of the model, estimating coefficients, and assessing model accuracy.  Lastly, I'll also compare and contrast the Python packages scikit-learn and statsmodels as they relate to statistical inference and prediction using the multiple linear regression model.  For this brief introduction, I'll constrain myself to only considering quantitative predictors.  In future posts, qualitative predictors as well as interaction terms will be explored.
@@ -14,7 +16,9 @@ In this post, I'll briefly introduce the multiple linear regression model.  I'll
 In contrast to simple linear regression, multiple linear regression is able to handle multiple predictor variables, which is a much more common situation in practice.  In general, the multiple linear regression model takes the form 
 
 $$
-\begin{aligned} Y = \beta_0 + \beta_1X_1 + \beta_2X_2 + ... + \beta_pX_p + \epsilon \end{aligned}
+\begin{aligned} 
+Y = \beta_0 + \beta_1X_1 + \beta_2X_2 + ... + \beta_pX_p + \epsilon 
+\end{aligned}
 $$
 
 where $X_j$ represents the $j$th predictor and $\beta_j$ quantifies the association between that variable and the response.  $\beta_j$ is interpreted as the average effect on $Y$ of a one unit increase in $X_j$ *holding all other predictors fixed*.
@@ -24,7 +28,9 @@ where $X_j$ represents the $j$th predictor and $\beta_j$ quantifies the associat
 The multiple linear regression model is typically fit via the least squares method.  This method approximates the values $\beta_0$, $\beta_1$,..., $\beta_p$ by determining the values $\hat{\beta_0}$, $\hat{\beta_1}$,..., $\hat{\beta_p}$ that minimize the sum of squared residuals 
 
 $$
-\begin{aligned} RSS = \sum_{i=1}^{n} (y_i - \hat{y_i})^2 \end{aligned}.
+\begin{aligned} 
+RSS = \sum_{i=1}^{n} (y_i - \hat{y_i})^2 
+\end{aligned}.
 $$
 
 For simple linear regression in a two-dimensional space, this fitting method results in a line passing through the data.  However, for multiple linear regression, the method of least squares fitting results in a hyperplane that minimizes the squared distance between each point and the closest point on the plane.  For the event where we have two predictor variables and one response variable, we can visualize the hyperplane as a two-dimensional plane in a three-dimensional space, but the multiple linear regression model is applicable to higher dimensional spaces as well.
@@ -110,7 +116,7 @@ The $R^2$ statistic measures the *proportion of variability in* $Y$ *that can be
 
 An extension of the $R^2$ statistic known as Adjusted $R^2$ and denoted $R_adj^2$ will be discussed in a future post.
 
-#### Determining if a Relationship Exists Between the Response and Predictors
+#### Determining if a Relationship Exists Between $X$ and $Y$
 
 A question we have yet to explore is that of whether there exists a relationship between the response and predictor variables.  It might be tempting to use the individual predictor p-values discussed above to make this assessment and claim that if any individual predictor p-values are small, then at least one of the predictors is related to the response.  However, this logic is flawed, especially when the number of predictors $p$ is large.  As the number of predictors increases, the chance that the p-value of a single predictor will appear significant increases, even if there is no true association between the predictors and the response.
 
@@ -162,7 +168,51 @@ When there is no relationship between the response and the predictors, we expect
 
 To determine whether to reject the null hypothesis, we can calculate a p-value from the resulting F-statistic.  When $H_0$ is true and either the errors $\epsilon_i$ have a normal distribution, or the sample size $n$ is large, the F-statistic follows an F-distribution.  Dependent on the calculated p-value, we can either reject the null hypothesis and claim there is a relationship between the response and the predictors, or not reject the null hypothesis and make so such claim.
 
-In the event where the F-statistic is low and we cannot claim that a relationship exists between the response and the predictors, we should not interpret any individual predictor p-values as significant, even if some p-values are low.
+In the event where the F-statistic is low and we cannot claim that a relationship exists between the response and the predictors, we should not interpret any individual predictor p-values as significant.
+
+#### Variable Selection
+
+If, after fitting a multiple linear regression model and calculating the F-statistic and associated p-values, we determine that at least one of the predictors is related to the response, the natural progression is to determine *which* predictor variables are actually associated with the response.  It can be informative to look at the individual p-values, but as discussed above, this can be problematic when $p$ is large.
+
+Determining which predictors are associated with the response, such that a single model can be fit with only these predictors is referred to as *variable selection*.  In future posts, I will discuss this topic in more depth, so for now I will only briefly introduce a variety of methods.
+
+When $p$ is small or domain knowledge about the problem is available, it may be feasible to fit multiple models, each containing a different subset of the predictors.  When this is possible, a variety of statistics can be used to determine the quality of a model.  Example of these statistics include *Mallow's C<sub>p</sub>*, *Akaike information criterion* (AIC), *Bayesian information criterion* (BIC) and *adjusted R^2*.
+
+As $p$ increases, the model space grows exponentially and thus trying out many predictor combinations is infeasible.  When this is the case, a variety of methods exist to automate and efficiently choose a smaller set of models to consider.  A few of these methods are *forward selection*, *backward selection*  and *mixed selection*.
+
+Many other techniques exist as well to perform variable and model selection.  Examples of such techniques are *ridge regression*, *lasso regression*, and *principal component analysis*
+
+#### Considerations for Prediction
+
+Once a multiple linear regression model has been fit, it is trivial to predict the response $Y$.  However, there are three types of uncertainty associated with this prediction we should be aware of.
+
+##### Reducible Error
+
+The least squares plane 
+
+$$
+\begin{aligned}
+Y = \hat{\beta_0} + \hat{\beta_1}X_1 + \hat{\beta_2}X_2 + ... + \hat{\beta_p}X_p + \epsilon
+\end{aligned}
+$$
+
+is only an estimate for *true population regression plane*
+
+$$
+\begin{aligned} 
+f(X) = \beta_0 + \beta_1X_1 + \beta_2X_2 + ... + \beta_pX_p + \epsilon 
+\end{aligned}
+$$
+
+The coefficient estimates $\hat{\beta_0}$, $\hat{\beta_1}$,..., $\hat{\beta_p}$ will have some inaccuracies and is thus related to the *reducible error*.  That is, it would be possible to estimate the true population regression plane more accurately.  For example, if we had more data, this might lead to a more accurate estimation.  To quantify this error, we can calculate a confidence interval that determines how close $\hat{Y}$ will be to $f(X).
+
+##### Model Bias
+
+Another source of potentially reducible error is *model bias*.  In practice, assuming a linear model for $f(X)$ is almost always an approximation.  Thus, the assumed linear model may be biased and perhaps a better model could *reduce* the error.
+
+##### Irreducible Error
+
+Lastly, the third type of prediction uncertainty is related to the random error $\epsilon$.  In the extreme event where we knew $f(X)$ exactly, we would still not be able to perfectly predict the response value.  We refer to this as the *irreducible error*.  To quantify how much $Y$ will vary from $\hat{Y}$, we use *prediction intervals*.  Because prediction intervals incorporates both the reducible error and the irreducible error, they will always be larger than confidence intervals.
 
 # Notes for blog post #1 below ========
 $$

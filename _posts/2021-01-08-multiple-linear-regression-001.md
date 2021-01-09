@@ -18,7 +18,7 @@ In this post, I'll briefly introduce the multiple linear regression model.  I'll
 In contrast to simple linear regression, multiple linear regression is able to handle multiple predictor variables, which is a much more common situation in practice.  In general, the multiple linear regression model takes the form 
 
 $$
-\begin{aligned} Y = \beta_0 + \beta_1X_1 + \beta_2X_2 + ... + \beta_pX_p + \varepsilon \end{aligned}
+\begin{aligned} Y = \beta_0 + \beta_1X_1 + \beta_2X_2 + ... + \beta_pX_p + \epsilon \end{aligned}
 $$
 
 where $X_j$ represents the $j$th predictor and $\beta_j$ quantifies the association between that variable and the response.  $\beta_j$ is interpreted as the average effect on $Y$ of a one unit increase in $X_j$ *holding all other predictors fixed*.
@@ -46,38 +46,38 @@ $$
 
 where $\sigma^2 = Var(\epsilon)$.  
 
-Note, these standard error formulas assume that the errors $\varepsilon_i$ for each observation are uncorrelated and have the same variance $\sigma^2$.  This assumption is rarely not in practice, but these standard error estimations still turn out to be a good approximation.  Similarly, in general, $\sigma^2$ is typically not known, but can be estimated from the data.  This estimation is known as the *residual standard error* and is given by $RSE = \sqrt{RSS/(n-2)}$.
+Note, these standard error formulas assume that the errors $\epsilon_i$ for each observation are uncorrelated and have the same variance $\sigma^2$.  This assumption is rare in practice, but these standard error estimations still turn out to be a good approximation.  Similarly, in general, $\sigma^2$ is typically not known, but can be estimated from the data.  This estimation is known as the *residual standard error* and is given by $RSE = \sqrt{RSS/(n-2)}$.
 
 Returning to the multiple linear regression model, standard errors can also be used to computer confidence intervals and perform hypothesis tests.  For linear regression, a 95% confidence interval for $\beta_j$ is approximately equivalent to 
 
 $$
-\begin(aligned)
+\begin{aligned}
 \hat{\beta_j} \pm 2 \dot SE(\hat{\beta_j})
-\end(aligned).
+\end{aligned}.
 $$
 
 The most common hypothesis test involves testing the *null hypothesis* that there is no relationship between $X$ and $Y$.  Mathematically, this is equivalent to testing
 
 $$
-\begin(aligned)
+\begin{aligned}
 H_0: \beta_j = 0
-\end(aligned)
+\end{aligned}
 $$
 
 versus 
 
 $$
-\begin(aligned)
+\begin{aligned}
 H_a: \beta_j \neq 0
-\end(aligned).
+\end{aligned}.
 $$
 
 To test the null hypothesis, we need to quantify how far our estimated coefficient $\beta_j$ is from 0.  This can be determined by calculating a *t-statistic* given by
 
 $$
-\begin(aligned)
+\begin{aligned}
 t = \frac{\hat{beta_j-0}{SE(\hat{beta_j})}
-\end(aligned).
+\end{aligned}.
 $$
 
 This t-statistic is a measurement of the number of standard deviations that $\hat{\beta_j}$ is away from 0.  Via the Central Limit Theorem, we know that for large sample sizes, the t-distribution will approximate a Gaussian distribution, and thus we can calculate a *p-value* for $\hat{\beta_j}$.  For p-values below a predefined significance level (typically 0.05 or 0.01), we *reject the null hypothesis*. 

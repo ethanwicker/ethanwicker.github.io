@@ -230,7 +230,7 @@ result.summary()
 ```
 The `summary()` method can be used to view a useful summary table of the regression.
 
-```python
+```
 <class 'statsmodels.iolib.summary.Summary'>
 """
                              OLS Regression Results                             
@@ -262,7 +262,10 @@ Notes:
 """
 ```
 
+This summary table provides quite a bit of information.  
 
+R^2 already discussed
+discuss p-values of predictors
 
 
 

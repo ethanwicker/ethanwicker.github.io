@@ -5,12 +5,6 @@ subtitle: A Comparison of Python's scikit-learn and statsmodels Libraries
 comments: false
 ---
 
-Notes:
-
-* Add headers where appropriate
-
-
-
 This post is the second in a series on the multiple linear regression model.  In a [previous post](https://ethanwicker.com/2021-01-08-multiple-linear-regression-001/), I introduced the model and much of it's associated theory.  In this post, I'll continue exploring the multiple linear regression model with an example in Python, including a comparison of the scikit-learn and statsmodels libraries.
 
 ### Introducing the Example

@@ -181,22 +181,124 @@ y = nyc_per_hour['mean_departure_delay']
 
 # Fitting model
 linear_reg.fit(X=X, y=y)
-linear_reg.coef_
-linear_reg.intercept_
-linear_reg.score(X, y) # R^2 value
 ```
 
 After fitting the model, we can view the regression coefficients and intercept using the `coef_` and `intercept_` attributes.  We could also perform prediction with the fitted model using the `predict()` method.
 
-Of particular interest to this post is the `score()` method.  For the linear regression model, this method returns $R^2$, or the coefficient of determination.  
+Of particular interest to this post is the `score()` method.  For the linear regression model, this method returns $R^2$, or the coefficient of determination.  This value indicates the proportion of variance explained my the model.
 
 ```python
-lin_model.score(X, y) # R^2 value
+>>> linear_reg.score(X, y)
+0.08295782066352853
+```
+
+For the particular fitted model above, the $R^2$ value is approximately 0.08, indicating about 8% of the total variance in the average flight departure delay is explained by the linear combination of average wind speed, average precipitation, and average visibility.  Needless to say, that leaves a lot of variance unexplained, and our current linear model could almost certainly be improved upon.
+
+In future posts, I'll explore techniques that may better fit the data.
+
+### Multiple Linear Regression Model via statsmodels
+
+Using the main statsmodels API provides a similar experience to scikit-learn's API.  To train a multiple linear regression model via statsmodels, we can us the `OLS()` function.
+
+It is worth noting, statmodels does have a couple of nuances.  First, by default,  the `OLS()` function does not include an intercept.  To include an intercept value in the model, we can use the `add_constant()` method.
+
+Second, instead of the more common `x` and `y` parameter names, statsmodels uses `exog` and `endog`, referring to [exogenous and endogenous](https://www.statsmodels.org/stable/endog_exog.html).
+
+Below, I'll fit a muliple linear regression model using the main statsmodels API and the same `X` and `y` values defined above.
+
+```python
+import statsmodels.api as sm
+
+# Including constant term
+X = sm.add_constant(X)
+
+# Fitting model
+linear_reg_sm = sm.OLS(endog=y, exog=X)
+result = linear_reg_sm.fit()
+```
+
+In addition to the API interface above, statsmodels also provides a formula interface.  This interface makes use of the patsy package under the hood, which, by the way, just might be the [best package name I've ever heard of](https://en.wikipedia.org/wiki/Patsy_(Monty_Python)).  As a former R user, this formula interface is quite familiar.
+
+```python
+import statsmodels.formula.api as smf
+
+# Fitting model
+linear_reg_smf = smf.ols('mean_departure_delay ~ mean_wind_speed_mph + mean_precipitaton_inches + mean_visibility_miles', data = nyc_per_hour) 
+result = linear_reg_smf.fit()
+
+result.summary()
+```
+The `summary()` method can be used to view a useful summary table of the regression.
+
+```python
+<class 'statsmodels.iolib.summary.Summary'>
+"""
+                             OLS Regression Results                             
+================================================================================
+Dep. Variable:     mean_departure_delay   R-squared:                       0.083
+Model:                              OLS   Adj. R-squared:                  0.083
+Method:                   Least Squares   F-statistic:                     207.5
+Date:                  Tue, 12 Jan 2021   Prob (F-statistic):          7.29e-129
+Time:                          20:30:14   Log-Likelihood:                -30586.
+No. Observations:                  6886   AIC:                         6.118e+04
+Df Residuals:                      6882   BIC:                         6.121e+04
+Df Model:                             3                                         
+Covariance Type:              nonrobust                                         
+============================================================================================
+                               coef    std err          t      P>|t|      [0.025      0.975]
+--------------------------------------------------------------------------------------------
+const                       24.4845      1.413     17.332      0.000      21.715      27.254
+mean_wind_speed_mph          0.5334      0.049     10.949      0.000       0.438       0.629
+mean_precipitaton_inches   127.3312     11.298     11.270      0.000     105.183     149.479
+mean_visibility_miles       -1.9262      0.143    -13.493      0.000      -2.206      -1.646
+==============================================================================
+Omnibus:                     4515.819   Durbin-Watson:                   0.385
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):            63194.997
+Skew:                           2.986   Prob(JB):                         0.00
+Kurtosis:                      16.586   Cond. No.                         683.
+==============================================================================
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+"""
 ```
 
 
 
-### Multiple Linear Regression Model via statsmodels
+
+
+
+
+
+
+
+
+
+
+result.summary()
+
+
+# Fitting with smf.ols
+# Using patsy and R style formulas
+
+linear_reg_smf = smf.ols('mean_departure_delay ~ mean_wind_speed_mph + mean_precipitaton_inches + mean_visibility_miles', data = nyc_per_hour)  # exact same as sm.OLS
+result = linear_reg_smf.fit()
+result.summary()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# delete below this
+import statsmodels.api as sm
 
 
 
@@ -210,6 +312,15 @@ X = sm.add_constant(X)
 mod = sm.OLS(endog=per_hour.mean_departure_delay, exog=X)
 result = mod.fit()
 result.summary()
+
+
+# Fitting with smf.ols
+# Using patsy and R style formulas
+import statsmodels.formula.api as smf
+mod = smf.ols('departure_delay ~ wind_speed_mph + precipitation_inches + visibility_miles', data = nyc)  # exact same as sm.OLS
+result = mod.fit()
+result.summary()
+
 
 
 sns.pairplot(per_hour)

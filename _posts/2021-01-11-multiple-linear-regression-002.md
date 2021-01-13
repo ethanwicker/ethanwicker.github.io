@@ -75,7 +75,6 @@ nyc = nyc.dropna()
 
 At this point, the  `nyc` dataframe has been created.  A glimpse of the data structure can be seen below.
 
-NOTE: INCLUDE CODE HERE
 ```
 >>> nyc.info()
 <class 'pandas.core.frame.DataFrame'>

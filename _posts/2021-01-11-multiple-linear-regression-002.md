@@ -5,27 +5,12 @@ subtitle: A Comparison of Python's scikit-learn and statsmodels Libraries
 comments: false
 ---
 
-## ADD MY IMPORT STATEMENTS AT THE TOP OF EACH PIECE TO MAKE IT CLEAR
-## maybe link to a github repo with organized code? might not do right now and may just focus on the blog
+Notes:
+* Make sure import statements added at top of each code chunk
+* Make sure to spell precipitation correct everywhere
+* Add titles to plots, and code for how they were made
+* Add headers where appropriate
 
-NOTE: Make sure to spell precipitation right.  This word is definitely spelled wrong.
-
-Note: Add headers where appropriate.
-
-Should add titles to my plots, and show the code for how they were made.
-
-Idea for future post to expand on this.  
-Look at per hour weather averages, but also group on carrier and create a "morning", "midday", "evening", "night" variable to predict this as well.  Maybe weather at night is worse, or maybe flights get more detailed as the day goes on.  
-
-```python
-import numpy as np NO <-- do I need?
-import pandas as pd NO
-import seaborn as sns NO
-from nycflights13 import airlines, flights, weather NO
-from sklearn.linear_model import LinearRegression NO
-import statsmodels.api as sm N
-import statsmodels.formula.api as smf N
-```
 
 This post is the second in a series on the multiple linear regression model.  In a [previous post](https://ethanwicker.com/2021-01-08-multiple-linear-regression-001/), I introduced the model and much of it's associated theory.  In this post, I'll continue exploring the multiple linear regression model with an example in Python, including a comparison of the scikit-learn and statsmodels libraries.
 
@@ -262,103 +247,12 @@ Notes:
 """
 ```
 
-This summary table provides quite a bit of information.  
+This summary table provides quite a bit of information.  An interpretation of the $R^2$ value has already been discussed above.  A few more statistics worth discussing here are the p-value of the F-statistic, indicated by `Prob (F-statistic)`, and the p-values for the intercept and predictor terms, labeled as the `P>|t|` column. 
 
-R^2 already discussed
-discuss p-values of predictors
+The F-statistic can be be used to determine if there exists *any* relationship between a predictor and the response.  To simply look at the individual predictor p-values to answer this question is flawed, as we would expect some individual variables to appear significant *by chance alone*, especially as the number of predictors in a model increases.
 
+In this instance, the associated p-value of the F-statistic is approximately `7.29e-129`, which is incredibly low.  This p-value provides strong evidence that at least one predictor does have an association with the response.
 
-
-
-
-
-
-
-
-
-
-result.summary()
-
-
-# Fitting with smf.ols
-# Using patsy and R style formulas
-
-linear_reg_smf = smf.ols('mean_departure_delay ~ mean_wind_speed_mph + mean_precipitaton_inches + mean_visibility_miles', data = nyc_per_hour)  # exact same as sm.OLS
-result = linear_reg_smf.fit()
-result.summary()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# delete below this
-import statsmodels.api as sm
-
-
-
-
-
-# Fitting with sm.OLS
-X = per_hour[['mean_wind_speed_mph', 'mean_precipitaton_inches', 'mean_visibility_miles']]
-X = sm.add_constant(X)
-
-
-mod = sm.OLS(endog=per_hour.mean_departure_delay, exog=X)
-result = mod.fit()
-result.summary()
-
-
-# Fitting with smf.ols
-# Using patsy and R style formulas
-import statsmodels.formula.api as smf
-mod = smf.ols('departure_delay ~ wind_speed_mph + precipitation_inches + visibility_miles', data = nyc)  # exact same as sm.OLS
-result = mod.fit()
-result.summary()
-
-
-
-sns.pairplot(per_hour)
-
-
-a=df.groupby('kind').agg(min_height=('height', 'min'),
-                               max_weight=('weight', 'max'))
-
-sns.lineplot(data=a, x="timestamp_hour", y="mean_departure_delay")
-
-nyc.timestamp_hour.unique()
-
-
-### Big header
-#### Small header
-
-
-
-
-
-
-
-
-$$
-\begin{aligned} 
- 
-\end{aligned}
-$$
-
-
-
-
-* introduce the data and how I got it, with links to packages
-* dive into code and nuances of each package
-* section on filtering the data and preparing it
-Python stuff - basically just all the code I wrote.
-  
-https://quicklatex.com/
+For tomorrow
+* discuss the p-values on the individual variables
+* discuss that since R^2 is low and all p-values are low, this indicates that the variables are associated with the response, but the variance of the respones is so high the model does a poor job capturing it.

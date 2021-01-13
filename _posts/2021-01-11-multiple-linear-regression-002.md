@@ -6,10 +6,9 @@ comments: false
 ---
 
 Notes:
-* Make sure import statements added at top of each code chunk
-* Make sure to spell precipitation correct everywhere
-* Add titles to plots, and code for how they were made
+
 * Add headers where appropriate
+
 
 
 This post is the second in a series on the multiple linear regression model.  In a [previous post](https://ethanwicker.com/2021-01-08-multiple-linear-regression-001/), I introduced the model and much of it's associated theory.  In this post, I'll continue exploring the multiple linear regression model with an example in Python, including a comparison of the scikit-learn and statsmodels libraries.
@@ -82,13 +81,34 @@ nyc = nyc.dropna()
 
 At this point, the  `nyc` dataframe has been created.  A glimpse of the data structure can be seen below.
 
-NOTE: How to make the output show here?
-Maybe just copy and paste from the console
-```python
-nyc.head()
-
-nyc.info()
+NOTE: INCLUDE CODE HERE
 ```
+>>> nyc.info()
+<class 'pandas.core.frame.DataFrame'>
+Int64Index: 326915 entries, 0 to 336769
+Data columns (total 7 columns):
+ #   Column                Non-Null Count   Dtype              
+---  ------                --------------   -----              
+ 0   timestamp_hour        326915 non-null  datetime64[ns, UTC]
+ 1   orig_airport          326915 non-null  object             
+ 2   carrier_name          326915 non-null  object             
+ 3   departure_delay       326915 non-null  float64            
+ 4   wind_speed_mph        326915 non-null  float64            
+ 5   precipitation_inches  326915 non-null  float64            
+ 6   visibility_miles      326915 non-null  float64            
+dtypes: datetime64[ns, UTC](1), float64(4), object(2)
+memory usage: 20.0+ MB
+
+>>> nyc.head()
+             timestamp_hour orig_airport            carrier_name  departure_delay  wind_speed_mph  precipitation_inches  visibility_miles
+0 2013-01-01 10:00:00+00:00          EWR   United Air Lines Inc.              2.0        12.65858                   0.0              10.0
+1 2013-01-01 10:00:00+00:00          LGA   United Air Lines Inc.              4.0        14.96014                   0.0              10.0
+2 2013-01-01 10:00:00+00:00          JFK  American Airlines Inc.              2.0        14.96014                   0.0              10.0
+3 2013-01-01 10:00:00+00:00          JFK         JetBlue Airways             -1.0        14.96014                   0.0              10.0
+4 2013-01-01 11:00:00+00:00          LGA    Delta Air Lines Inc.             -6.0        16.11092                   0.0              10.0
+```
+
+### Exploratory Data Analysis
 
 Before diving into modeling, it's good practice to perform some initial exploratory data analysis.  I'll use the seaborn data visualization library to create some plots.
 
@@ -97,9 +117,12 @@ Because the data is so large, I'll take a small sample of 10,000 observations an
 ```python
 import seaborn as sns
 
-nyc_small = nyc.sample(n=10000)
+# Taking random sample, defining random_state for reproducibility
+nyc_small = nyc.sample(n=10000, random_state=1234)
 
-sns.pairplot(nyc_small)
+# Creating pair plot
+sns.pairplot(nyc_small)\
+    .fig.suptitle('10,000 Flights Leaving NYC, 2013: Pair Plot', y=1)
 ```
 
 From the pair plot, it's clear the data is quite noisy.  However, we can still learn a thing or two from the plot.  For example, most days in New York City tend to have good to mild weather with high visibility, low precipitation and moderate wind speeds.  Also, from this small sample, no striking patterns or correlation stand out.
@@ -107,7 +130,7 @@ From the pair plot, it's clear the data is quite noisy.  However, we can still l
 Perhaps instead of attempting to understand how these weather patterns affect individual departure delays, we should aggregate our data per hour and explore how average weather patterns affect average departure delays.
 
 ```python
-# Aggreaging data per hour
+# Aggregating data per hour
 nyc_per_hour = \
     nyc\
     .groupby("timestamp_hour")\
@@ -117,9 +140,8 @@ nyc_per_hour = \
          mean_visibility_miles=('visibility_miles', 'mean'))\
     .reset_index()
 
-### ALSO GIVE THIS PLOT LABELS AND A TITLE
-
-sns.pairplot(nyc_per_hour)
+sns.pairplot(nyc_per_hour)\
+    .fig.suptitle('Flights Leaving NYC, 2013: Pair Plot of Average Per Hour Values', y=1)
 ```
 
 The pair plot for the new aggregated `nyc_per_hour` dataset is still quite busy.  As a last plot, let's create a correlation heatmap to confirm the lack of correlation among the variables.
@@ -147,8 +169,7 @@ It is worth noting that there is a somewhat strong correlation between average p
 
 From the heatmap as well, we can also see there is a small degree of correlation between average precipitation and average departure delay, with a Pearson correlation of 0.22, and a comparable negative correlation between average visibility and average departure delay with a Pearson correlation of -0.21. 
 
-
-### Multiple Linear Regression Model via scikit-learn
+### Multiple Linear Regression via scikit-learn
 
 After some exploratory analysis, we're ready for modeling.  I'll first train the model using scikit-learn, and then train the same model using statsmodels.  While scikit-learn is an excellent machine learning package, it isn't intended for statistical inference.  For this reason, I'll explore the model summary of statsmodels in-depth to learn more about the regression in the next section.
 
@@ -161,7 +182,7 @@ from sklearn.linear_model import LinearRegression
 linear_reg = LinearRegression()
 
 # Defining predictors and response
-X = nyc_per_hour[['mean_wind_speed_mph', 'mean_precipitaton_inches', 'mean_visibility_miles']]
+X = nyc_per_hour[['mean_wind_speed_mph', 'mean_precipitation_inches', 'mean_visibility_miles']]
 y = nyc_per_hour['mean_departure_delay']
 
 # Fitting model
@@ -170,7 +191,7 @@ linear_reg.fit(X=X, y=y)
 
 After fitting the model, we can view the regression coefficients and intercept using the `coef_` and `intercept_` attributes.  We could also perform prediction with the fitted model using the `predict()` method.
 
-Of particular interest to this post is the `score()` method.  For the linear regression model, this method returns $R^2$, or the coefficient of determination.  This value indicates the proportion of variance explained my the model.
+Of particular interest to this post is the `score()` method.  For the linear regression model, this method returns $R^2$, or the coefficient of determination.  This value indicates the proportion of variance explained by the model.
 
 ```python
 >>> linear_reg.score(X, y)
@@ -181,15 +202,15 @@ For the particular fitted model above, the $R^2$ value is approximately 0.08, in
 
 In future posts, I'll explore techniques that may better fit the data.
 
-### Multiple Linear Regression Model via statsmodels
+### Multiple Linear Regression via statsmodels
 
-Using the main statsmodels API provides a similar experience to scikit-learn's API.  To train a multiple linear regression model via statsmodels, we can us the `OLS()` function.
+Using the main statsmodels API provides a similar experience to scikit-learn's API.  To train a multiple linear regression model via statsmodels, we can use the `OLS()` function.
 
 It is worth noting, statmodels does have a couple of nuances.  First, by default,  the `OLS()` function does not include an intercept.  To include an intercept value in the model, we can use the `add_constant()` method.
 
 Second, instead of the more common `x` and `y` parameter names, statsmodels uses `exog` and `endog`, referring to [exogenous and endogenous](https://www.statsmodels.org/stable/endog_exog.html).
 
-Below, I'll fit a muliple linear regression model using the main statsmodels API and the same `X` and `y` values defined above.
+Below, I'll fit a multiple linear regression model using the main statsmodels API and the same `X` and `y` values defined above.
 
 ```python
 import statsmodels.api as sm
@@ -208,7 +229,7 @@ In addition to the API interface above, statsmodels also provides a formula inte
 import statsmodels.formula.api as smf
 
 # Fitting model
-linear_reg_smf = smf.ols('mean_departure_delay ~ mean_wind_speed_mph + mean_precipitaton_inches + mean_visibility_miles', data = nyc_per_hour) 
+linear_reg_smf = smf.ols('mean_departure_delay ~ mean_wind_speed_mph + mean_precipitation_inches + mean_visibility_miles', data = nyc_per_hour) 
 result = linear_reg_smf.fit()
 
 result.summary()
@@ -234,7 +255,7 @@ Covariance Type:              nonrobust
 --------------------------------------------------------------------------------------------
 const                       24.4845      1.413     17.332      0.000      21.715      27.254
 mean_wind_speed_mph          0.5334      0.049     10.949      0.000       0.438       0.629
-mean_precipitaton_inches   127.3312     11.298     11.270      0.000     105.183     149.479
+mean_precipitation_inches  127.3312     11.298     11.270      0.000     105.183     149.479
 mean_visibility_miles       -1.9262      0.143    -13.493      0.000      -2.206      -1.646
 ==============================================================================
 Omnibus:                     4515.819   Durbin-Watson:                   0.385
@@ -247,12 +268,28 @@ Notes:
 """
 ```
 
-This summary table provides quite a bit of information.  An interpretation of the $R^2$ value has already been discussed above.  A few more statistics worth discussing here are the p-value of the F-statistic, indicated by `Prob (F-statistic)`, and the p-values for the intercept and predictor terms, labeled as the `P>|t|` column. 
+This summary table provides quite a bit of information.  An interpretation of the $R^2$ value has already been discussed above.  A few more statistics worth discussing here are the p-value of the *F*-statistic, indicated by `Prob (F-statistic)`, and the p-values for the intercept and predictor terms, labeled as the `P>|t|` column. 
 
-The F-statistic can be be used to determine if there exists *any* relationship between a predictor and the response.  To simply look at the individual predictor p-values to answer this question is flawed, as we would expect some individual variables to appear significant *by chance alone*, especially as the number of predictors in a model increases.
+The *F*-statistic can be used to determine if there exists *any* relationship between a predictor and the response.  To simply look at the individual predictor p-values to determine if this relationship exists is flawed, as we would expect some individual variables to appear significant *by chance alone*, especially as the number of predictors in a model increases.
 
-In this instance, the associated p-value of the F-statistic is approximately `7.29e-129`, which is incredibly low.  This p-value provides strong evidence that at least one predictor does have an association with the response.
+In this instance, the associated p-value of the *F*-statistic is approximately `7.29e-129`, which is incredibly low.  This p-value provides strong evidence that at least one predictor has an association with the response.
 
-For tomorrow
-* discuss the p-values on the individual variables
-* discuss that since R^2 is low and all p-values are low, this indicates that the variables are associated with the response, but the variance of the respones is so high the model does a poor job capturing it.
+After determining that it is highly probable that a relationship does exist between at least one predictor and the response, we can investigate the individual predictor and intercept p-values.  In the summary chart above, all four of these p-values are `0.000`, indicating they are very close to zero.  The `pvalues` method can be used to view the actual p-values.
+
+```python
+>>> result.pvalues
+const                       6.654574e-66
+mean_wind_speed_mph         1.132716e-27
+mean_precipitaton_inches    3.322614e-29
+mean_visibility_miles       5.681725e-41
+```
+
+It is clear all of these p-values are quite small.  Therefore, we can declare we have strong evidence that each of average wind speed, average precipitation, average visibility, and the intercept are significant and associated with average departure delay.
+
+Lastly, I should discuss the implication of the very low $R^2$ and the very significant *F*-statistic and *t*-statistics.  
+
+With an ideal model fit, we would have simultaneously a high $R^2$ statistic, and significant *F*-statistics and *t*-statistics.  However, in this instance, this is clearly not the case.  Is this a problem?  Should the results be thrown out?  Not quite.  
+
+From the significant *F*-statistic and *t*-statistics, we have strong evidence that the predictor variables are associated with a change in average departure delay.  We know this.  From the low $R^2$ statistic, we also know that our multiple linear regression model does not capture the bulk of the average departure delay variance.  So, our individual predictors are performing quite well, but our overall model is performing quite poorly.  In general, this can be attributed to the wide variation in departure delay times in the data.  
+
+Other regression techniques - such as using interaction terms - might improve our fit on the data, and thus *explain more of the variance* in average departure delay.  Similarly, including other predictor variables might also help in explaining more of the unexplained variance.  In following posts, both of these topics will be explored.

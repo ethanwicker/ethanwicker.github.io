@@ -104,7 +104,7 @@ Note, the RSE is measured in the units of $Y$, and what is considered *high* or 
 
 #### $R^2$ Statistic
 
-The $R^2$ statistic, commonly called the coefficient of determination or coefficient of multiple correlation, is an alternative measure of model fit.  In contrast to RSE which is measured in the units of $Y$, the $R^2$ statistic is a proportion.  The $R^2$ statistic indicates the proportion of variance explained explain by the model and is independent of the scale of $Y$.  $R^2$ is calculated via the formula 
+The $R^2$ statistic, commonly called the coefficient of determination or coefficient of multiple correlation, is an alternative measure of model fit.  In contrast to RSE which is measured in the units of $Y$, the $R^2$ statistic is a proportion.  The $R^2$ statistic indicates the proportion of variance explained by the model and is independent of the scale of $Y$.  $R^2$ is calculated via the formula 
 
 $$
 \begin{aligned}

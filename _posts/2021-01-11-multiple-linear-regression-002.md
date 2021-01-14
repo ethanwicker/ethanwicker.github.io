@@ -131,7 +131,7 @@ nyc_per_hour = \
     .groupby("timestamp_hour")\
     .agg(mean_departure_delay=('departure_delay', 'mean'),
          mean_wind_speed_mph=('wind_speed_mph', 'mean'),
-         mean_precipitaton_inches=('precipitation_inches', 'mean'),
+         mean_precipitation_inches=('precipitation_inches', 'mean'),
          mean_visibility_miles=('visibility_miles', 'mean'))\
     .reset_index()
 

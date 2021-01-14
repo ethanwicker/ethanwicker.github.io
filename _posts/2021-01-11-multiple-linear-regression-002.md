@@ -228,7 +228,7 @@ In addition to the API interface above, statsmodels also provides a formula inte
 import statsmodels.formula.api as smf
 
 # Fitting model
-linear_reg_smf = smf.ols('mean_departure_delay ~ mean_wind_speed_mph + mean_precipitation_inches + mean_visibility_miles', data = nyc_per_hour) 
+linear_reg_smf = smf.ols('mean_departure_delay ~ mean_wind_speed_mph + mean_precipitation_inches + mean_visibility_miles', data=nyc_per_hour) 
 result = linear_reg_smf.fit()
 
 result.summary()

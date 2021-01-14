@@ -118,6 +118,8 @@ sns.pairplot(nyc_small)\
     .fig.suptitle('10,000 Flights Leaving NYC, 2013: Pair Plot', y=1)
 ```
 
+![2021-01-11-multiple-linear-regression-002-fig-1.png](/assets/img/2021-01-11-multiple-linear-regression-002-fig-1.png){: .mx-auto.d-block :}
+
 From the pair plot, it's clear the data is quite noisy.  However, we can still learn a thing or two from the plot.  For example, most days in New York City tend to have good to mild weather with high visibility, low precipitation and moderate wind speeds.  Also, from this small sample, no striking patterns or correlation stand out.
 
 Perhaps instead of attempting to understand how these weather patterns affect individual departure delays, we should aggregate our data per hour and explore how average weather patterns affect average departure delays.
@@ -137,6 +139,8 @@ sns.pairplot(nyc_per_hour)\
     .fig.suptitle('Flights Leaving NYC, 2013: Pair Plot of Average Per Hour Values', y=1)
 ```
 
+![2021-01-11-multiple-linear-regression-002-fig-2.png](/assets/img/2021-01-11-multiple-linear-regression-002-fig-2.png){: .mx-auto.d-block :}
+
 The pair plot for the new aggregated `nyc_per_hour` dataset is still quite busy.  As a last plot, let's create a correlation heatmap to confirm the lack of correlation among the variables.
 
 ```python
@@ -155,6 +159,7 @@ sns\
 
 plt.xticks(rotation=45)
 ```
+![2021-01-11-multiple-linear-regression-002-fig-3.png](/assets/img/2021-01-11-multiple-linear-regression-002-fig-3.png){: .mx-auto.d-block :}
 
 From the heatmap, we can see that the three predictor variables are mostly uncorrelated.  For our multiple linear regression model, this is preferred.  Multicollinearity among predictors can lead to spurious predictions and high variance among the regression coefficients.  A variety of techniques can be helpful when dealing with mutlicollinearity among predictors, such as lasso regression and principal component analysis.  These topics will be covered in more depth in later posts.
 

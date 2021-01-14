@@ -37,7 +37,7 @@ $$
 
 For simple linear regression in a two-dimensional space, this fitting method results in a line passing through the data.  However, for multiple linear regression, the method of least squares fitting results in a hyperplane that minimizes the squared distance between each point and the closest point on the plane.  For the event where we have two predictor variables and one response variable, we can visualize the hyperplane as a two-dimensional plane in a three-dimensional space.  In general, the multiple linear regression model is applicable to higher dimensional spaces as well.
 
-| ![multiple-linear-regression-3d-plot-isl-ch3.png](/assets/img/multiple-linear-regression-3d-plot-isl-ch3.png){: .mx-auto.d-block :} |
+| ![2021-01-08-multiple-linear-regression-001-fig-1.png](/assets/img/2021-01-08-multiple-linear-regression-001-fig-1.png){: .mx-auto.d-block :} |
 | :--: |
 | <sub><sup>**Source:** *Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani. An Introduction to Statistical Learning: with Applications in R. New York: Springer, 2013.* |
 

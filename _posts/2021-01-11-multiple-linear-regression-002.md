@@ -159,6 +159,7 @@ sns\
 
 plt.xticks(rotation=45)
 ```
+
 ![2021-01-11-multiple-linear-regression-002-fig-3.png](/assets/img/2021-01-11-multiple-linear-regression-002-fig-3.png){: .mx-auto.d-block :}
 
 From the heatmap, we can see that the three predictor variables are mostly uncorrelated.  For our multiple linear regression model, this is preferred.  Multicollinearity among predictors can lead to spurious predictions and high variance among the regression coefficients.  A variety of techniques can be helpful when dealing with mutlicollinearity among predictors, such as lasso regression and principal component analysis.  These topics will be covered in more depth in later posts.

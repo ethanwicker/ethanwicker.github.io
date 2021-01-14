@@ -4,23 +4,14 @@ title: About me
 subtitle: I think data is neat.
 ---
 
-I'm Ethan.  I'll come back and update this later.
+Hi, I'm Ethan.  I'm a Data Scientist living in Denver, CO.
 
-Note to self, I should add a picture of myself here, and maybe my resume.
+In a past life, I was a high school AP Statistics and mathematics teacher, but now I work in anomaly detection.  
 
-As well as my a bit about my background, my degrees, and that I work in anomaly detection.  Former AP Statistics teacher.
+After being an R user for several years, I made the switch to using Python as my analytics tool of choice, but I still use both languages depending on the problem at hand.  I hold a BS in Mathematics, a BS in Mathematics Education and a Minor in Philosophy, all from North Carolina State University.  In addition to my formal degrees, I've taught myself the majority of my advanced statistics and machine learning knowledge.  I've used a variety of online resources and textbooks for this.
 
-Should also call out that many of my initial posts are inspired by Introduction to Statistical Learning, and many of the formulas are taken from it (which version of book?)
+Aside from data science, I enjoy trail running in the Rocky Mountains, live music, and coffee - sometimes all in the same day.
 
-BS in Mathematics,
-BS in Mathematics Education,
-Minor in Philosophy ,
-from North Carolina State University,
+Feel free to email me at ethanwicker@gmail.com, or via the link below.
 
-Denver, CO
-
-And what I do for fun - trailing running, music etc.
-
-Cover image of Rocky Mountains is from: <a href='https://www.freepik.com/photos/snow'>Snow photo created by welcomia - www.freepik.com</a>
-
-Blog theme is Beautiful Jekyll (provide link)
+This blog is built using the [Beautiful Jekyll](https://beautifuljekyll.com/) theme.

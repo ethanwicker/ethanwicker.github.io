@@ -104,8 +104,8 @@ we interpret a one unit increase in $X_1$ as being associated with an average $\
 
 $$
 \begin{aligned} 
-Y &= \beta_0 + \beta_1X_1 + \beta_2X_2 + + \beta_3_X_1X_2 + \epsilon \\
-  &= \beta_0 + (\beta_1 + \beta_3_X_2)X_1 + \beta_2X_2 + \epsilon.
+Y &= \beta_0 + \beta_1X_1 + \beta_2X_2 + \beta_3X_1X_2 + \epsilon \\
+  &= \beta_0 + (\beta_1 + \beta_3X_2)X_1 + \beta_2X_2 + \epsilon.
 \end{aligned}
 $$
 

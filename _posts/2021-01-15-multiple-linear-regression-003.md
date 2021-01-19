@@ -41,7 +41,7 @@ Y_i = \beta_0 + \beta_1X_i + \epsilon_i =
 \end{aligned}
 $$
 
-Alternatively, instead of encoding our dummy variable as $0$ or $1$, we could instead have encoded it as $-1$ or $1$.  Doing so would have changed the coefficient estimates of the model, and the interpretation, but not the predictors.  In addition, when performing statistical inference, we interpret the corresponding p-values of qualitative predictors exactly as we do quantitative predictors.
+Alternatively, instead of encoding our dummy variable as $0$ or $1$, we could instead have encoded it as $-1$ or $1$.  Doing so would have changed the coefficient estimates of the model, and the interpretation, but not the predictions.  In addition, when performing statistical inference, we interpret the corresponding p-values of qualitative predictors exactly as we do quantitative predictors.
 
 ##### Qualitative Predictors with More than Two Levels
 
@@ -75,8 +75,8 @@ $$
 \begin{aligned} 
 Y_i = \beta_0 + \beta_1X_{i1} + \beta_2X_{i2} + \epsilon_i = 
     \begin{cases}
-        \beta_0 + \beta_1 + \epsilon_i & \text{if $ith$ observation is the first level}\\
-        \beta_0 + \beta_2 + \epsilon_i & \text{if $ith$ observation is the second level}
+        \beta_0 + \beta_1 + \epsilon_i & \text{if $ith$ observation is the first level} \\
+        \beta_0 + \beta_2 + \epsilon_i & \text{if $ith$ observation is the second level} \\
         \beta_0 + \epsilon_i & \text{if $ith$ observation is the third level}
     \end{cases}
 \end{aligned}

@@ -9,7 +9,7 @@ This post is the third in a series on the multiple linear regression model.  In 
 
 In this post, I'll explore qualitative predictors.  I'll also explore classical methods of relaxing some restrictive assumptions of the linear model - namely the *additive* and *linear* assumptions - via the use of *interaction terms* and *polynomial regression*.
 
-This structure of this post was influenced by the third chapter of *An Introduction to Statistical Learning: with Applications in R* by Gareth James, Daniela Witten, Trevor Hastie, and Robert Tibshirani.
+The structure of this post was influenced by the third chapter of *An Introduction to Statistical Learning: with Applications in R* by Gareth James, Daniela Witten, Trevor Hastie, and Robert Tibshirani.
 
 #### Qualitative Predictors
 

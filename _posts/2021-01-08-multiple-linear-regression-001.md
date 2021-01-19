@@ -11,7 +11,7 @@ In this post, I'll briefly introduce the multiple linear regression model.  I'll
 
 In future posts, I'll compare and contrast the Python packages scikit-learn and statsmodels as they relate to statistical inference and prediction using the multiple linear regression model.  I'll also explore quantitative predictors, qualitative predictors and interaction terms.
 
-This structure of this post was influenced by the third chapter of *An Introduction to Statistical Learning: with Applications in R* by Gareth James, Daniela Witten, Trevor Hastie, and Robert Tibshirani.
+The structure of this post was influenced by the third chapter of *An Introduction to Statistical Learning: with Applications in R* by Gareth James, Daniela Witten, Trevor Hastie, and Robert Tibshirani.
 
 ### Multiple Linear Regression
 

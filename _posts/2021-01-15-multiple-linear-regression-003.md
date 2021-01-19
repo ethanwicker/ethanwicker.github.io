@@ -51,7 +51,7 @@ $$
 \begin{aligned} 
 x_{i1} = 
     \begin{cases}
-        1 & \text{if $ith$ observation is the first level}\\
+        1 & \text{if $ith$ observation is the first level} \\
         0 & \text{if $ith$ observation is not the first level}
     \end{cases} 
 \end{aligned}
@@ -63,11 +63,11 @@ $$
 \begin{aligned} 
 x_{i2} = 
     \begin{cases}
-        1 & \text{if $ith$ observation is the second level}\\
-        0 & \text{if $ith$ observation is not the second level}
+        1 & \text{if $ith$ observation is the second level} \\
+        0 & \text{if $ith$ observation is not the second level}.
     \end{cases} 
 \end{aligned}
-$$.
+$$
 
 We then use these dummy variables in the regression equation to obtain the model
 
@@ -82,11 +82,9 @@ Y_i = \beta_0 + \beta_1X_{i1} + \beta_2X_{i2} + \epsilon_i =
 \end{aligned}
 $$.
 
-There will always be one fewer dummy variables than the number of levels of the predictors.  The level with no dummy variable - the third level in the above example - is referred to as the *baseline*.  Of note, depending on the context, dummy variable encoding may also be referred to as *one-hot encoding*.  These techniques are equivalent, but one-hot encoding tends to keep the *baseline* level as an encoded variable, as opposed to dropping it.  This is sometimes preferred in machine learning models using *regularization*, which will be discussed in a future post.
+There will always be one fewer dummy variables than the number of levels of the predictor.  The level with no dummy variable - the third level in the above example - is referred to as the *baseline*.  Of note, depending on the context, dummy variable encoding may also be referred to as *one-hot encoding*.  These techniques are equivalent, but one-hot encoding tends to keep the baseline level as an encoded variable, as opposed to dropping it.  This is sometimes preferred in machine learning models using *regularization*, which will be discussed in a future post.
 
-With the dummy variable approach, we can incorporate both quantitative and qualitative predictors into the multiple regression model.  Graphically, this results in parallel hyperplanes in the predictor space.  As mentioned above, the interpretation of the p-values does not change for these qualitative predictors, but the p-values themselves do depend on the choice of dummy variable encoding.  However, we can still use the F-test to test $H_0: \beta_1 = \beta_2 = \ldots = \beta_p = 0\$ to determine if any relationship exists between the predictors and the response.
-
-(Maybe above: \{0,1,2,\,\ldots\})
+With the dummy variable approach, we can incorporate both quantitative and qualitative predictors into the multiple regression model.  Graphically, this results in parallel hyperplanes in the variable space.  As mentioned above, the interpretation of the p-values does not change for these qualitative predictors, but the p-values themselves do depend on the choice of dummy variable encoding.  However, we can still use the F-test to test $H_0: \beta_1 = \beta_2 = \ldots = \beta_p = 0\$ to determine if any relationship exists between the predictors and the response.
 
 #### Extensions of the Linear Model
 
@@ -107,17 +105,17 @@ we interpret a one unit increase in $X_1$ as being associated with an average $\
 $$
 \begin{aligned} 
 Y = \beta_0 + \beta_1X_1 + \beta_2X_2 + + \beta_3_X_1X_2 + \epsilon \\
-  = \beta_0 + (\beta_1 + \beta_3_X_2)X_1 + \beta_2X_2 + + \epsilon
+  = \beta_0 + (\beta_1 + \beta_3_X_2)X_1 + \beta_2X_2 + + \epsilon.
 \end{aligned}
-$$.
+$$
 
 Note, with the new interaction term, a change in either $X_1$ or $X_2$ will affect the impact the other predictor has on $Y$.  Thus, they no longer have a simple additive relationship.
 
 Just as before, when doing statistical inference, we interpret the p-value of the interaction term as we would any other term.  If the p-value of the interaction term is significant, we have strong evidence that the true relationship is non-linear.
 
-In the event an interaction term is significant, but the *main effects* are not, we should still include the main effects via the *hierarchy principle*.  Because $X_1X_2$ tends to be correlated with $X_1$ and $X_2$, leaving them out tends to alter the meaning of the interaction.
+In the event an interaction term is significant, but the *main effects* are not, we should still include the main effects via the *hierarchy principle*.  Because $X_1X_2$ is usually correlated with $X_1$ and $X_2$, leaving them out tends to alter the meaning of the interaction.
 
-The concept of interaction terms is also applicable to qualitative variables, or a combination of qualitative and quantitative variables.  In particular, an interaction between a qualitative and quantitative variables has a particularly nice interpretation.  Instead of two parallel hyperplanes, we get two intersecting hyperplanes.
+The concept of interaction terms is also applicable to qualitative variables, or a combination of qualitative and quantitative variables.  In particular, an interaction between qualitative and quantitative variables has a particularly nice interpretation.  Instead of two parallel hyperplanes, we get two intersecting hyperplanes.
 
 ##### Removing the Linear Assumption: Non-linear Relationships
 
@@ -127,9 +125,9 @@ Polynomial regression can capture non-linear associations by including transform
 
 $$
 \begin{aligned} 
-Y = \beta_0 + \beta_1X_1 + \beta_2X_1^2 + \epsilon 
+Y = \beta_0 + \beta_1X_1 + \beta_2X_1^2 + \epsilon.
 \end{aligned}
-$$.
+$$
 
 It is important to state that this quadratic regression model is still linear.  It is simply the standard linear model where $X_2 = X_1^2$.  As you can imagine, cubic, quartic, and other higher degree polynomial regressions can be achieved via the same variable transformation method.
 

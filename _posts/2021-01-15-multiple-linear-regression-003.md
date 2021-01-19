@@ -77,10 +77,10 @@ Y_i = \beta_0 + \beta_1X_{i1} + \beta_2X_{i2} + \epsilon_i =
     \begin{cases}
         \beta_0 + \beta_1 + \epsilon_i & \text{if $ith$ observation is the first level} \\
         \beta_0 + \beta_2 + \epsilon_i & \text{if $ith$ observation is the second level} \\
-        \beta_0 + \epsilon_i & \text{if $ith$ observation is the third level}
+        \beta_0 + \epsilon_i & \text{if $ith$ observation is the third level}.
     \end{cases}
 \end{aligned}
-$$.
+$$
 
 There will always be one fewer dummy variables than the number of levels of the predictor.  The level with no dummy variable - the third level in the above example - is referred to as the *baseline*.  Of note, depending on the context, dummy variable encoding may also be referred to as *one-hot encoding*.  These techniques are equivalent, but one-hot encoding tends to keep the baseline level as an encoded variable, as opposed to dropping it.  This is sometimes preferred in machine learning models using *regularization*, which will be discussed in a future post.
 
@@ -105,7 +105,7 @@ we interpret a one unit increase in $X_1$ as being associated with an average $\
 $$
 \begin{aligned} 
 Y = \beta_0 + \beta_1X_1 + \beta_2X_2 + + \beta_3_X_1X_2 + \epsilon \\
-  = \beta_0 + (\beta_1 + \beta_3_X_2)X_1 + \beta_2X_2 + + \epsilon.
+= \beta_0 + (\beta_1 + \beta_3_X_2)X_1 + \beta_2X_2 + \epsilon.
 \end{aligned}
 $$
 

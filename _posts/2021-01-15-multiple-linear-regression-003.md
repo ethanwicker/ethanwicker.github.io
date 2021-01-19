@@ -13,7 +13,7 @@ This structure of this post was influenced by the third chapter of *An Introduct
 
 #### Qualitative Predictors
 
-Depending on the context, qualitative predictors are sometimes referred to as categorical or factors variables.  The most common methods of implementing these predictors in a linear model is via *indicator* or *dummy variables*.  Below, I'll introduce this topic in the context of qualitative predictors with only two *levels*, where a level refers to a unique value the qualitative variable can take.  I'll then extend the concept to qualitative predictors with multiple levels.
+Depending on the context, qualitative predictors are sometimes referred to as categorical or factors variables.  The most common methods of implementing these predictors in a linear model is via *indicator* or *dummy variables*.  Below, I'll introduce this topic in the context of qualitative predictors with only two levels, where a *level* refers to a unique value the qualitative variable can take.  I'll then extend the concept to qualitative predictors with multiple levels.
 
 ##### Qualitative Predictors with Two Levels
 
@@ -23,11 +23,11 @@ $$
 \begin{aligned} 
 x_i = 
     \begin{cases}
-        1 & \text{if $ith$ observation is the first level}\\
-        0 & \text{if $ith$ observation is the second level}
+        1 & \text{if $ith$ observation is the first level} \\
+        0 & \text{if $ith$ observation is the second level}.
     \end{cases} 
 \end{aligned}
-$$.
+$$
 
 We then use this dummy variable in the linear regression model:
 
@@ -35,11 +35,11 @@ $$
 \begin{aligned} 
 Y_i = \beta_0 + \beta_1X_i + \epsilon_i = 
     \begin{cases}
-        \beta_0 + \beta_1 + \epsilon_i & \text{if $ith$ observation is the first level}\\
-        \beta_0 + \epsilon_i & \text{if $ith$ observation is the second level}
+        \beta_0 + \beta_1 + \epsilon_i & \text{if $ith$ observation is the first level} \\
+        \beta_0 + \epsilon_i & \text{if $ith$ observation is the second level}.
     \end{cases}
 \end{aligned}
-$$.
+$$
 
 Alternatively, instead of encoding our dummy variable as $0$ or $1$, we could instead have encoded it as $-1$ or $1$.  Doing so would have changed the coefficient estimates of the model, and the interpretation, but not the predictors.  In addition, when performing statistical inference, we interpret the corresponding p-values of qualitative predictors exactly as we do quantitative predictors.
 

@@ -66,7 +66,7 @@ h_i = \frac{1}{n} + \frac{(x_i-\bar{x})^2}{\sum_{i'=1}^n(x_i'-\bar{x})^2}.
 \end{aligned}
 $$
 
-The leverage statistics $h_i$ is bounded between $1/n$ and 1.  Across all observations, it has mean $(p+1)/n$.  Thus, if $h_i$ for a given observation is far greater than $(p+1)/n$, we might suspect that observations has high leverage.
+The leverage statistics $h_i$ is bounded between $1/n$ and $1$.  Across all observations, it has mean $(p+1)/n$.  Thus, if $h_i$ for a given observation is far greater than $(p+1)/n$, we might suspect that observations has high leverage.
 
 ##### Collinearity
 
@@ -74,16 +74,16 @@ The leverage statistics $h_i$ is bounded between $1/n$ and 1.  Across all observ
 
 In the regression context, collinearity among predictors can make it difficult to determine how each individual predictor is associated with the response, leading to reduced accuracy of the regression coefficient estimates.  This reduced accuracy can lead to enlarged standard errors $\hat{\beta_j}$, consequently leading to decreased $t$-statistics and increased p-values.  Thus, in the presence of collinearity, we may fail to reject $H_0: \beta_j = 0$, indicating the *power* of the hypothesis test has been reduced. 
 
-One method detecting collinearity among predictors is to look at the correlation matrix.  However, this method is not robust to all possibly collinearities, as it is possible for collinearities to exist between three or more variables, even if no pair of variables has a particularly high correlation.  This is referred to as *multicollinearity*.
+One method of detecting collinearity among predictors is to look at the correlation matrix.  However, this method is not robust to all possibly collinearities, as it is possible for collinearities to exist between three or more variables, even if no pair of variables has a particularly high correlation.  This is referred to as *multicollinearity*.
 
 Instead of inspecting the correlation matrix, a better approach is to calculate the *variance inflation factor* (VIF) for each predictor.  The VIF is the ratio of the variance of $\hat{\beta_j}$ when fitting the full model divided by the variance of  $\hat{\beta_j}$ if fit on its own.  The smallest possible VIF is 1, and a value exceeding 5 or 10 indicates a problematic amount of collinearity.  The VIF for each variable can be computed using the formula 
 
 $$
 \begin{aligned} 
-VIF(\hat{\beta_j}) = \frac{1}{1-R^2_{X_j\rightX_{-j}}} 
+VIF(\hat{\beta_j}) = \frac{1}{1-R^2_{X_j|X_{-j}}} 
 \end{aligned}
 $$
 
-where $R^2_{X_j\rightX_{-j}}$ is the $R^2$ from a regression of X_j onto all the other predictors.
+where $R^2_{X_j|X_{-j}}$ is the $R^2$ from a regression of X_j onto all the other predictors.
 
 Once collinearity has been determined in the data, there are two simple solutions.  The first is to drop one of the problematic variables.  This can typically be done without much impact on the regression fit.  The second solution is to combine the collinear variables into a single predictor, perhaps via averaging them after first standardizing.

@@ -84,6 +84,6 @@ VIF(\hat{\beta_j}) = \frac{1}{1-R^2_{X_j|X_{-j}}}
 \end{aligned}
 $$
 
-where $R^2_{X_j\midX_{-j}}$ is the $R^2$ from a regression of $X_j$ onto all the other predictors.
+where $R^2_{X_j \vert X_{-j}}$ is the $R^2$ from a regression of $X_j$ onto all the other predictors.
 
 Once collinearity has been determined in the data, there are two simple solutions.  The first is to drop one of the problematic variables.  This can typically be done without much impact on the regression fit.  The second solution is to combine the collinear variables into a single predictor, perhaps via averaging them after first standardizing.

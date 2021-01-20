@@ -20,7 +20,7 @@ The structure of this post was influenced by the third chapter of *An Introducti
 
 ##### Non-linearity of the Response-Predictor Relationships
 
-A key assumption made by the linear regression model is linearity between the predictors and response.  If this assumption is far from true for a particular dataset, then we should be skeptical of nearly all conclusions drawn from the model fit.
+A key assumption made by the linear regression model is linearity between the predictors and response.  If this assumption is not true for a particular dataset, then we should be skeptical of nearly all conclusions drawn from the model fit.
 
 One method of identifying non-linearity is the *residual plot*.  In the multiple regression context, we plot the residuals $e_i = y_i - \hat{y_i}$ versus the fitted values $\hat{y_i}$.  If the true relationship is approximately linear, we should see little to no discernible pattern in the residual plot.  If, however, a pattern in the residual plot is present, this is a strong indication that non-linearity does exist.
 
@@ -42,7 +42,7 @@ If the assumption of uncorrelated error terms is not true, then the estimated st
 
 Another important assumption of the linear regression model is that the error terms have a constant variance, $Var(\epsilon_i) = \sigma^2$.  This constant error term variance is referred to as *homoscedasticity*.  This assumption is key to standard errors, confidence intervals, and hypothesis tests associated with the model.
 
-However, it is often the case that the variance of the error terms is non-constant, know as *heteroscedasticity*.  In a residual plot, this can often be detected by the presence of a funnel shape.  One possible solution to addressing this issue in practice is to transform the response variable using a concave function, such as $log Y$ or $\sqrt{Y}$.  This transformation results in a greater amount of shrinkage of the larger response values, leading to a reduction in heteroscedasticity.
+However, it is often the case that the variance of the error terms is non-constant, know as *heteroscedasticity*.  In a residual plot, this can often be detected by the presence of a funnel shape.  One possible solution to addressing this issue in practice is to transform the response variable using a concave function, such as $log \ Y$ or $\sqrt{Y}$.  This transformation results in a greater amount of shrinkage of the larger response values, leading to a reduction in heteroscedasticity.
 
 In the event where we can approximate the amount of variance of each response value, we can fit our model using *weighted least squares*.  In the weighted least squares approach, each data point is multiplied by a nonnegative constant, or weight, that affects the influence that data point has on the model fit.
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Multiple Linear Regression #4"
-subtitle: Potential Problems: Heteroscedasticity, Collinearity, and More
+subtitle: "Potential Problems: Heteroscedasticity, Collinearity, and More"
 comments: false
 ---
 

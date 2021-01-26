@@ -233,7 +233,7 @@ result = model.fit()
 result.summary()
 ```
 
-In below example, I'll show how polynomial regression models can be fit via the scikit-learn API.
+In below examples, I'll show how polynomial regression models can be fit via the scikit-learn API.
 
 ### Removing the Linear Assumption: Polynomial Regression
 
@@ -307,3 +307,42 @@ Discuss these 6 problems (maybe not all, but some):
 4. Outliers.                <<-- maybe studentized residuals
 5. High-leverage points.    <<-- leverage statistics
 6. Collinearity.            <<-- VIF
+
+### Potential Problems
+
+#### Non-linearity of the Response-Predictor Relationships
+
+I have already shown above a residual plot used to quantify non-linearity between the response and predictors.  For comparison, below I'll create the residual plot for the model above with the highest value of $R^2$.  This model involves multiple polynomial terms and is non-linear by definition, but viewing it's residual plot can still inform as to the overall model fit.
+
+```python
+y = boston_df["MEDV"]
+y_hat = result.predict()
+resid = y - y_hat
+
+sns.scatterplot(x=y_hat, y=resid).set(xlabel="Predicted Value",
+                                      ylabel="Residual")
+```
+
+![2021-01-20-multiple-linear-regression-005-fig-3.png](/assets/img/2021-01-20-multiple-linear-regression-005-fig-3.png){: .mx-auto.d-block :}
+
+This most recent residual plot has less of a pattern than the one shown earlier, indicating the polynomial fit captures the overall relationship of the data better than the simpler model discussed earlier.  If we ignore the diagonal line in the top right of the plot caused by the abundance of 0 `ZN` values, the residual plot looks quite ideal.
+
+#### Correlation of Error Terms
+
+When viewing the results of a linear regression fit, we should take care to also investigate if any correlation among the error terms is present.  
+
+Correlation of error terms - more often called serial correlation or autocorrelation for time series regression - can be particular problematic in that setting.  In the time series regression setting, it can be useful to view a *residual time series plot*.  Most of the residual values should be within a 95% confidence interval around 0.  It is also useful to calculate the *Durbin-Watson statistic*, which is a test of significant residual autocorrelation at lag-1.  When high autocorrelation is detected (e.g. a Durbin-Watson statistic below 1.6-1.8 or a lag-1 residual autocorrelation above 0.3-0.4), it can be useful to add new model terms, add seasonal adjustments to the model, or stationarize all predictor variables through differencing, logging or deflating.
+
+In future posts, I'll explore time-series regression in more depth.
+
+In the current non-time series setting, we can diagnosis error term correlation by plotting the residuals versus predictor variables.  In the ideal situation with no error term correlation, the residuals should be randomly and symmetrically distributed around zero.
+
+```python
+import matplotlib.pyplot as plt
+
+fig, axs = plt.subplots(nrows=2)
+sns.scatterplot(x=boston_df["ZN"], y=resid, ax=axs[0]).set(ylabel="Residual")
+sns.scatterplot(x=boston_df["RM"], y=resid, ax=axs[1]).set(ylabel="Residual")
+```
+
+![2021-01-20-multiple-linear-regression-005-fig-4.png](/assets/img/2021-01-20-multiple-linear-regression-005-fig-4.png){: .mx-auto.d-block :}

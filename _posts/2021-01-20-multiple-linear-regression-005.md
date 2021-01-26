@@ -16,7 +16,6 @@ I'll make use of the classic Boston Housing Dataset for this working example.  T
 ```python
 from sklearn import datasets
 
-# Load boston
 boston = datasets.load_boston()
 ```
 
@@ -110,7 +109,7 @@ Note, it is common in some use cases to drop an encoded column, as this column c
 encoder = OneHotEncoder(drop="first")
 ```
 
-It is also possible to achieve a similar result using pandas' `get_dummies()`.
+It is also possible to achieve a similar result using pandas `get_dummies()`.
 
 ```python
 pd.get_dummies(boston_df["crime_label"], drop_first=True)
@@ -218,7 +217,7 @@ strong multicollinearity or other numerical problems.
 
 The above model fit is slightly improved with a $R^2$ statistic of 0.537, compared to 0.522 for the model with no interaction terms.  The pattern in the residual plot (not shown) is also slightly improved, but these improvements are minor.  
 
-Worth note as well is that the terms `CHAS`, `ZN:CHAS` and `CHAS:RM` are all no longer significant.  Thus, I'll drop these terms from all subsequent models.
+Worth noting as well is that the terms `CHAS`, `ZN:CHAS` and `CHAS:RM` are all no longer significant.  Thus, I'll drop these terms from all subsequent models.
 
 Instead of using the formula interface, I could have also fit these models using the `endog` and `exog` parameters of the statsmodels `OLS()` function.  Below is an example, fitting the same model as above, but removing the terms that are no longer significant.
 

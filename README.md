@@ -1,1 +1,1 @@
-This is the supporting repository for my personal data science blog [ethanwicker.com](ethanwicker.com).
+This is the supporting repository for my personal data science blog [ethanwicker.com](https://ethanwicker.com).

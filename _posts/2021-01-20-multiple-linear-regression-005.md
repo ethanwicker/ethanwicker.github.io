@@ -296,18 +296,6 @@ fig.show()
 
 ![2021-01-20-multiple-linear-regression-005-fig-2.png](/assets/img/2021-01-20-multiple-linear-regression-005-fig-2.png){: .mx-auto.d-block :}
 
-
-### Discuss potential problem stuff below
-
-
-Discuss these 6 problems (maybe not all, but some):
-1. Non-linearity of the response-predictor relationships.  <<-- residual plot
-2. Correlation of error terms.
-3. Non-constant variance of error terms.
-4. Outliers.                <<-- maybe studentized residuals
-5. High-leverage points.    <<-- leverage statistics
-6. Collinearity.            <<-- VIF
-
 ### Potential Pitfalls
 
 Below, I'll briefly discuss and explore some potential pitfalls of the linear regression model.  I'll attempt to quantify some of these potential issues, to see if they are truly problematic for my working example.
@@ -419,7 +407,8 @@ In contrast to outliers, high leverage points are those that have usual predicto
 Below, I'll create such an influence plot.
 
 ```python
-model = smf.ols("MEDV ~ ZN + I(ZN**2) + RM + I(RM**2) + ZN*RM + I(ZN*RM**2)", data=boston_df)
+model = smf.ols("MEDV ~ ZN + I(ZN**2) + RM + I(RM**2) + ZN*RM + I(ZN*RM**2)", 
+                data=boston_df)
 result = model.fit()
 
 sm.graphics.influence_plot(result, size=6)

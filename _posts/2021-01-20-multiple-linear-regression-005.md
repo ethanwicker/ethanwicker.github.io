@@ -308,11 +308,13 @@ Discuss these 6 problems (maybe not all, but some):
 5. High-leverage points.    <<-- leverage statistics
 6. Collinearity.            <<-- VIF
 
-### Potential Problems
+### Potential Pitfalls
+
+Below, I'll briefly discuss and explore some potential pitfalls of the linear regression model.  I'll attempt to quantify some of these potential issues, to see if they are truly problematic for my working example.
 
 #### Non-linearity of the Response-Predictor Relationships
 
-I have already shown above a residual plot used to quantify non-linearity between the response and predictors.  For comparison, below I'll create the residual plot for the model above with the highest value of $R^2$.  This model involves multiple polynomial terms and is non-linear by definition, but viewing it's residual plot can still inform as to the overall model fit.
+I have already shown above a residual plot used to quantify non-linearity between the response and predictors.  For comparison, below I'll create the residual plot for the model above with the highest value of $R^2$.  This model involves multiple polynomial terms and is non-linear by definition, but viewing its residual plot can still inform as to the overall model fit.
 
 ```python
 y = boston_df["MEDV"]
@@ -331,7 +333,7 @@ This most recent residual plot has less of a pattern than the one shown earlier,
 
 When viewing the results of a linear regression fit, we should take care to also investigate if any correlation among the error terms is present.  
 
-Correlation of error terms - more often called serial correlation or autocorrelation for time series regression - can be particular problematic in that setting.  In the time series regression setting, it can be useful to view a *residual time series plot*.  Most of the residual values should be within a 95% confidence interval around 0.  It is also useful to calculate the *Durbin-Watson statistic*, which is a test of significant residual autocorrelation at lag-1.  When high autocorrelation is detected (e.g. a Durbin-Watson statistic below 1.6-1.8 or a lag-1 residual autocorrelation above 0.3-0.4), it can be useful to add new model terms, add seasonal adjustments to the model, or stationarize all predictor variables through differencing, logging or deflating.
+Correlation of error terms - more often called serial correlation or autocorrelation in time series regression - can be particular problematic in that setting.  In the time series regression setting, it can be useful to view a *residual time series plot*.  Most of the residual values should be within a 95% confidence interval around 0.  It is also useful to calculate the *Durbin-Watson statistic*, which is a test of significant residual autocorrelation at lag-1.  When high autocorrelation is detected (e.g. a Durbin-Watson statistic below 1.6-1.8 or a lag-1 residual autocorrelation above 0.3-0.4), it can be useful to add new model terms, add seasonal adjustments to the model, or stationarize all predictor variables through differencing, logging or deflating.
 
 In future posts, I'll explore time-series regression in more depth.
 
@@ -346,3 +348,125 @@ sns.scatterplot(x=boston_df["RM"], y=resid, ax=axs[1]).set(ylabel="Residual")
 ```
 
 ![2021-01-20-multiple-linear-regression-005-fig-4.png](/assets/img/2021-01-20-multiple-linear-regression-005-fig-4.png){: .mx-auto.d-block :}
+
+The above plots show the residuals versus the predictor variables `ZN` and `RM`, respectfully.  Overall, these plots do not appear to show any strong patterns, and the residuals are mostly randomly and symmetrically distributed around zero.
+
+#### Non-constant Variance of Error Terms (Heteroscedasticity)
+
+Heteroscedasticity (sometimes spelled Heteroskedasticity) refers to the non-constant variance of the error terms of a model.  It is often useful to visually inspect the residual plot for heteroscedasticity.  From the above residual plot, we can see that the residual variance does seem to increased as the value of $\hat{y}$ increases, although the pattern isn't obvious.
+
+Instead of visually inspecting the residual plot for heteroscedasticity, it can be useful to quantify how constant the residual variance is via the *Breusch-Pagan test*.  This test, developed in 1979, tests whether the variance of the errors from a linear regression is dependent on the values of the predictor variables. In this case, heteroscedasticity is present.
+
+We can perform the Breusch-Pagan test via the statsmodels `het_breuschpagan` function.
+
+```python
+>>> import statsmodels.stats.api as sms
+>>> from statsmodels.compat import lzip
+
+>>> returned_names = ['Lagrange multiplier statistic', 'p-value',
+                      'f-value', 'f p-value']
+
+>>> bp_test_results = sms.het_breuschpagan(resid, X_poly)
+>>> lzip(returned_names, bp_test_results)
+[('Lagrange multiplier statistic', 29.462789868830658), 
+ ('p-value', 1.8810315726665496e-05), 
+ ('f-value', 6.182684005037273), 
+ ('f p-value', 1.4192042140523905e-05)]
+```
+
+The p-value of the above test is approximately 1.88e-5, or 0.0000188.  This p-value is significantly low, so we can reject the null hypothesis that the error terms are independent of the values of the predictor variables.  Thus, we can conclude that heteroscedasticity is present, confirming our visual inspection.
+
+#### Outliers
+
+One method of quantifying outliers is by calculating the studentized residual of each point.  The studentized residual is calculated by dividing each residual $e_i$ by its estimated standard error.  We can use the `outlier_test()` method from statsmodel to calculate these values.
+
+Below, I recreate the same model as above using the statsmodels formula interface, and then use the `outlier_test()` method to calculate the studentized residuals.  After that, I remove the six data points with studentized residuals more extreme than -3 or 3, and then refit the model.
+
+```python
+# Fitting model
+model = smf.ols("MEDV ~ ZN + I(ZN**2) + RM + I(RM**2) + ZN*RM + I(ZN*RM**2)", 
+                data=boston_df)
+result = model.fit()
+
+# Getting studentized residuals
+studentized_resids = result.outlier_test()
+
+# Getting six data points with studentized residuals <-3 or >3
+studentized_resids = \
+    (studentized_resids
+     .assign(student_resid_abs=abs(studentized_resids["student_resid"])))
+outliers = \
+    (studentized_resids
+     .sort_values(by="student_resid_abs", ascending=False)
+     .head(6))
+
+# Removing these points from boston_df
+boston_df_no_outliers = boston_df[~boston_df.index.isin(outliers.index)]
+
+
+model_no_outliers = smf.ols("MEDV ~ ZN + ZN**2 + RM + I(RM**2) + ZN*RM + I(ZN*RM**2)",
+                            data=boston_df_no_outliers)
+result_no_outliers = model.fit()
+result_no_outliers.summary()
+```
+
+After removing these 6 points, the $R^2$ statistic of the model jumps from .582 to 0.677, which is a notable improvement.  Of course, in practice, care should be taken when removing outliers, and it should only be done within reason.
+
+#### High Leverage Points
+
+In contrast to outliers, high leverage points are those that have usual predictor values $x_i$.  High level points can have drastic effects on model fit, so they are important to identify.  We can calculate the leverage statistic to quantify the leverage of a point.  However, it can be more useful to make use of statsmodels `influence_plot` method, which plots studentized residuals versus leverage.
+
+Below, I'll create such an influence plot.
+
+```python
+model = smf.ols("MEDV ~ ZN + I(ZN**2) + RM + I(RM**2) + ZN*RM + I(ZN*RM**2)", data=boston_df)
+result = model.fit()
+
+sm.graphics.influence_plot(result, size=6)
+```
+
+![2021-01-20-multiple-linear-regression-005-fig-5.png](/assets/img/2021-01-20-multiple-linear-regression-005-fig-5.png){: .mx-auto.d-block :}
+
+Points with a leverage statistic greater than the average are suspect.  As such, data points 203, 283, 365, 354, and 204 clearly have high leverage and are likely strongly influencing our model fit.
+
+#### Collinearity
+
+In the regression context, collinearity among predictors can make it difficult to determine how each individual predictor is associated with the response, leading to reduced accuracy of the regression coefficient estimates
+
+We can detect multicollinearity among our predictor variables by calculating each predictor's variance inflation factor (VIF).
+
+To do this, we can use the statsmodels `variance_inflation_factor` function.
+
+```python
+>>> from statsmodels.stats.outliers_influence import variance_inflation_factor
+
+>>> predictors = ["ZN", "ZN^2", "RM", "RM^2", "ZN*RM", "(ZN*RM)^2"]
+>>> vifs = [variance_inflation_factor(exog=X_poly, exog_idx=i) for i in range(X_poly.shape[1])]
+
+>>> pd.DataFrame(dict(predictor=predictors, vif=vifs))
+   predictor          vif
+0         ZN  2006.900702
+1       ZN^2   123.275947
+2         RM    96.513389
+3       RM^2    11.965347
+4      ZN*RM   139.454612
+5  (ZN*RM)^2    98.352424
+```
+
+In general, a VIF above 5 or 10 indicates likely collinearity among our predictor variables.  However, in this case, we have some pretty high VIF values.  This occurrence is sometimes known as *structural multicollinearity*, and is a result of the polynomial terms in our regression model.
+
+For a fairer comparison, we can view the VIF values when just `ZN` and `RM` are included.
+
+```python
+>>> X = boston_df[["ZN", "RM"]].to_numpy()
+
+>>> vifs = [variance_inflation_factor(exog=X, exog_idx=i) for i in range(X.shape[1])]
+>>> predictors = ["ZN", "RM"]
+
+>>> pd.DataFrame(dict(predictor=predictors, vif=vifs))
+  predictor       vif
+0        ZN  1.278583
+1        RM  1.278583
+```
+
+From these last VIFs, we see that `ZN` and `RM` are not collinear, thus the accuracy of our coefficient estimates does not suffer.

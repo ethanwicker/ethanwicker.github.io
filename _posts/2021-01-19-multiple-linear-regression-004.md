@@ -54,7 +54,7 @@ Various methods can be used to detect the presence of outliers, including a simp
 
 ##### High Leverage Points
 
-In contrast to outliers, observations with *high leverage* have an unusual value of $x_i$.  Observations with high leverage tend to have a substantial impact on the least squares regression line and may invalidate the entire fit.  Thus, it's important to identify high level observations.
+In contrast to outliers, observations with *high leverage* have an unusual value of $x_i$.  Observations with high leverage tend to have a substantial impact on the least squares regression line and may invalidate the entire fit.  Thus, it's important to identify high leverage observations.
 
 In the simple linear regression context, high leverage points are fairly easy to determine.  However, in the multiple linear regression context, detecting these points can be more challenging.  This is because a high leverage observations may be within the range of each individual predictor's values, but may be unusual within the full set of predictors.
 

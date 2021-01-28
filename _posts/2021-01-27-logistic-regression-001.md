@@ -85,7 +85,7 @@ p(X) = \frac{e^{\beta_0 + \beta_1X_1 + \cdot + \beta_pX_p}}{1 + e^{\beta_0 + \be
 \end{aligned}
 $$
 
-where $X = $X_1, \cdot, X_p$ and $p$ is the number of predictors.  We can also rewrite this equation as
+where $X = X_1, \cdot, X_p$ and $p$ is the number of predictors.  We can also rewrite this equation as
 
 $$
 \begin{aligned} 

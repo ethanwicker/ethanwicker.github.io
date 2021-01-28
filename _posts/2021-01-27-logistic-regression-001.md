@@ -95,7 +95,7 @@ $$
 
 Similar to the linear regression setting, it will sometimes be the case that results obtained using one predictor may be quite different from those obtained using multiple predictors, especially when there is correlation among the predictors.  In general, this phenomenon is known as *confounding*.
 
-#### Multiclass Logistic Regression
+### Multiclass Logistic Regression
 
 Logistic regression is readily extendable to the case where there are greater than two response classes.  This is known as *multiclass logistic regression* or *multinomial logistic regression*.  One such extension has the form
 

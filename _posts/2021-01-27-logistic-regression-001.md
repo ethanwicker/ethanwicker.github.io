@@ -21,7 +21,7 @@ $$
 
 this approach is problematic.  In particular, for some values of $X_1$, this method will predict probability values below 0 and above 1.
 
-To avoid this problem, we should instead model the probability that $Y$ belongs to a given class using a function that provides bounded output between 0 and 1.  Many function could be used for this, including the *logistic function* used in logistic regression:
+To avoid this problem, we should instead model the probability that $Y$ belongs to a given class using a function that provides bounded output between 0 and 1.  Many functions could be used for this, including the *logistic function* used in logistic regression:
 
 $$
 \begin{aligned} 
@@ -39,7 +39,7 @@ $$
 \end{aligned}
 $$
 
-The left-hand side of the above equation, $p(x) / (1 - p(x))$, is known as the *odds* and can take any value between 0 and $\inf$.  Odds values close to 0 indicate very low probabilities, and odds values close to $\inf$ indicate very high probabilities.
+The left-hand side of the above equation, $p(x) / (1 - p(x))$, is known as the *odds* and can take any value between 0 and $\infinity$.  Odds values close to 0 indicate very low probabilities, and odds values close to $\infinity$ indicate very high probabilities.
 
 Finally, by taking the logarithm of both sides of the above equation we have
 
@@ -55,13 +55,13 @@ Here, the left-hand side is referred to as the *log-odds* or *logit*.  The logis
 
 In the multiple linear regression model, we used the method of least squares to estimate the linear regression coefficients.  In the logistic regression model, we could also use a (non-linear) least squares fitting procedure, but it is preferred to use the more general method of *maximum likelihood* due to its statistical properties.
 
-Maximum likelihood estimation is a fitting method used to estimate regression coefficients.  The method seeks to estimate the coefficients $B_0, B_1, B_2, \cdots$ such the predicted probability $\hat{p}(x)$ of the class assignment of each observation is as close as possible to the actual class assignment, for that observation.  Visually, the method of maximum likelihood estimation is akin to fitting the logistic function many times to the data with slight differences, and selecting the particular function that maximizes the correct probability for each class assignment.
+Maximum likelihood estimation is a fitting method used to estimate regression coefficients.  The method seeks to estimate the coefficients $B_0, B_1, B_2, \cdots$ such that the predicted probability $\hat{p}(x)$ of the class assignment of each observation is as close as possible to the actual class assignment, for that observation.  Visually, the method of maximum likelihood estimation is akin to fitting the logistic function many times to the data with slight differences, and selecting the particular function that maximizes the correct probability for each class assignment.
 
 Mathematically, this can be formalized via a *likelihood function*:
 
 $$
 \begin{aligned} 
-l(\beta_0, \beta_1) = \prod_{i:y_i = 1}p(x_i) \prod_{i':y_{i'} = 0}(1 - p(x_i')),
+\ell(\beta_0, \beta_1) = \prod_{i:y_i = 1}p(x_i) \prod_{i':y_{i'} = 0}(1 - p(x_i')),
 \end{aligned}
 $$
 

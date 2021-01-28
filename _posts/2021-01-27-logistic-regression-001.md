@@ -81,7 +81,7 @@ The logistic regression model easily extends to multiple predictor variables as 
 
 $$
 \begin{aligned} 
-p(X) = \frac{e^{\beta_0 + \beta_1X_1 + \cdot + \beta_pX_p}{1 + e^{\beta_0 + \beta_1X_1 + \cdot + \beta_pX_p}}
+p(X) = \frac{e^{\beta_0 + \beta_1X_1 + \cdot + \beta_pX_p}}{1 + e^{\beta_0 + \beta_1X_1 + \cdot + \beta_pX_p}}
 \end{aligned}
 $$
 
@@ -101,7 +101,7 @@ Logistic regression is readily extendable to the case where there are greater th
 
 $$
 \begin{aligned} 
-Pr(Y = k|X) = \frac{e^{\beta_{0k} + \beta_{1k}X_1 + \cdot + \beta_{pk}X_p}{\sum_{l=1}{K}e^{\beta_{0k} + \beta_{1k}X_1 + \cdot + \beta_{pk}X_p}}
+Pr(Y = k|X) = \frac{e^{\beta_{0k} + \beta_{1k}X_1 + \cdot + \beta_{pk}X_p}}{\sum_{l=1}{K}e^{\beta_{0k} + \beta_{1k}X_1 + \cdot + \beta_{pk}X_p}}
 \end{aligned}
 $$
 

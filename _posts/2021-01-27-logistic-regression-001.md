@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Logistic Regression #1"
-subtitle: A Brief Introduction, Maximum Likelihood Estimation, Multiclass Logistic Regression, and more
+subtitle: A Brief Introduction, Maximum Likelihood Estimation, Multiclass Logistic Regression, and More
 comments: false
 ---
 

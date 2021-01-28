@@ -39,7 +39,7 @@ $$
 \end{aligned}
 $$
 
-The left-hand side of the above equation, $p(x) / (1 - p(x))$, is known as the *odds* and can take any value between 0 and $\infinity$.  Odds values close to 0 indicate very low probabilities, and odds values close to $\infinity$ indicate very high probabilities.
+The left-hand side of the above equation, $p(x) / (1 - p(x))$, is known as the *odds* and can take any value between 0 and $\infty$.  Odds values close to 0 indicate very low probabilities, and odds values close to $\infty$ indicate very high probabilities.
 
 Finally, by taking the logarithm of both sides of the above equation we have
 

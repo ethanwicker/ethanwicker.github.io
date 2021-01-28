@@ -55,7 +55,7 @@ Here, the left-hand side is referred to as the *log-odds* or *logit*.  The logis
 
 In the multiple linear regression model, we used the method of least squares to estimate the linear regression coefficients.  In the logistic regression model, we could also use a (non-linear) least squares fitting procedure, but it is preferred to use the more general method of *maximum likelihood* due to its statistical properties.
 
-Maximum likelihood estimation is a fitting method used to estimate regression coefficients.  The method seeks to estimate the coefficients $B_0, B_1, B_2, \cdots$ such that the predicted probability $\hat{p}(x)$ of the class assignment of each observation is as close as possible to the actual class assignment, for that observation.  Visually, the method of maximum likelihood estimation is akin to fitting the logistic function many times to the data with slight differences, and selecting the particular function that maximizes the correct probability for each class assignment.
+Maximum likelihood estimation is a fitting method used to estimate regression coefficients.  The method seeks to estimate the coefficients $B_0, B_1, B_2, \ldots$ such that the predicted probability $\hat{p}(x)$ of the class assignment of each observation is as close as possible to the actual class assignment, for that observation.  Visually, the method of maximum likelihood estimation is akin to fitting the logistic function many times to the data with slight differences, and selecting the particular function that maximizes the correct probability for each class assignment.
 
 Mathematically, this can be formalized via a *likelihood function*:
 
@@ -85,7 +85,7 @@ p(X) = \frac{e^{\beta_0 + \beta_1X_1 + \cdots + \beta_pX_p}}{1 + e^{\beta_0 + \b
 \end{aligned}
 $$
 
-where $X = X_1, \cdots, X_p$ and $p$ is the number of predictors.  We can also rewrite this equation as
+where $X = X_1, \ldots, X_p$ and $p$ is the number of predictors.  We can also rewrite this equation as
 
 $$
 \begin{aligned} 

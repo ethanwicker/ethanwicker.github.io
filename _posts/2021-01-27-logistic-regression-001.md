@@ -25,7 +25,7 @@ To avoid this problem, we should instead model the probability that $Y$ belongs 
 
 $$
 \begin{aligned} 
-p(x) = \frac{e^{\beta_0 + \beta_1X_1}{1 + e^{\beta_0 + \beta_1X_1}}.
+p(x) = \frac{e^{\beta_0 + \beta_1X_1}}{1 + e^{\beta_0 + \beta_1X_1}}.
 \end{aligned}
 $$
 
@@ -65,7 +65,7 @@ l(\beta_0, \beta_1) = \prod_{i:y_i = 1}p(x_i) \prod_{i':y_{i'} = 0}(1 - p(x_i'))
 \end{aligned}
 $$
 
-where $\beat_0$ and $\beta_1$ are chosen to maximize this likelihood function.
+where $\beta_0$ and $\beta_1$ are chosen to maximize this likelihood function.
 
 Maximum likelihood is a general approach used to fit many non-linear models.  In fact, in the linear regression setting, least squares is a special case of maximum likelihood.
 

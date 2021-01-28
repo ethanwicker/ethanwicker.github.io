@@ -101,7 +101,7 @@ Logistic regression is readily extendable to the case where there are greater th
 
 $$
 \begin{aligned} 
-Pr(Y = k|X) = \frac{e^{\beta_{0k} + \beta_{1k}X_1 + \cdots + \beta_{pk}X_p}}{\sum_{\ell=1}{K}e^{\beta_{0\ell} + \beta_{1\ell}X_1 + \cdots + \beta_{p\ell}X_p}}
+Pr(Y = k|X) = \frac{e^{\beta_{0k} + \beta_{1k}X_1 + \cdots + \beta_{pk}X_p}}{\sum_{\ell=1}^{K}e^{\beta_{0\ell} + \beta_{1\ell}X_1 + \cdots + \beta_{p\ell}X_p}}
 \end{aligned}
 $$
 

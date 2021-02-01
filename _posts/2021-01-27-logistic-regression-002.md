@@ -1,36 +1,15 @@
 ---
 layout: post
-title: "Multiple Logistic Regression #2"
+title: "Multiple Regression #2"
 subtitle: scikit-learn, statsmodels, Plotly, One-Hot Encoding & Multiclass Logistic Regression 
 comments: false
 ---
 
-### Big Header
-
-### Small Header
-
-The structure of this post was influenced by the third chapter of *An Introduction to Statistical Learning: with Applications in R* by Gareth James, Daniela Witten, Trevor Hastie, and Robert Tibshirani.
-
-$$
-\begin{aligned} 
-Y = \beta_0 + \beta_1X_1 + \beta_2X_2 + ... + \beta_pX_p + \epsilon 
-\end{aligned}
-$$
-
-| ![2021-01-08-multiple-linear-regression-001-fig-1.png](/assets/img/2021-01-08-multiple-linear-regression-001-fig-1.png){: .mx-auto.d-block :} |
-| :--: |
-| <sub><sup>**Source:** *Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani. An Introduction to Statistical Learning: with Applications in R. New York: Springer, 2013.* |
-
-
-![2021-01-08-multiple-linear-regression-001-fig-1.png](/assets/img/2021-01-08-multiple-linear-regression-001-fig-1.png){: .mx-auto.d-block :}
-
-### Start Below
-
-This post is the second in a series on the multiple logistic regression model.  In this post, I'll work through an example using the well known Titanic dataset, scikit-learn and statsmodels.  I'll discuss one-hot encoding, create a 3D logistic regression plot using Plotly, and demonstrate multiclass logistic regression with scikit-learn.
+This post is the second in a series on the logistic regression model.  In this post, I'll work through an example using the well known Titanic dataset, scikit-learn and statsmodels.  I'll discuss one-hot encoding, create a 3D logistic regression plot using Plotly, and demonstrate multiclass logistic regression with scikit-learn.
 
 ### Titanic Dataset
-
-The Titanic dataset is available from many sources.  In this example, I'll be using the training dataset only available from Kaggle.  You can download the data manually, or use Kaggle's command line interface.  After reading in the data as `titanic`, let's take a quick peek at it.
+In this example, I'll be using the Kaggle's Titanic training dataset
+The Titanic dataset is available from many sources.  In this example, I'll be using Kaggle's Titanic training dataset.  You can download the data manually, or use Kaggle's command line interface.  After reading in the data as `titanic`, let's take a quick peek at it.
 
 ```python
 >>> titanic.info()
@@ -64,7 +43,7 @@ memory usage: 83.7+ KB
 [5 rows x 12 columns]
 ```
 
-Personally, I'm a big fan of `snake_case` column names when working with data, so let's do some quick clean up.  I decided to explore the janitor library for this, and made use of the `clean_names()` function.  And since we're only interested in a subset of fields here, let's go ahead and select just those fields to keep via pandas `loc` method.
+I find `snake_case` column names much easier to working with, so let's do some quick clean up.  I decided to explore the janitor library for this, and made use of the `clean_names()` function.  And since we're only interested in a subset of fields here, let's go ahead and select just those fields to keep via pandas `loc` method.
 
 ```python
 import janitor
@@ -115,18 +94,20 @@ y = titanic["survived"]
 
 #### scikit-learn
 
-Let's use scikit-learn's `LogisticRegression()` first to train our model.  Note, by default, `LogisticRegresson()` preforms variable regularization by default.  We can disable this by passing `penalty="none"` when we initialize the classifier. 
+Let's use scikit-learn's `LogisticRegression()` first to train our model.  Note, by default, `LogisticRegresson()` preforms variable regularization.  We can disable this by passing `penalty="none"` when we initialize the classifier. 
 
 ```python
 from sklearn.linear_model import LogisticRegression
 
-# Discuss why penalty here is none
-# Scoring method here is correct classification rate
+# Initializing classifier
 log_reg = LogisticRegression(penalty="none")
+
+# Fitting model
 log_reg.fit(X=X, y=y)
+
 log_reg.score(X, y)
 ```
-The `score` method here provides the correct classification rate.  For this particular model, the error rate is 0.594.
+The `score` method here provides the correct classification rate.  For this particular model, 59.4% of the observations were correctly classified.
 
 We can verify the correct classification rate is being provided by manually calculating it.
 ```python
@@ -139,7 +120,7 @@ sklearn_score = log_reg.score(X, y)
 True
 ```
 
-With a little more investigation into the results our model, we can see that this model doesn't have very much predictive potential.  Let's look at the unique predicted values of our model
+With a little more investigation into the results of our model, we can see that this model doesn't have very much predictive potential.  Let's look at the unique predicted values of our model
 
 ```python
 import numpy as np
@@ -157,13 +138,13 @@ sns.regplot(x="age", y="survived", data=titanic, logistic=True)
 
 ![2021-01-27-logistic-regression-002-fig-1.png](/assets/img/2021-01-27-logistic-regression-002-fig-1.png){: .mx-auto.d-block :}
 
-From the plot, we don't see the characteristic $S$-shaped sigmoid function of the logistic regression model.  Instead, we do see a sigmoid function, but it more-or-less appears equivalent to a linear function for the particular domain of our data.  Clearly, `age` alone is not explained our `survived` response variable well.
+From the plot, we don't see the characteristic $S$-shaped sigmoid function of the logistic regression model.  Instead, we do see a sigmoid function, but it more-or-less appears equivalent to a linear function for the particular domain of our data.  Clearly, `age` alone is not explaining our `survived` response variable well.
 
 Before adding new predictors to our model, let's perform the same regression as above using the statsmodels library.
 
-#### statsmodels' `Logit()`
+#### statsmodels: `Logit()`
 
-statsmodels provides two functions for performing logistic regression.  The first is the `Logit()` function provided in the `discrete_model` module.  The second is the `GLM()` function provided.  We'll explore the `Logit()` function first.
+statsmodels provides two functions for performing logistic regression.  The first is the `Logit()` function provided in the `discrete_model` module.  The second is the `GLM()` function.  We'll explore the `Logit()` function first.
 
 
 ```python
@@ -175,9 +156,9 @@ model = Logit(endog=y, exog=sm.add_constant(X))
 result = model.fit()
 ```
 
-Remember, in statsmodels, an intercept term is not included by default.  So the make our results match those of scikit-learn's, we'll have to add one via `sm.add_constant()`.
+Remember, in statsmodels, an intercept term is not included by default.  So to perform the same regression as scikit-learn, we'll have to add an intercept via `sm.add_constant()`.
 
-As usual with statsmodels, a wealth of summary information is provided by the `summary() method`.
+As usual with statsmodels, a wealth of summary information is provided by the `summary()` method.
 
 ```python
 result.summary()
@@ -201,9 +182,9 @@ age           -0.0110      0.005     -2.057      0.040      -0.021      -0.001
 """
 ```
 
-Worth mentioning here is the pseudo $R^2$ summary statistic, labeled `Pseudo R-squ`.  The pseudo $R^2$ statistic is a measure of how well a logistic regression model explains the response variable, akin to a linear regression model's $R^2$ statistic.  A variety of pseudo $R^2$ statistics have been proposed, and statsmodels reports McFadden's pseudo $R^2$, published in 1974.  While McFadden's pseudo $R^2$ statistic can take values between 0 and 1, a value in the range of 0.2 to 0.4 is concerned an excellent fit.  Not surprisingly, our value of 0.004445 is quite low, confirming our model does not fit the data well.
+Worth mentioning here is the pseudo $R^2$ summary statistic, labeled `Pseudo R-squ`.  The pseudo $R^2$ statistic is a measure of how well a logistic regression model explains the response variable, akin to a linear regression model's $R^2$ statistic.  A variety of pseudo $R^2$ statistics have been proposed, and statsmodels reports McFadden's pseudo $R^2$, published in 1974.  While McFadden's pseudo $R^2$ statistic can take values between 0 and 1, a value in the range of 0.2 to 0.4 is considered an excellent fit.  Not surprisingly, our value of 0.004445 is quite low, confirming our model does not fit the data well.
 
-One useful feature about the statsmodels implementation is that probabilities, not just classes, are reported.  We can get the probability that an observations `survived` but using the predict method.
+One useful feature about the statsmodels implementation is that probabilities, not just classes, are reported.  We can get the probability that an observations `survived` by using the `predict()` method.
 
 ```python
 >>> probs = model.predict(params=result.params)
@@ -214,7 +195,7 @@ array([0.42606613, 0.38382723, 0.41537876, 0.39163506, 0.39163506, 0.34327126,
        0.48034749, 0.4127189 , 0.44763968, 0.47487681])
 ```
 
-#### statsmodels' `GLM()`
+#### statsmodels: `GLM()`
 
 statsmodels also provides the `GLM()` function, which when the `family` parameter is set to `Binomial()`, produces the same results as the above two methods.
 
@@ -228,7 +209,7 @@ result.summary()
 
 ### Multiple Logistic Regression
 
-Next, let's explore using multiple predictors to improve our model fit.  In particular, we'll include `sex` and `fare` in addition to `age`.  Because `sex` is a categorical feature, we can encode it via scikit-learn's `OneHotEncoder`.  In a future, I'll explore creating scikit-learn `Pipeline`s and making use of the new `ColumnTransformer`.  However, for this demonstration, I'll keep it simple and perform this encoding in discrete steps
+Next, let's explore using multiple predictors to improve our model fit.  In particular, we'll include `sex` and `fare` in addition to `age`.  Because `sex` is a categorical feature, we'll need to encode it via scikit-learn's `OneHotEncoder`.  In a future post, I'll explore creating scikit-learn `Pipeline`s and making use of the new `ColumnTransformer`.  However, for this demonstration, I'll keep it simple and perform this encoding in discrete steps
 
 ```python
 from sklearn.preprocessing import OneHotEncoder
@@ -286,11 +267,11 @@ x3             0.0128      0.003      4.738      0.000       0.007       0.018
 """
 ```
 
-From the summary table, we see that the `x2` variable, or `age` is not statistically significant.
+From the summary table, we see that the `x2` variable, or `age`, is not statistically significant.
 
 ### 3D Plot
 
-As a last exploration of this model, let's drop the `age` variable and create a three-dimensional plot of multiple our logistic regression model.  We'll make use of the Plotly package for this.
+As a last exploration of this model, let's drop the `age` variable and create a three-dimensional plot of our multiple logistic regression model.  We'll make use of the Plotly library for this.
 
 ```python
 import plotly.express as px
@@ -300,6 +281,7 @@ import plotly.graph_objects as go
 mesh_size = .02
 
 # Removing age field because not significant
+# obj=1 refers to age column
 X_sex_fare = np.delete(X, obj=1, axis=1)
 
 # Fitting model
@@ -365,6 +347,16 @@ y = titanic[["ticket_class"]].to_numpy().ravel()
 ```
 
 We'll then train the model using scikit-learn's `LogisticRegression()`.  This function natively handles multiclass logistic regression.  Unless specified otherwise, it will using a one-vs-rest scheme for prediction.  Under the hood, this scheme will train an individual model for each class present in the data.  Because `ticket_class` can take three possible values 1, 2, or 3, we can expect three logistic regression models to be trained.
+
+The one-vs-rest (sometimes called one-vs-all) scheme can be contrasted with the one-vs-one scheme.  The one-vs-one scheme splits the dataset into individual datasets containing only two classes.  For example, using `ticket_class` field, the one-vs-one method would create individual models for the following `ticket_class` pairs:
+
+* `ticket_class` 1 vs `ticket_class` 2
+* `ticket_class` 1 vs `ticket_class` 3
+* `ticket_class` 2 vs `ticket_class` 3
+
+To perform prediction, each observation is run through it's associated models, and the class label with the most predictions is the overall prediction.
+
+In addition, scikit-learn does provide the `OneVsRestClassifier` and the `OneVsOneClassifier` as well, which are commonly used with *support vector classifiers*.
 
 ```python
 # Uses a one-vs-rest scheme by default

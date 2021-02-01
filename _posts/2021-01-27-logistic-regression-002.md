@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Multiple Regression #2"
+title: "Logistic Regression #2"
 subtitle: scikit-learn, statsmodels, Plotly, One-Hot Encoding & Multiclass Logistic Regression 
 comments: false
 ---

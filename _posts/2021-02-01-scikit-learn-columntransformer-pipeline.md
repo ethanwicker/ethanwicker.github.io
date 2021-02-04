@@ -1,15 +1,15 @@
 ---
 layout: post
 title: "Exploring a pandas to scikit-learn Workflow"
-subtitle: "Using scikit-learn's `ColumnTransformer` and `Pipeline` for encoding, imputing and scaling features"
+subtitle: "Using scikit-learn's ColumnTransformer and Pipeline for Encoding, Imputing and Scaling Features"
 comments: false
 ---
 
-I recently read through this [excellent Medium article](https://medium.com/dunder-data/from-pandas-to-scikit-learn-a-new-exciting-workflow-e88e2271ef62) about the `ColumnTransformer` class in scikit-learn and how it can be used in tandem with `Pipeline`s and the `OneHotEncoder` class.  To strengthen my own understanding of the concept, I decided to follow the post with my own working example, and summarize the concepts along the way.
+I recently read through this [excellent Medium article](https://medium.com/dunder-data/from-pandas-to-scikit-learn-a-new-exciting-workflow-e88e2271ef62) about the `ColumnTransformer` estimator in scikit-learn and how it can be used in tandem with `Pipeline`s and the `OneHotEncoder` estimator.  To strengthen my own understanding of the concept, I decided to follow the post with my own working example, and summarize the concepts along the way.
 
 ### Introduction
 
-In scikit-learn's 0.20 release, the `ColumnTransformer` estimator was released.  This estimator allows different transformers to be applied to different fields of the data in parallel, before concatenating them together.  In particular, this estimator is attractive when processing a pandas DataFrame with categorical fields.
+In scikit-learn's 0.20 release, the `ColumnTransformer` estimator was released.  This estimator allows different transformers to be applied to different fields of the data in parallel, before concatenating the results together.  In particular, this estimator is attractive when processing a pandas DataFrame with categorical fields.
 
 For this working example, I'll be using the same slimmed down Titanic dataset from my previous [logistic regression post](https://ethanwicker.com/2021-01-27-logistic-regression-002/).
 
@@ -62,6 +62,8 @@ array(['x0_female', 'x0_male'], dtype=object)
 We can also use the `inverse_transform()` method to return the original categorical label from the `sex` column.  Notice the brackets around `sex_train_encoded[0]` that force a list to be returned instead of a NumPy array.
 
 ```python
+import numpy as np
+
 # Inverse transforming the first row
 >>> encoder.inverse_transform([sex_train_encoded[0]])
 array([['male']], dtype=object)
@@ -124,7 +126,7 @@ Let's suppose the first value of `sex_test` was misspelled `fmale` instead of `f
 708    male
 ```
 
-If we attempt the transformation on this new `DataFrame`, we'll get an error indicating an unknown category was found.
+If we attempt the transformation on this new DataFrame, we'll get an error indicating an unknown category was found.
 
 ```python
 >>> encoder.transform(sex_test)
@@ -220,7 +222,7 @@ array([[0., 0., 1.],
        [1., 0., 0.]])
 ```
 
-### scikit-learn `Pipeline`s
+### scikit-learn's `Pipeline`
 
 Instead of manually applying multiple fitting and transformation steps, we can instead use a `Pipeline`.  A `Pipeline` allows a list of transformations to be successively run, and a model can also be trained as the last estimator.  `Pipeline`s are especially useful for reproducibe workflows, such as applying the same transformation to training and test sets or different subsets of a dataset during cross validation.
 
@@ -302,7 +304,7 @@ transformers_categorical = [("transformers_categorical",
 column_transformer = ColumnTransformer(transformers=transformers_categorical)
 ```
 
-Because our `ColumnTransformer` selects columns, we can pass the entire `titanic_train` `DataFrame` to it.  The defined columns will be select and transformed as appropriate.  We could of course pass `titanic_test` to our `ColumnTransformer` as well.
+Because our `ColumnTransformer` selects columns, we can pass the entire `titanic_train` DataFrame to it.  The defined columns will be select and transformed as appropriate.  We could of course pass `titanic_test` to our `ColumnTransformer` as well.
 
 ```python
 >>> column_transformer.fit_transform(titanic_train)
@@ -351,7 +353,7 @@ transformers_numeric = [("transformers_numeric",
 column_transformer = ColumnTransformer(transformers=transformers_numeric)
 ```
 
-Just as before, we can fit the `ColumnTransformer` directly to our `DataFrame`, and then transform it as appropriately.
+Just as before, we can fit the `ColumnTransformer` directly to our DataFrame, and then transform it as appropriately.
 
 ```python
 >>> column_transformer.fit_transform(titanic_train)
@@ -473,9 +475,11 @@ We can also view the best parameter combination and the best score.
 0.7869215291750503
 ```
 
-We can view detailed results as a pandas `DataFrame` as well.
+We can view detailed results as a pandas DataFrame as well.
 
 ```python
+import pandas as pd
+
 >>> pd.DataFrame(grid_search.cv_results_)
     mean_fit_time  std_fit_time  ...  std_test_score  rank_test_score
 0        0.201999      0.415343  ...        0.066751               15

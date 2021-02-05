@@ -18,4 +18,4 @@ Aside from data science, I enjoy trail running in the Rocky Mountains, live musi
 
 Feel free to email me at ethanwicker@gmail.com, or via the link below.
 
-This blog is built using [Beautiful Jekyll](https://beautifuljekyll.com/).
+This blog was built using [Beautiful Jekyll](https://beautifuljekyll.com/).

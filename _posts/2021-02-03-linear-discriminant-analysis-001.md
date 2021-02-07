@@ -68,13 +68,13 @@ Lastly, the *Bayes classifier* classifies an observation to the class for which 
 
 ### Linear Discriminant Analysis with One Predictor
 
-Using the above information, let's explore linear discriminant analysis for the case where we have one predictor variable.  First, we need to obtain an estimate of the density function $f_k(X)$.  Once we obtain this estimate, we when then estimate $p_k(x)$ and classify an observation $x$ to the class for which $p_k(x)$ is largest.
+Using the above information, let's explore linear discriminant analysis for the case where we have one predictor variable.  First, we need to obtain an estimate of the density function $f_k(X)$.  Once we obtain this estimate, we then estimate $p_k(x)$ and classify an observation $x$ to the class for which $p_k(x)$ is largest.
 
 In order to estimate $f_k(x)$, we'll assume it has a Gaussian form.  In the one-dimensional setting, the normal density takes the form
 
 $$
 \begin{aligned} 
-f_k(x) = \frac{1}{\sqrt{2\pi}\sigma_k} exp(-\frac{1}{2\sigma_k^2}(x-\mu_k)^2),
+f_k(x) = \frac{1}{\sqrt{2\pi}\sigma_k} \text{exp}(-\frac{1}{2\sigma_k^2}(x-\mu_k)^2),
 \end{aligned}
 $$
 
@@ -82,7 +82,7 @@ where $\mu_k$ and $\sigma_k^2$ are the mean and variance values of the $k$th cla
 
 $$
 \begin{aligned} 
-p_k(x) = \frac{\pi_k \frac{1}{\sqrt{2\pi}\sigma} exp(-\frac{1}{2\sigma^2}(x-\mu_k)^2){\sum_{l=1}{K}\pi_l \frac{1}{\sqrt{2\pi}\sigma} exp(-\frac{1}{2\sigma^2}(x-\mu_l)^2)}.
+p_k(x) = \frac{\pi_k \frac{1}{\sqrt{2\pi}\sigma} \text{exp}(-\frac{1}{2\sigma^2}(x-\mu_k)^2){\sum_{l=1}{K}\pi_l \frac{1}{\sqrt{2\pi}\sigma} \text{exp}(-\frac{1}{2\sigma^2}(x-\mu_l)^2)}.
 \end{aligned}
 $$
 

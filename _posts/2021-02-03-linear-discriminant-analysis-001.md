@@ -47,7 +47,7 @@ Then Bayes' theorem states that
 
 $$
 \begin{aligned} 
-Pr(Y = k \vert X = x) = \frac{\pi_k f_k(x)}{\sum_{l=1}{K}\pi_l f_l(x)}.
+Pr(Y = k \vert X = x) = \frac{\pi_k f_k(x)}{\sum_{l=1}^{K}\pi_l f_l(x)}.
 \end{aligned}
 $$
 
@@ -82,7 +82,7 @@ where $\mu_k$ and $\sigma_k^2$ are the mean and variance values of the $k$th cla
 
 $$
 \begin{aligned} 
-p_k(x) = \frac{\pi_k \frac{1}{\sqrt{2\pi}\sigma} \text{exp}\big(-\frac{1}{2\sigma^2}(x-\mu_k)^2\big)}{\sum_{l=1}{K}\pi_l \frac{1}{\sqrt{2\pi}\sigma} \text{exp}\big(-\frac{1}{2\sigma^2}(x-\mu_l)^2\big)}.
+p_k(x) = \frac{\pi_k \frac{1}{\sqrt{2\pi}\sigma} \text{exp}\big(-\frac{1}{2\sigma^2}(x-\mu_k)^2\big)}{\sum_{l=1}^{K}\pi_l \frac{1}{\sqrt{2\pi}\sigma} \text{exp}\big(-\frac{1}{2\sigma^2}(x-\mu_l)^2\big)}.
 \end{aligned}
 $$
 
@@ -107,7 +107,7 @@ Unlike the above example, in practice, we must estimate the parameters $u_1, \ld
 $$
 \begin{aligned} 
 \hat{\mu_k} = \frac{1}{n_k}\sum_{i:y_i=k}x_i \\
-\hat{\sigma^2} = \frac{1}{n-K}\sum{k=1}{K}\sum{i:y_i=k}(x_i - \hat{\mu_k)^2 \\
+\hat{\sigma^2} = \frac{1}{n-K}\sum_{k=1}^{K}\sum{i:y_i=k}(x_i - \hat{\mu_k)^2 \\
 \hat{\pi^k} = \frac{n_k}{n}
 \end{aligned}
 $$

@@ -41,13 +41,13 @@ $$
 \end{aligned}
 $$
 
-The density function for the USA class, or $f_{USA}(x), is a function indicating the probability that a given observation $x$ ran a given 800-meter run in minutes $f(x)$, where $x$ belongs to the USA class.  We can imagine that some runners might be very fast and run times below 2 minutes, while some will be slow and run times greater than four minutes.  However, most will likely run times between two and a half minutes and three and a half minutes.  The probability an America runs under 2 minutes is low, but the probability an American runs between two and four minutes is quite high.
+The density function for the USA class, or $f_{USA}(x)$, is a function indicating the probability that a given observation $x$ ran a given 800-meter run in minutes $f(x)$, where $x$ belongs to the USA class.  We can imagine that some runners might be very fast and run times below 2 minutes, while some will be slow and run times greater than four minutes.  However, most will likely run times between two and a half minutes and three and a half minutes.  The probability an America runs under 2 minutes is low, but the probability an American runs between two and four minutes is quite high.
 
 Then Bayes' theorem states that
 
 $$
 \begin{aligned} 
-Pr(Y = k|X = x) = \frac{\pi_k f_k(x){\sum_{l=1}{K}\pi_l f_l(x)}.
+Pr(Y = k \vert X = x) = \frac{\pi_k f_k(x){\sum_{l=1}{K}\pi_l f_l(x)}.
 \end{aligned}
 $$
 

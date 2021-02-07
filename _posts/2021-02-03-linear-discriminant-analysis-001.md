@@ -5,13 +5,13 @@ subtitle: A Brief Introduction
 comments: false
 ---
 
-This post is the first in a short series on disciminant analysis.  In this series, I'll discuss linear discriminant analysis, quadratic discriminant analysis, as well as applications in Python.
+This post is the first in a short series on the linear discriminant analysis method.  In this series, I'll discuss the underlying theory of linear discriminant analysis, as well as applications in Python.
 
 The structure of this post was influenced by the fourth chapter of *An Introduction to Statistical Learning: with Applications in R* by Gareth James, Daniela Witten, Trevor Hastie, and Robert Tibshirani.
 
 ### Linear Discriminant Analysis
 
-In logistic regression, we model $Pr(Y=k|X=x)$ using the logistic function.  Specifically, we model the conditional distribution of the response $Y$, given the predictors $X$.
+In logistic regression, we model $Pr(Y=k\vertX=x)$ using the logistic function.  Specifically, we model the conditional distribution of the response $Y$, given the predictors $X$.
 
 In contrast, in discriminant analysis, we use an alternative and less direct approach to estimating these probabilities.  Instead of directly modeling $Pr(Y=k|X=x)$, we model the distribution of the predictors $X$ separately for each of the response classes of $Y$.  We then use Bayes' theorem to flip these around into estimates for $Pr(Y=k|X=x)$.  When the distributions of the predictors $X$ are assumed to be normal, linear discriminant analysis takes a form very similar to logistic regression.
 

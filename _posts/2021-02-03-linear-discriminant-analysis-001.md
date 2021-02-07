@@ -156,4 +156,4 @@ is largest.
 
 As before, we need to estimate the unknown parameters $\mu_1, \ldots, \mu_K, \pi_1, \ldots, \pi_K$, and $\Sigma$.  The formulas to do these are similar to those discussed in the previous section.  To assign a new observation $X = x$, LDA uses these estimates to calculate $\hat{\delta}_k(x)$, and then classifies the observation to the class for which $\hat{\delta}_k(x)$ is largest.
 
-In a future post, I'll explore investigating the results of an LDA classifier via calculated statistics such as *false positive error rates* (*Type I error*, 1 - *specificity*), *true positive error rates* (*sensitivity*, *recall*), *precision*, as well as *ROC curves*.
+In a future post, I'll explore investigating the results of an LDA classifier via calculated statistics such as *false positive rates* (*Type I error*, 1 - *specificity*), *true positive rates* (*sensitivity*, *recall*), *precision*, as well as *ROC curves*.

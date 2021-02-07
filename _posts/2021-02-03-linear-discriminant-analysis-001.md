@@ -105,11 +105,11 @@ In the above image on the left, two density functions $f_1(x)$ and $f_2(x)$ are 
 Unlike the above example, in practice, we must estimate the parameters $u_1, \ldots, \mu_K, \pi_1, \ldots, \pi_K$, and $\sigma^2$.  The LDA method approximates the Bayes classifier using the following estimates for $\pi_k$, $\mu_k$, and $\sigma^2$:
 
 $$
-\begin{align} 
+\begin{align*} 
  \hat{\mu}_k = \frac{1}{n_k}\sum_{i:y_i=k}x_i \\
  \hat{\sigma}^2 = \frac{1}{n-K}\sum_{k=1}^{K}\sum_{i:y_i=k}(x_i - \hat{\mu_k})^2 \\
  \hat{\pi}_k = \frac{n_k}{n}
-\end{align}
+\end{align*}
 $$
 
 where $n$ is the total number of training observations, and $n_k$ is the number of training observations in the $k$th class.  Here, $\hat{\mu}_k$ is simply the average of all the training observations from the $k$th class, $\hat{\sigma}^2$ can be seen as a weighted average of the sample variances for each of the $K$ classes, and $\hat{\pi}_k$ is the proportion of the training observations that belong to the $k$th class.

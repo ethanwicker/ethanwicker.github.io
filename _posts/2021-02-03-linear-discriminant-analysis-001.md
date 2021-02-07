@@ -134,17 +134,17 @@ Next, let's extend the LDA classifier to the case of multiple predictors.  For t
 | :--: |
 | <sub><sup>**Source:** *Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani. An Introduction to Statistical Learning: with Applications in R. New York: Springer, 2013.* |
 
-Two multivariate Gaussian density functions are shown above for $p=2$, where $p$ is the number of predictors.  In the left image, the two predictors are uncorrelated.  In the right image, the two variables have a correlation of 0.7
+Two multivariate Gaussian density functions are shown above for $p=2$, where $p$ is the number of predictors.  In the left image, the two predictors are uncorrelated.  In the right image, the two predictors have a correlation of 0.7
 
-To indicate that a $p$-dimensional random variable $X$ has a multivariate Gaussian distribution, we write $X \sim N(\mu, \Sigma)$, where $E(x) = \mu$ is the mean of $X$ and $Cov(X) = \Sigma$ is the $p \times p$ covariance matrix of $X$.  The multivariate Gaussian density is formally defined as
+To indicate that a $p$-dimensional random variable $X$ has a multivariate Gaussian distribution, we write $X \sim N(\mu, \Sigma)$, where $E(X) = \mu$ is the mean of $X$ and $\text{Cov}(X) = \Sigma$ is the $p \times p$ covariance matrix of $X$.  The multivariate Gaussian density is formally defined as
 
 $$
 \begin{aligned} 
-f(x) = \frac{(2\pi)^{p/2}{\vert \Sigma \vert^{1/2} \text{exp} \big(-\frac{1}{2}(x - \mu)^T \Sigma^{-1} (x-\mu) \big).
+f(x) = \frac{1}{(2\pi)^{p/2}\vert \Sigma \vert^{1/2}}\text{exp} \big(-\frac{1}{2}(x - \mu)^T \Sigma^{-1} (x-\mu) \big).
 \end{aligned}
 $$
 
-In the case of multiple predictors, the LDA classifier assumes that the observations in the $k$th class are drawn from a multivariate Gaussian distribution $N(\mu_k, \Sigma)$, where \mu_k$ is a class-specific mean vector, and $\Sigma$ is a covariance matrix that is common to all $K$ classes.  By inserting the above density function for the $k$th class, $f_k(X=x)$, into Bayes' theorem and performing some manipulation, we can show that the Bayes classifier assigns an observation $X=x$ to the class for which 
+In the case of multiple predictors, the LDA classifier assumes that the observations in the $k$th class are drawn from a multivariate Gaussian distribution $N(\mu_k, \Sigma)$, where $\mu_k$ is a class-specific mean vector, and $\Sigma$ is a covariance matrix that is common to all $K$ classes.  By inserting the above density function for the $k$th class, $f_k(X=x)$, into Bayes' theorem and performing some manipulation, we can show that the Bayes classifier assigns an observation $X=x$ to the class for which 
 
 $$
 \begin{aligned} 
@@ -154,6 +154,6 @@ $$
 
 is largest.
 
-As before, we need to estimate the unknown parameters $\mu_1, \ldots, \u_K, \pi_1, \ldots, \pi_K$, and $\Sigma$.  The formulas to do these are similar to those discussed in the previous section.  To assign a new observation $X = x$, LDA uses these estimates to calculate $\hat{\delta}_k(x)$, and the classifies the observation to the class for which $\hat{\delta}_k(x)$ is largest.
+As before, we need to estimate the unknown parameters $\mu_1, \ldots, \mu_K, \pi_1, \ldots, \pi_K$, and $\Sigma$.  The formulas to do these are similar to those discussed in the previous section.  To assign a new observation $X = x$, LDA uses these estimates to calculate $\hat{\delta}_k(x)$, and the classifies the observation to the class for which $\hat{\delta}_k(x)$ is largest.
 
 In a future post, I'll explore investigating the results of an LDA classifier via calculated statistics such as false positive error rates (Type I error, 1 - specificity), true positive error rates (sensitivity, recall), precision, as well as ROC curves.

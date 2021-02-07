@@ -107,7 +107,7 @@ Unlike the above example, in practice, we must estimate the parameters $u_1, \ld
 $$
 \begin{aligned} 
 \hat{\mu_k} = \frac{1}{n_k}\sum_{i:y_i=k}x_i \\
-\hat{\sigma^2} = \frac{1}{n-K}\sum_{k=1}^{K}\sum{i:y_i=k}(x_i - \hat{\mu_k)^2 \\
+\hat{\sigma^2} = \frac{1}{n-K}\sum_{k=1}^{K}\sum_{i:y_i=k}(x_i - \hat{\mu_k)^2 \\
 \hat{\pi^k} = \frac{n_k}{n}
 \end{aligned}
 $$

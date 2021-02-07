@@ -37,7 +37,7 @@ Let's find the prior probability that a random chosen person is from the USA.  I
 
 $$
 \begin{aligned} 
-\pi_{USA} = \frac{200 \text{USA citizens}}{600 \text{total citizens}}.
+\pi_{USA} = \frac{200 \text{ USA citizens}}{600 \text{ total citizens}}.
 \end{aligned}
 $$
 

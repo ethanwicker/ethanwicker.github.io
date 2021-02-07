@@ -47,7 +47,7 @@ Then Bayes' theorem states that
 
 $$
 \begin{aligned} 
-Pr(Y = k \vert X = x) = \frac{\pi_k f_k(x){\sum_{l=1}{K}\pi_l f_l(x)}.
+Pr(Y = k \vert X = x) = \frac{\pi_k f_k(x)}{\sum_{l=1}{K}\pi_l f_l(x)}.
 \end{aligned}
 $$
 

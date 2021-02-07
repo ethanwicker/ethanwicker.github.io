@@ -108,7 +108,7 @@ $$
 \begin{aligned} 
 \hat{\mu}_k = \frac{1}{n_k}\sum_{i:y_i=k}x_i \\
 \hat{\sigma}^2 = \frac{1}{n-K}\sum_{k=1}^{K}\sum_{i:y_i=k}(x_i - \hat{\mu_k})^2 \\
-\hat{\pi^k} = \frac{n_k}{n}
+\hat{\pi}_k = \frac{n_k}{n}
 \end{aligned}
 $$
 

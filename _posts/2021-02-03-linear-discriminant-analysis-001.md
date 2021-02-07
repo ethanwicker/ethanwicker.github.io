@@ -112,13 +112,13 @@ $$
 \end{aligned}
 $$
 
-where $n$ is the total number of training observations, and $n_k$ is the number of training observations in the $k$th class.  Here, $\hat{\mu_k}$ is simply the average of all the training observations from the $k$th class, $\hat{\sigma}^2$ can be seen as a weighted average of the sample variances for each of the $K$ classes, and \hat{\pi^2} is the proportion of the training observations that belong to the $k$th class.
+where $n$ is the total number of training observations, and $n_k$ is the number of training observations in the $k$th class.  Here, $\hat{\mu_k}$ is simply the average of all the training observations from the $k$th class, $\hat{\sigma}^2$ can be seen as a weighted average of the sample variances for each of the $K$ classes, and $\hat{\pi_k}$ is the proportion of the training observations that belong to the $k$th class.
 
 Thus, using these estimates, the LDA classifier assigns an observation $X=x$ to the class for which 
 
 $$
 \begin{aligned} 
-\delta_k(x) = x \dot \frac{\hat{\mu_k}}{\hat{\sigma}^2} - \frac{\hat{\mu_k^2}}{2\hat{\sigma}^2} +log(\hat{\pi_k})
+\delta_k(x) = x \cdot \frac{\hat{\mu_k}}{\hat{\sigma}^2} - \frac{\hat{\mu_k^2}}{2\hat{\sigma}^2} +log(\hat{\pi_k})
 \end{aligned}
 $$
 

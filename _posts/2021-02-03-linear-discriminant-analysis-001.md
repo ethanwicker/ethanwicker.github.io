@@ -118,7 +118,7 @@ Thus, using these estimates, the LDA classifier assigns an observation $X=x$ to 
 
 $$
 \begin{aligned} 
-\delta_k(x) = x \cdot \frac{\hat{\mu_k}}{\hat{\sigma}^2} - \frac{\hat{\mu}_k^2}{2\hat{\sigma}^2} +log(\hat{\pi}_k)
+\delta_k(x) = x \cdot \frac{\hat{\mu_k}}{\hat{\sigma}^2} - \frac{\hat{\mu}_k^2}{2\hat{\sigma}^2} +\text{log }(\hat{\pi}_k)
 \end{aligned}
 $$
 
@@ -148,12 +148,12 @@ In the case of multiple predictors, the LDA classifier assumes that the observat
 
 $$
 \begin{aligned} 
-\delta_k(x) = x^T \Sigma^{-1} \mu_k - \frac{1}{2} \mu_K^T \Sigma^{-1} \mu_k + \text{log} \pi_k
+\delta_k(x) = x^T \Sigma^{-1} \mu_k - \frac{1}{2} \mu_K^T \Sigma^{-1} \mu_k + \text{log } \pi_k
 \end{aligned}
 $$
 
 is largest.
 
-As before, we need to estimate the unknown parameters $\mu_1, \ldots, \mu_K, \pi_1, \ldots, \pi_K$, and $\Sigma$.  The formulas to do these are similar to those discussed in the previous section.  To assign a new observation $X = x$, LDA uses these estimates to calculate $\hat{\delta}_k(x)$, and the classifies the observation to the class for which $\hat{\delta}_k(x)$ is largest.
+As before, we need to estimate the unknown parameters $\mu_1, \ldots, \mu_K, \pi_1, \ldots, \pi_K$, and $\Sigma$.  The formulas to do these are similar to those discussed in the previous section.  To assign a new observation $X = x$, LDA uses these estimates to calculate $\hat{\delta}_k(x)$, and then classifies the observation to the class for which $\hat{\delta}_k(x)$ is largest.
 
-In a future post, I'll explore investigating the results of an LDA classifier via calculated statistics such as false positive error rates (Type I error, 1 - specificity), true positive error rates (sensitivity, recall), precision, as well as ROC curves.
+In a future post, I'll explore investigating the results of an LDA classifier via calculated statistics such as *false positive error rates* (*Type I error*, 1 - *specificity*), *true positive error rates* (*sensitivity*, *recall*), *precision*, as well as *ROC curves*.

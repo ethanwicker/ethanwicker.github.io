@@ -90,7 +90,7 @@ By manipulating the above equation, we can show that assigning an observation $X
 
 $$
 \begin{aligned} 
-\delta_k(x) = x \cdot \frac{\mu_k}{\sigma^2} - \frac{\mu_k^2}{2\sigma^2} +\text{log}(\pi_k)
+\delta_k(x) = x \cdot \frac{\mu_k}{\sigma^2} - \frac{\mu_k^2}{2\sigma^2} +\text{log }(\pi_k)
 \end{aligned}
 $$
 

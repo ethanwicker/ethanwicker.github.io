@@ -52,19 +52,19 @@ Pr(Y = k \vert X = x) = \frac{\pi_k f_k(x){\sum_{l=1}{K}\pi_l f_l(x)}.
 $$
 
 
-Notice, we can use estimates of $\pi_k$ and $\f_k(X)$ to compute $p_k(X)$, where $p_k(X) = Pr(Y = k \vert X = x)$.  In general, it is straightforward to estimate $\pi_k$ if we have a random sample of observation with responses from the populations.  However, estimating the density function $f_k(X)$ can be more challenging, unless we assume some simple forms for these densities.
+Notice, we can use estimates of $\pi_k$ and $f_k(X)$ to compute $p_k(X)$, where $p_k(X) = Pr(Y = k \vert X = x)$.  In general, it is straightforward to estimate $\pi_k$ if we have a random sample of observation with responses from the populations.  However, estimating the density function $f_k(X)$ can be more challenging, unless we assume some simple forms for these densities.
 
-$p_k(X)$ is referred to as the *posterior* probability that an observation $X = x$ belongs to the $k$th class.  It is the probability that an observation belongs to the $k$th class, given the predictor value for that observation. 
+$p_k(X)$ is referred to as the *posterior* probability that an observation $X = x$ belongs to the $k$th class.
 
-In our example, let's calculate the posterior probability that runners with 800-meter times of three minutes are American.  Let's imagine for simplicity that 50 American's run a time of exactly three minutes, while 10 Britains and 20 Canadians run a time of exactly three minutes.  Thus, the posterior probability that an observation $X = 3 minutes$ is American is given by
+In our example, let's calculate the posterior probability that runners with 800-meter times of three minutes are American.  Let's imagine for simplicity that 50 American's run a time of exactly three minutes, while 10 Britains and 20 Canadians run a time of exactly three minutes.  Thus, the posterior probability that an observation $X = 3 \text{ minutes}$ was ran by an American is
 
 $$
 \begin{aligned} 
-p_{USA}(X=300) = \frac{50 USA Citizens}{50 USA Citizens + 10 UK Citizens + 20 CA Citizens} = \frac{50}{80} = 0.625.
+p_{USA}(X=300) = \frac{50\text{ USA Citizens}}{50\text{ USA Citizens} + 10\text{ UK Citizens} + 20\text{ CA Citizens}} = \frac{50}{80} = 0.625.
 \end{aligned}
 $$
 
-Lastly, the *Bayes classifier* classifies an observation to the class for which $p_k(X)$ is largest.  This classifier has the lowest possible error rate of all classifiers.  Therefore, if we can correctly estimate $\pi_k$ and $\f_k(X)$, we can develop a classifier that approximates the Bayes classifier.  This is the basis for linear discriminant analysis.
+Lastly, the *Bayes classifier* classifies an observation to the class for which $p_k(X)$ is largest.  This classifier has the lowest possible error rate of all classifiers.  Therefore, if we can correctly estimate $\pi_k$ and $f_k(X)$, we can develop a classifier that approximates the Bayes classifier.  This is the basis for linear discriminant analysis.
 
 ### Linear Discriminant Analysis with One Predictor
 

@@ -74,15 +74,15 @@ In order to estimate $f_k(x)$, we'll assume it has a Gaussian form.  In the one-
 
 $$
 \begin{aligned} 
-f_k(x) = \frac{1}{\sqrt{2\pi}\sigma_k} \text{exp}(-\frac{1}{2\sigma_k^2}(x-\mu_k)^2),
+f_k(x) = \frac{1}{\sqrt{2\pi}\sigma_k} \text{exp}\big(-\frac{1}{2\sigma_k^2}(x-\mu_k)^2\big),
 \end{aligned}
 $$
 
-where $\mu_k$ and $\sigma_k^2$ are the mean and variance values of the $k$th class.  For now, we will further assume that $\sigma_1^2 = \ldots = \sigma_K^2$, and we will denote this by $\sigma^2$.  Using our estimate for $f_k(x)$ above, we can rewrite Bayes' theorm above as
+where $\mu_k$ and $\sigma_k^2$ are the mean and variance values of the $k$th class.  For now, we will further assume that $\sigma_1^2 = \ldots = \sigma_K^2$, and we will denote this by $\sigma^2$.  Using our estimate for $f_k(x)$ above, we can rewrite Bayes' theorem above as
 
 $$
 \begin{aligned} 
-p_k(x) = \frac{\pi_k \frac{1}{\sqrt{2\pi}\sigma} \text{exp}(-\frac{1}{2\sigma^2}(x-\mu_k)^2){\sum_{l=1}{K}\pi_l \frac{1}{\sqrt{2\pi}\sigma} \text{exp}(-\frac{1}{2\sigma^2}(x-\mu_l)^2)}.
+p_k(x) = \frac{\pi_k \frac{1}{\sqrt{2\pi}\sigma} \text{exp}\big(-\frac{1}{2\sigma^2}(x-\mu_k)^2\big)}{\sum_{l=1}{K}\pi_l \frac{1}{\sqrt{2\pi}\sigma} \text{exp}\big(-\frac{1}{2\sigma^2}(x-\mu_l)^2\big)}.
 \end{aligned}
 $$
 

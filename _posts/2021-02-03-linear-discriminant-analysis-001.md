@@ -13,7 +13,7 @@ The structure of this post was influenced by the fourth chapter of *An Introduct
 
 In logistic regression, we model $Pr(Y=k \vert X=x)$ using the logistic function.  Specifically, we model the conditional distribution of the response $Y$, given the predictors $X$.
 
-In contrast, in discriminant analysis, we use an alternative and less direct approach to estimating these probabilities.  Instead of directly modeling $Pr(Y=k \vert X=x)$, we model the distribution of the predictors $X$ separately for each of the response classes of $Y$.  We then use Bayes' theorem to flip these around into estimates for $Pr(Y=k \vert X=x)$.  When the distributions of the predictors $X$ are assumed to be normal, linear discriminant analysis takes a form very similar to logistic regression.
+In contrast, in discriminant analysis, we use an alternative and less direct approach to estimating these probabilities.  Instead of directly modeling $Pr(Y=k \vert X=x)$, we model the distribution of the predictors $X$ separately for each of the response classes of $Y$.  We then use *Bayes' theorem* to flip these around into estimates for $Pr(Y=k \vert X=x)$.  When the distributions of the predictors $X$ are assumed to be normal, linear discriminant analysis takes a form very similar to logistic regression.
 
 If logistic regression and linear discriminant analysis end up taking such similar forms, then why do we need both?  There are several key reasons:
 
@@ -21,13 +21,13 @@ If logistic regression and linear discriminant analysis end up taking such simil
 
 * In the case where *n*, the sample size, is small and the distribution of the predictors $X$ is approximately normal in each of the response classes, the linear discriminant model is again more stable than the logistic regression model.
 
-* In the case where we have more than two response classes, linear discriminant analysis is an attractive approach over multi-class logistic regression.
+* In the case where we have more than two response classes, linear discriminant analysis is an attractive approach over multiclass logistic regression.
 
 ### Bayes' Theorem for Classification
 
-Next, we'll explore using *Bayes' theorem* for classification.  Bayes' theorem will allow us to perform the "flip" discussed above to determine estimates for $Pr(Y=k \vert X=x)$.  I'll simultaneously introduce the theory and discuss a working example to clarify understanding.
+Next, we'll explore using Bayes' theorem for classification.  Bayes' theorem will allow us to perform the "flip" discussed above to determine estimates for $Pr(Y=k \vert X=x)$.  I'll simultaneously introduce the theory and discuss a working example to clarify understanding.
 
-Suppose we wish to classify an observation into one of $K$ classes, where $K \geq 2$.  Let $\pi_k$ represent the overall or *prior* probability that a randomly chosen observation belongs to the $k$th class.  Let $f_k(x) \equiv Pr(X=x \vert Y=k)$, where $f_k(x)$ denotes the *density function* of X for an observation that comes from the $k$th class.  Remember, the total area under a *density curve* is always equal to one, indicating that across multiple values of $x$, the area under f_k(x)$ is equal to one, for a specific class $k$.
+Suppose we wish to classify an observation into one of $K$ classes, where $K \geq 2$.  Let $\pi_k$ represent the overall or *prior* probability that a randomly chosen observation belongs to the $k$th class.  Let $f_k(x) \equiv Pr(X=x \vert Y=k)$, where $f_k(x)$ denotes the *density function* of X for an observation that comes from the $k$th class.  Remember, the total area under a *density curve* is always equal to one, indicating that across multiple values of $x$, the area under $f_k(x)$ is equal to one, for a specific class $k$.
 
 Note, $f_k(x) \equiv Pr(X=x \vert Y=k)$ is technically only true when $X$ is a discrete random variable.  For the event where $X$ is continuous, $f_k(x)dx$ corresponds to the probability of $X$ falling in a small region $dx$ around $x$.
 
@@ -37,7 +37,7 @@ Let's find the prior probability that a random chosen person is from the USA.  I
 
 $$
 \begin{aligned} 
-$\pi_{USA}$ = \frac{200 USA citizens}{600 total citizens}.
+\pi_{USA} = \frac{200 \text{USA citizens}}{600 \text{total citizens}}.
 \end{aligned}
 $$
 

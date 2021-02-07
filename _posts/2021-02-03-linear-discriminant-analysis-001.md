@@ -11,6 +11,11 @@ The structure of this post was influenced by the fourth chapter of *An Introduct
 
 ### Linear Discriminant Analysis
 
+$S = \{\, x \mid x \not= 17 \,\}$
+$a \vert b$ implies $a \leq b$ when $b \ne 0$
+$a|b$ implies $a \leq b$ when $b \ne 0$
+$\lvert x \rvert$ is always non-negative
+
 In logistic regression, we model $Pr(Y=k\vertX=x)$ using the logistic function.  Specifically, we model the conditional distribution of the response $Y$, given the predictors $X$.
 
 In contrast, in discriminant analysis, we use an alternative and less direct approach to estimating these probabilities.  Instead of directly modeling $Pr(Y=k|X=x)$, we model the distribution of the predictors $X$ separately for each of the response classes of $Y$.  We then use Bayes' theorem to flip these around into estimates for $Pr(Y=k|X=x)$.  When the distributions of the predictors $X$ are assumed to be normal, linear discriminant analysis takes a form very similar to logistic regression.

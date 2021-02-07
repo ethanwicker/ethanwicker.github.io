@@ -102,7 +102,7 @@ is largest.
 
 In the above image on the left, two density functions $f_1(x)$ and $f_2(x)$ are shown, representing two distinct classes.  In the above image on the right, 20 observations drawn from each class are shown as histograms.  Because the data is simulated, the Bayes decision boundary can be calculated, and is shown as the dashed vertical line in each image.  In practice, knowing the true Bayes decision boundary is rarely possible.  Using the known values of $\mu_1$, $\mu_2$, $\sigma_1$, and $\sigma_2$, $\delta_1(x)$ and $\delta_2(x)$ where calculated for all training values of $x$.  The *linear discriminant analysis* (LDA) decision boundary estimated from the training data is shown as the solid vertical line.  Values of $x$ on the left side of the line would be assigned to the green class, while values of $x$ on the right side of the line would be assigned to the purple class.  Notice that the LDA decision boundary is close but not exactly equal to the Bayes decision boundary. 
 
-Unlike the above example, in practice, we must estimate the parameters $u_1, \ldots, \mu_K, \pi_1, \ldots, \pi_K$, and $\sigma^2$.  The LDA method approximates the Bayes classifier using the following estimates for $\pi_k$, \mu_k$, and $\sigma^2$:
+Unlike the above example, in practice, we must estimate the parameters $u_1, \ldots, \mu_K, \pi_1, \ldots, \pi_K$, and $\sigma^2$.  The LDA method approximates the Bayes classifier using the following estimates for $\pi_k$, $\mu_k$, and $\sigma^2$:
 
 $$
 \begin{aligned} 

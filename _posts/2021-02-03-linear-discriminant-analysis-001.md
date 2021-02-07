@@ -11,14 +11,9 @@ The structure of this post was influenced by the fourth chapter of *An Introduct
 
 ### Linear Discriminant Analysis
 
-$S = \{\, x \mid x \not= 17 \,\}$
-$a \vert b$ implies $a \leq b$ when $b \ne 0$
-$a|b$ implies $a \leq b$ when $b \ne 0$
-$\lvert x \rvert$ is always non-negative
-
 In logistic regression, we model $Pr(Y=k \vert X=x)$ using the logistic function.  Specifically, we model the conditional distribution of the response $Y$, given the predictors $X$.
 
-In contrast, in discriminant analysis, we use an alternative and less direct approach to estimating these probabilities.  Instead of directly modeling $Pr(Y=k|X=x)$, we model the distribution of the predictors $X$ separately for each of the response classes of $Y$.  We then use Bayes' theorem to flip these around into estimates for $Pr(Y=k|X=x)$.  When the distributions of the predictors $X$ are assumed to be normal, linear discriminant analysis takes a form very similar to logistic regression.
+In contrast, in discriminant analysis, we use an alternative and less direct approach to estimating these probabilities.  Instead of directly modeling $Pr(Y=k \vert X=x)$, we model the distribution of the predictors $X$ separately for each of the response classes of $Y$.  We then use Bayes' theorem to flip these around into estimates for $Pr(Y=k \vert X=x)$.  When the distributions of the predictors $X$ are assumed to be normal, linear discriminant analysis takes a form very similar to logistic regression.
 
 If logistic regression and linear discriminant analysis end up taking such similar forms, then why do we need both?  There are several key reasons:
 
@@ -30,11 +25,11 @@ If logistic regression and linear discriminant analysis end up taking such simil
 
 ### Bayes' Theorem for Classification
 
-Next, we'll explore using *Bayes' theorem* for classification.  Bayes' theorem will allow us to perform the "flip" discussed above to determine estimates for $Pr(Y=k|X=x)$.  I'll simultaneously introduce the theory and discuss a working example to clarify understanding.
+Next, we'll explore using *Bayes' theorem* for classification.  Bayes' theorem will allow us to perform the "flip" discussed above to determine estimates for $Pr(Y=k \vert X=x)$.  I'll simultaneously introduce the theory and discuss a working example to clarify understanding.
 
-Suppose we wish to classify an observation into one of $K$ classes, where $K \gte 2$.  Let $\pi_k$ represent the overall or *prior* probability that a randomly chosen observation belongs to the $k$th class.  Let $f_k(x) \equiv Pr(X=x|Y=k)$, where $f_k(x)$ denotes the *density function* of X for an observation that comes from the $k$th class.  Remember, the total area under a *density curve* is always equal to one, indicating that across multiple values of $x$, the area under f_k(x)$ is equal to one, for a specific class $k$.
+Suppose we wish to classify an observation into one of $K$ classes, where $K \geq 2$.  Let $\pi_k$ represent the overall or *prior* probability that a randomly chosen observation belongs to the $k$th class.  Let $f_k(x) \equiv Pr(X=x \vert Y=k)$, where $f_k(x)$ denotes the *density function* of X for an observation that comes from the $k$th class.  Remember, the total area under a *density curve* is always equal to one, indicating that across multiple values of $x$, the area under f_k(x)$ is equal to one, for a specific class $k$.
 
-Note, $f_k(x) \equiv Pr(X=x|Y=k)$ is technically only true when $X$ is a discrete random variable.  For the event where $X$ is continuous, $f_k(x)dx$ corresponds to the probability of $X$ falling in a small region $dx$ around $x$.
+Note, $f_k(x) \equiv Pr(X=x \vert Y=k)$ is technically only true when $X$ is a discrete random variable.  For the event where $X$ is continuous, $f_k(x)dx$ corresponds to the probability of $X$ falling in a small region $dx$ around $x$.
 
 Let's explore an example.  Imagine the United States, the United Kingdom and Canada are comparing the times it takes their citizens to run an 800-meter run.  The United States provides the times for 200 of their citizens, the United Kingdom provides the times for 300 of their citizens, and Canada provides the times for 100 of their citizens.
 
@@ -57,11 +52,11 @@ Pr(Y = k|X = x) = \frac{\pi_k f_k(x){\sum_{l=1}{K}\pi_l f_l(x)}.
 $$
 
 
-Notice, we can use estimates of $\pi_k$ and $\f_k(X)$ to compute $p_k(X)$, where $p_k(X) = Pr(Y = k|X = x)$.  In general, it is straightforward to estimate $\pi_k$ if we have a random sample of observation with responses from the populations.  However, estimating the density function $f_k(X)$ can be more challenging, unless we assume some simple forms for these densities.
+Notice, we can use estimates of $\pi_k$ and $\f_k(X)$ to compute $p_k(X)$, where $p_k(X) = Pr(Y = k \vert X = x)$.  In general, it is straightforward to estimate $\pi_k$ if we have a random sample of observation with responses from the populations.  However, estimating the density function $f_k(X)$ can be more challenging, unless we assume some simple forms for these densities.
 
 $p_k(X)$ is referred to as the *posterior* probability that an observation $X = x$ belongs to the $k$th class.  It is the probability that an observation belongs to the $k$th class, given the predictor value for that observation. 
 
-In our example, let's calculate the posterior probability that runners with 800-meter times of three minutes are American.  Let's imagine for simplicity that 50 American's run a time of exactly three minutes, while 10 Britain's and 20 Canadians run a time of exactly three minutes.  Thus, the posterior probability that an observation $X = 3 minutes$ is American is given by
+In our example, let's calculate the posterior probability that runners with 800-meter times of three minutes are American.  Let's imagine for simplicity that 50 American's run a time of exactly three minutes, while 10 Britains and 20 Canadians run a time of exactly three minutes.  Thus, the posterior probability that an observation $X = 3 minutes$ is American is given by
 
 $$
 \begin{aligned} 

@@ -5,7 +5,7 @@ subtitle: A Brief Introduction
 comments: false
 ---
 
-This post is the first in a short series on the linear discriminant analysis method.  In this series, I'll discuss the underlying theory of linear discriminant analysis, as well as applications in Python.
+This post is the first in a series on the linear discriminant analysis method.  In this series, I'll discuss the underlying theory of linear discriminant analysis, as well as applications in Python.
 
 The structure of this post was influenced by the fourth chapter of *An Introduction to Statistical Learning: with Applications in R* by Gareth James, Daniela Witten, Trevor Hastie, and Robert Tibshirani.
 

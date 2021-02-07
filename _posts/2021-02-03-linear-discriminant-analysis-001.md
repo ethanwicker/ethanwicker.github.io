@@ -124,7 +124,7 @@ $$
 
 is largest.
 
-The classifier is referred to as *linear* because the *discriminant functions* $\hat{\delta_k}$ are linear functions of $x$.
+The classifier is referred to as *linear* because the *discriminant functions* $\hat{\delta}_k$ are linear functions of $x$.
 
 ### Linear Discriminant Analysis with Multiple Predictors
 

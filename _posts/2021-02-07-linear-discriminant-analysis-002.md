@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Linear Discriminant Analysis #2"
-subtitle: scikit-learn, Precision, Recall, $F_1$ scores, ROC Curves, and a comparison to Logistic Regression
+subtitle: scikit-learn, Precision, Recall, F-scores, ROC Curves, and a comparison to Logistic Regression
 comments: false
 ---
 

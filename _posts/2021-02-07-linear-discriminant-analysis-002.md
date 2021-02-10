@@ -171,7 +171,9 @@ $$
 \end{aligned}
 $$
 
-If we look at our above confusion matrix, $\text{precision} = \frac{65}{65 + 27} = 0.707$.  Intuitively, precision is representing the proportion of all our predicted positive values that are actually positive.  When comparing different classification models, precision is a good measure when we want to avoid false positives.  For example, when detecting spam emails, a model with high precision is likely preferred.  In the case of spam email, the email user would much rather get the occasional spam email (a false negative) than miss an important email that wasn't spam (a false positive).  
+If we look at our above confusion matrix, $\text{precision} = \frac{65}{65 + 27} = 0.707$.  Intuitively, precision is representing the proportion of all our predicted positive values that are actually positive.  When comparing different classification models, precision is a good measure when we want to avoid false positives.  
+
+For example, when detecting spam emails, a model with high precision is likely preferred.  In the case of spam email, the email user would much rather get the occasional spam email (a false negative) than miss an important email that wasn't spam (a false positive).  
 
 #### Recall
 
@@ -195,11 +197,11 @@ Lastly, let's explore the $F_1$ score.  The $F_1$ score is the harmonic mean of 
 
 $$
 \begin{aligned} 
-\frac{2(\text{precision} \dot \text{recall})}{\text{precision} + \text{recall}}. 
+\frac{2(\text{precision} \cdot \text{recall})}{\text{precision} + \text{recall}}. 
 \end{aligned}
 $$
 
-When comparing models, the $F_1$ score is useful when we want to strike a balance between precision and recall.  That is, when we want to avoid both false positives (such as in spam email classification) and false negatives (such as in anomaly detection).  
+When comparing models, the $F_1$ score is useful when we want to strike a balance between precision and recall.  That is, when we want to avoid both false positives (as in spam email classification) and false negatives (as in anomaly detection).  
 
 #### scikit-learn's `classification_report`
 
@@ -211,6 +213,7 @@ To calculate the above metrics, we can use scikit-learn's `classification_report
 >>> print(classification_report(y_true=y, 
                                 y_pred=y_pred, 
                                 target_names=["Did not survive", "Survived"]))
+
                  precision    recall  f1-score   support
 Did not survive       0.64      0.94      0.76       424
        Survived       0.71      0.22      0.34       290
@@ -220,11 +223,11 @@ Did not survive       0.64      0.94      0.76       424
    weighted avg       0.67      0.65      0.59       714
 ```
 
-Notice that our manually calculated values of precision, recall, and the $F_1$ score align with the `Survived` row above.  For completeness, *support* simply refers to the number of observations that did not survive (424) or that did survive (290) in our training data.
+Note that our manually calculated values of precision, recall, and the $F_1$ score align with the `Survived` row above.  For completeness, *support* simply refers to the number of observations in each class.  For our working example, that is number of observations that did not survive (424) or that did survive (290) present in our training data.
 
 ### ROC Curves
 
-As a final topic to discuss in this post, let's compare our two-predictor LDA model above with the corresponding logistic regression model.  First, let's train our logistic regression model.
+As a final topic for discussion, let's compare our two-predictor LDA model above with the corresponding logistic regression model.  First, let's train our logistic regression model.
 
 ```python
 from sklearn.linear_model import LogisticRegression
@@ -240,21 +243,21 @@ Our correct classification rate of 0.657 from the logistic regression model is s
 
 As a more thorough comparison of these two models, let's draw each's *ROC curve* and calculate the *area under the curve*, or AUC.  A ROC curve, named such for historical reasons, is drawn by adjusting the probability threshold needed to classify an observation to the positive class.
 
-In the logistic regression setting, an observation is typically classified to a class for which the predicted probability is greatest.  In the linear discriminant analysis setting, an observation is classified to a class for which the posterior probability $Pr(Y=k \vert X=x)$ is greatest.  For binary classification, both of these methods are equivalent to assigning an observation to a class if the predicted probability (for logistic regression), or the posterior probability (for LDA), is greater than 0.5.
+In the standard logistic regression setting, an observation is classified to the class for which the predicted probability is greatest.  In the standard linear discriminant analysis setting, an observation is classified to the class for which the posterior probability $Pr(Y=k \vert X=x)$ is greatest.  For binary classification, both of these methods are equivalent to assigning an observation to a class if the predicted probability (for logistic regression), or the posterior probability (for LDA), is greater than 0.5.
 
 However, this threshold of 0.5 can be adjusted.  Perhaps, we want to assign any observation with a predicted probability greater than 0.25 of belonging to the positive class to that class.  Or, we may want to assign any observation with a posterior probability greater than 0.10 of belonging to the positive class to that class.
 
-Changing these thresholds will also change the accuracy, precision, recall and $F_1=score$ of our model, since we are changing the number of true positives, false positives, true negatives and false negatives.  
+Changing these thresholds will also change the accuracy, precision, recall and $F_1$ score of our model, since we are changing the number of true positives, false positives, true negatives and false negatives.  
 
-Reasoning for why we may want to change this threshold often rests on *domain knowledge*.  For example, in my current work in anomaly detection, I may be interested in classifying some observations as anomalous in a greedy manner.  That is, if the observation has a somewhat high probability of being an anomaly (say 30% or 40%), it may be beneficial to classify the observation as an anomaly.  This is particularly true of highly impactful types of anomalies that we are especially interested in detecting.  
+Reasoning for why we may want to change this threshold often rests on *domain knowledge*.  For example, in my current work in anomaly detection, I may be interested in classifying some observations as anomalous in a greedy manner.  That is, if the observation has a somewhat high probability of being an anomaly (say 30% or 40%), it may be beneficial to classify the observation as an anomaly.  This is particularly true of highly impactful types of anomalies we are especially interested in detecting.  
 
-In contrast, for less impactful anomalies, it may be beneficial to classify an observation as an anomaly only if the observation has a fairly high probability of being an anomaly (say 70% or 80%).  In both of these instances, my domain knowledge of the types of anomalies I am interested in detecting is crucial.
+In contrast, for less impactful anomalies, it may be beneficial to classify an observation as an anomaly only if the observation has a fairly high probability of being an anomaly (say 70% or 80%).  In both of these instances, domain knowledge of the types of anomalies I am interested in detecting is crucial.
 
 With that being said however, a useful manner of comparing different classifiers is the ROC curve, and the associated AUC metric.  A ROC curve is drawn for a classifier by changing the threshold value needed to classify an observation as a positive observation, and then plotting the true positive versus false positive rates for each threshold value.
 
-An ideal ROC curve hugs the top-left corner of the plot, and has a large area under the curve value.  An AUC of 1 indicates a perfect classifier for all threshold values.  For comparison purposes, a higher AUC value among models indicates a better classifier for the problem at hand.
+An ideal ROC curve hugs the top-left corner of the plot, and has a large area under the curve value.  An AUC of 1 indicates a perfect classifier for all threshold values, and an AUC below 0.5 indicates the classifer is worse than random guessing.  For comparison purposes, a higher AUC value among models indicates a better classifier for that particular dataset.
 
-Below, let's draw two ROC curves for our logistic regression and LDA models.
+Below, we'll draw two ROC curves for our logistic regression and LDA models.
 
 ```python
 from sklearn.metrics import plot_roc_curve

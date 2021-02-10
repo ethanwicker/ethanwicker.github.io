@@ -159,7 +159,7 @@ $$
 \end{aligned}
 $$
 
-Accuracy has a pretty simple to understand meaning, and is simply the proportion of how many observations our model correctly classified.  In our above confusion matrix, $accuracy = \frac{397 + 65}{397 + 65 + 27 + 225} = 0.647$.
+Accuracy has a pretty simple to understand meaning, and is simply the proportion of how many observations our model correctly classified.  In our above confusion matrix, $\text{accuracy} = \frac{397 + 65}{397 + 65 + 27 + 225} = 0.647$.
 
 #### Precision
 
@@ -171,7 +171,7 @@ $$
 \end{aligned}
 $$
 
-If we look at our above confusion matrix, $precision = \frac{65}{65 + 27} = 0.707$.  Intuitively, precision is representing the proportion of all our predicted positive values that are actually positive.  When comparing different classification models, precision is a good measure when we want to avoid false positives.  For example, when detecting spam emails, a model with high precision is likely preferred.  In the case of spam email, the email user would much rather get the occasional spam email (a false negative) than miss an important email that wasn't spam (a false positive).  
+If we look at our above confusion matrix, $\text{precision} = \frac{65}{65 + 27} = 0.707$.  Intuitively, precision is representing the proportion of all our predicted positive values that are actually positive.  When comparing different classification models, precision is a good measure when we want to avoid false positives.  For example, when detecting spam emails, a model with high precision is likely preferred.  In the case of spam email, the email user would much rather get the occasional spam email (a false negative) than miss an important email that wasn't spam (a false positive).  
 
 #### Recall
 
@@ -183,7 +183,7 @@ $$
 \end{aligned}
 $$
 
-If we look at our above confusion matrix, $recall = \frac{65}{65 + 225} = 0.224$. Intuitively, recall is representing how well a model is classifying positive observations as actually positive.  When comparing different classification models, recall is a good measure when we want to avoid false negatives.
+If we look at our above confusion matrix, $\text{recall} = \frac{65}{65 + 225} = 0.224$. Intuitively, recall is representing how well a model is classifying positive observations as actually positive.  When comparing different classification models, recall is a good measure when we want to avoid false negatives.
 
 In my current work in anomaly detection, recall is a metric of particular interest.  When classifying events as anomalous or not, I would much rather classify a non-anomalous event as anomalous (a false positive), than misclassify an actual anomaly as non-anomalous (a false negative).  Said another way, out of all the actual anomalies out there, I want to make sure I detect as many as I can, even at the expense of including some false positives.
 

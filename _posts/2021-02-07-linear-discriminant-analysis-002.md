@@ -7,6 +7,8 @@ comments: false
 
 This post is the second in a series on linear discriminant analysis (LDA) for classification.  In the first post, I introduced much of the theory behind linear discriminant analysis.  In this post, I'll explore the method using scikit-learn.  I'll also discuss classification metrics such as precision and recall, and compare LDA to logistic regression via ROC curves.
 
+Several other Python libraries do support LDA.  However, scikit-learn in by far the best option.  The libraries mlpy and MDP have not been updated since 2012 and 2016, respectively.  The library PyMVPA has been updated more recently, but has only 66 downloads from PyPI over the past 30 days, compared to scikit-learn's 7.3 million downloads.
+
 ### Titanic Dataset
 
 For this working example, I’ll be using the same slimmed down Titanic dataset used in a previous [logistic regression post](https://ethanwicker.com/2021-01-27-logistic-regression-002/).

@@ -146,7 +146,7 @@ plot_confusion_matrix(estimator=lda,
                       display_labels=["Did not survive", "Survived"])
 ```
 
-![2021-02-07-linear-discriminant-analysis-002-fig-1.png](/assets/img/2021-02-07-linear-discriminant-analysis-002-fig-1.png){: .mx-auto.d-block :}
+![2021-02-07-linear-discriminant-analysis-002-fig-2.png](/assets/img/2021-02-07-linear-discriminant-analysis-002-fig-2.png){: .mx-auto.d-block :}
 
 
 #### Accuracy

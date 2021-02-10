@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Linear Discriminant Analysis #2"
-subtitle: scikit-learn, Precision, Recall, F1-scores, ROC Curves, and a comparison to Logistic Regression
+subtitle: scikit-learn, Precision, Recall, $F_1$ scores, ROC Curves, and a comparison to Logistic Regression
 comments: false
 ---
 
@@ -114,7 +114,7 @@ As such, or best LDA classification rate of 65.3% above is not much better than 
 
 ### Classification Metrics
 
-Next, we'll explore some common metrics to access the performance of our binary classifier.  In particular, we'll explore *accuracy*, *precision*, *recall*, and the $F_1-score$.
+Next, we'll explore some common metrics to access the performance of our binary classifier.  In particular, we'll explore *accuracy*, *precision*, *recall*, and the $F_1$ score.
 
 #### Confusion Matrices
 
@@ -189,9 +189,9 @@ In my current work in anomaly detection, recall is a metric of particular intere
 
 In the medical setting, recall is more commonly referred to as *sensitivity*.  A related term in the medical literature is *specificity*, which is equivalent to the true negative rate.  Occasionally, specificity is also referred to as *recall of the negative class*.
 
-#### $F_1-score$
+#### $F_1$ score
 
-Lastly, let's explore the $F_1-score$.  The $F_1-score$ is the harmonic mean of precision and recall, and is defined as
+Lastly, let's explore the $F_1$ score.  The $F_1$ score is the harmonic mean of precision and recall, and is defined as
 
 $$
 \begin{aligned} 
@@ -199,7 +199,7 @@ $$
 \end{aligned}
 $$
 
-When comparing models, the $F_1-score$ is useful when we want to strike a balance between precision and recall.  That is, when we want to avoid both false positives (such as in spam email classification) and false negatives (such as in anomaly detection).  
+When comparing models, the $F_1$ score is useful when we want to strike a balance between precision and recall.  That is, when we want to avoid both false positives (such as in spam email classification) and false negatives (such as in anomaly detection).  
 
 #### scikit-learn's `classification_report`
 
@@ -220,7 +220,7 @@ Did not survive       0.64      0.94      0.76       424
    weighted avg       0.67      0.65      0.59       714
 ```
 
-Notice that our manually calculated values of precision, recall, and the $F_1-score$ align with the `Survived` row above.  For completeness, *support* simply refers to the number of observations that did not survive (424) or that did survive (290) in our training data.
+Notice that our manually calculated values of precision, recall, and the $F_1$ score align with the `Survived` row above.  For completeness, *support* simply refers to the number of observations that did not survive (424) or that did survive (290) in our training data.
 
 ### ROC Curves
 

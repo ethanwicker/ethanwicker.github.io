@@ -43,3 +43,57 @@ Thus, LDA prefers better when there are relatively few training observations bec
 The above image shows the performance of LDA and QDA in two scenarios.  In the left-hand panel, the classes are Gaussian distributed and have a common correlation of 0.7 between $X_1$ and $X_2$.  In the right-hand panel, the classes are still Gaussian distributed, but the orange class has a correlation of 0.7 between the variables, while the blue class has a correlation of -0.7 between the variables.  Thus, in the right-hand panel, $\Sigma_{\text{orange}} \neq \Sigma_{\text{blue}}$
 
 In the left-hand panel, we see that the black dotted LDA decision boundary approximates the purple dashed Bayes decision boundary quite well.  The green solid QDA decision boundary does not perform as well because it suffers from higher variance without a corresponding decrease in bias.  However, in the right-hand panel, we see the Bayes decision boundary is now quadratic, so QDA more accurately approximates this boundary than does LDA.
+
+### A scikit-learn Example
+
+More details coming soon...
+
+```python
+import pandas as pd
+
+from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis
+
+X = titanic[["age", "fare"]]
+y = titanic["survived"]
+
+qda = QuadraticDiscriminantAnalysis()
+qda.fit(X, y)
+qda.score(X, y)  # 0.647
+```
+
+```python
+>>> print(classification_report(y_true=y, y_pred=qda.predict(X)))
+
+              precision    recall  f1-score   support
+           0       0.64      0.94      0.76       424
+           1       0.72      0.21      0.33       290
+
+    accuracy                           0.65       714
+   macro avg       0.68      0.58      0.55       714
+weighted avg       0.67      0.65      0.59       714
+```
+
+```python
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
+
+lda = LinearDiscriminantAnalysis()
+lda.fit(X, y)
+lda.score(X, y)  # 0.647
+```
+
+```python
+print(classification_report(y_true=y, y_pred=lda.predict(X)))
+```
+
+```python
+import matplotlib.pyplot as plt
+
+from sklearn.metrics import plot_roc_curve
+
+roc_qda = plot_roc_curve(estimator=qda, X=X, y=y)
+roc_log_reg = plot_roc_curve(estimator=lda, X=X, y=y, ax=roc_qda.ax_)
+plt.title("ROC Curve Comparison")
+plt.show()
+```
+
+![2021-02-10-quadratic-discriminant-analysis-001-fig-2.png](/assets/img/2021-02-10-quadratic-discriminant-analysis-001-fig-2.png){: .mx-auto.d-block :}

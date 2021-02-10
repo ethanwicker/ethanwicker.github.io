@@ -20,6 +20,13 @@ Both LDA and QDA classify results by using estimates of the underlying Gaussian 
   &= -\frac{1}{2}x^T \sum_{k}^{-1}x + x^T\sum_{k}^{-1}\mu_k - \frac{1}{2}\mu_k^T\sum_{k}^{-1}\mu_k - \frac{1}{2} \text{log } \vert \sum_{k} \vert + \text{log }  \pi_k
 \end{aligned}
 
+$$
+\begin{aligned} 
+Y &= \beta_0 + \beta_1X_1 + \beta_2X_2 + \beta_3X_1X_2 + \epsilon \\
+  &= \beta_0 + (\beta_1 + \beta_3X_2)X_1 + \beta_2X_2 + \epsilon.
+\end{aligned}
+$$
+
 is largest.
 
 So, the QDA classifier takes estimates for $\Sigma_k$, $\mu_k$, and $\pi_k$ and plugs them into the above equation to calculate $\delta_k$.  Then, the observation is assigned to the class for which $\delta_k$ is largest.  Unlike in linear discriminant analysis, $x$ appears as a *quadratic* function in the above equation.  This is why QDA is named as it is.

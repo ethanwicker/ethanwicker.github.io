@@ -197,7 +197,7 @@ Lastly, let's explore the $F_1$ score.  The $F_1$ score is the harmonic mean of 
 
 $$
 \begin{aligned} 
-\frac{2(\text{precision} \cdot \text{recall})}{\text{precision} + \text{recall}}. 
+2\frac{(\text{precision} \cdot \text{recall})}{\text{precision} + \text{recall}}. 
 \end{aligned}
 $$
 

@@ -15,15 +15,10 @@ As discussed in earlier posts, linear discriminant analysis (LDA) assumes that t
 
 Both LDA and QDA classify results by using estimates of the underlying Gaussian distribution the observations are drawn from in Bayes' theorem, and then classifying an observation to the class for which the posterior probability $Pr(Y = k \vert X = x)$ is greatest.  In contrast to LDA however, under the alternative assumptions of QDA, the Bayes classifier is equivalent to assigning an observation $X = x$ to the class for which 
 
-\begin{aligned} 
-\delta_k(x) &= -\frac{1}{2}(x-\mu_k)^T \sum_{k}^{-1}(X-\mu_k) - \frac{1}{2} \text{log } \vert \sum_{k} \vert + \text{log }  \pi_k \\
-  &= -\frac{1}{2}x^T \sum_{k}^{-1}x + x^T\sum_{k}^{-1}\mu_k - \frac{1}{2}\mu_k^T\sum_{k}^{-1}\mu_k - \frac{1}{2} \text{log } \vert \sum_{k} \vert + \text{log }  \pi_k
-\end{aligned}
-
 $$
 \begin{aligned} 
-Y &= \beta_0 + \beta_1X_1 + \beta_2X_2 + \beta_3X_1X_2 + \epsilon \\
-  &= \beta_0 + (\beta_1 + \beta_3X_2)X_1 + \beta_2X_2 + \epsilon.
+\delta_k(x) &= -\frac{1}{2}(x-\mu_k)^T \sum_{k}^{-1}(X-\mu_k) - \frac{1}{2} \text{log } \vert \sum_{k} \vert + \text{log } \pi_k \\
+  &= -\frac{1}{2}x^T \sum_{k}^{-1}x + x^T\sum_{k}^{-1}\mu_k - \frac{1}{2}\mu_k^T\sum_{k}^{-1}\mu_k - \frac{1}{2} \text{log } \vert \sum_{k} \vert + \text{log }  \pi_k
 \end{aligned}
 $$
 

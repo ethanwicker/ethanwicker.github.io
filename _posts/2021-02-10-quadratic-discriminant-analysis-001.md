@@ -46,20 +46,24 @@ In the left-hand panel, we see that the black dotted LDA decision boundary appro
 
 ### A scikit-learn Example
 
-More details coming soon...
+Next, let's explore using scikit-learn to perform quadratic discriminant analysis on our `titanic` dataset.
 
 ```python
 import pandas as pd
-
 from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis
 
+# Assigning X and y
 X = titanic[["age", "fare"]]
 y = titanic["survived"]
 
+# Fitting model
 qda = QuadraticDiscriminantAnalysis()
 qda.fit(X, y)
 qda.score(X, y)  # 0.647
 ```
+
+After fitting our model, the correct classification score for QDA is approximately 0.647.  We can also view the model's precision, recall, $F_1$ score, and accuracy using scikit-learn's `classification_report` function.
+
 
 ```python
 >>> print(classification_report(y_true=y, y_pred=qda.predict(X)))
@@ -73,6 +77,8 @@ qda.score(X, y)  # 0.647
 weighted avg       0.67      0.65      0.59       714
 ```
 
+For comparison purposes, let's perform a linear discriminant analysis on the same predictor and response variables.
+
 ```python
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 
@@ -81,9 +87,20 @@ lda.fit(X, y)
 lda.score(X, y)  # 0.647
 ```
 
+Interestingly, our LDA model has a correct classification rate that is exactly equal that of our earlier QDA model.  However, the precision, recall, and $F_1$ score values have changed slightly.
+
 ```python
-print(classification_report(y_true=y, y_pred=lda.predict(X)))
+>>> print(classification_report(y_true=y, y_pred=lda.predict(X)))
+
+           0       0.64      0.94      0.76       424
+           1       0.71      0.22      0.34       290
+
+    accuracy                           0.65       714
+   macro avg       0.67      0.58      0.55       714
+weighted avg       0.67      0.65      0.59       714
 ```
+
+Finally, let's compare our two models by plotting their ROC curves and determining comparing the area under the curve for each.
 
 ```python
 import matplotlib.pyplot as plt
@@ -97,3 +114,5 @@ plt.show()
 ```
 
 ![2021-02-10-quadratic-discriminant-analysis-001-fig-2.png](/assets/img/2021-02-10-quadratic-discriminant-analysis-001-fig-2.png){: .mx-auto.d-block :}
+
+From above, we see that the AUC value for our LDA model is slightly higher than that of our QDA model, indicating the LDA model is a better performing classifier, at least on our training data.

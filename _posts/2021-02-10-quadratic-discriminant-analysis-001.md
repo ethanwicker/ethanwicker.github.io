@@ -100,7 +100,7 @@ Interestingly, our LDA model has a correct classification rate that is exactly e
 weighted avg       0.67      0.65      0.59       714
 ```
 
-Finally, let's compare our two models by plotting their ROC curves and determining comparing the area under the curve for each.
+Finally, let's compare our two models by plotting their ROC curves and comparing the area under the curve for each.
 
 ```python
 import matplotlib.pyplot as plt

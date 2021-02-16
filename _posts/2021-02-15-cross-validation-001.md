@@ -97,4 +97,4 @@ CV_{(k)} = \frac{1}{k} \sum_{i=1}^{k} \text{Err}_i
 \end{aligned}
 $$
 
-where $\text{Err}_i = I(y_i \neq \hat{y)_i$.  Here $I()$ is an *indicator* function, which takes a value of 1 when $y_i$ does not equal $\hat{y)_i$, and 0 otherwise.
+where $\text{Err}_i = I(y_i \neq \hat{y}_i$.  Here $I()$ is an *indicator* function, which takes a value of 1 when $y_i$ does not equal $\hat{y}_i$, and 0 otherwise.

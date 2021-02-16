@@ -23,7 +23,7 @@ A simple method to estimate test error is the *validation set approach*.  This a
 
 The resulting validation set error rate is typically assessed using mean squared error (MSE) in the case of a quantitative response or misclassification rate in the case of a qualitative response.  This validation set error rate provides an estimation for the test error rate.
 
-A common training set/validation set split of 70%/30% or 80%/20% is commonly used, depending on the overall number of available observations.  
+A training-validation set split of 70%/30% or 80%/20% is commonly used, depending on the overall number of available observations.  
 
 The validation set approach is conceptually quite simple and easy to implement, and is particularly useful for demonstration purposes, but has two potential drawbacks:
 
@@ -35,13 +35,13 @@ The validation set approach is conceptually quite simple and easy to implement, 
 
 Leave-one-out cross-validation (LOOCV) is a related method to the above described validation set approach, but it attempts to address that method's drawbacks.
 
-Like the validation set approach, LOOCV involves splitting the observations into a training set and a validation set.  However, unlike the simple validation set approach, the validation set used in LOOCV is a single observation $(x_1, y-1)$ and the remaining observations ${(x_2, y_2), \lots, (x_n, y_n)}$ make up the training set.  The statistical learning method of interest is then fit on the $n-1$ training observations, and a prediction $\hat{y}$ is made for the single excluded validation observation $x_1$.  Because $(x_1, y-1)$ was not used to fit the model, $MSE_1=(y_1 - \hat{y}_1)^2$ provides an approximately unbiased estimate for the test error.  Of course, even though $MSE_1$ is unbiased for the test error, it is based on a single observation and is thus highly variable.
+Like the validation set approach, LOOCV involves splitting the observations into a training set and a validation set.  However, unlike the simple validation set approach, the validation set used in LOOCV is a single observation $(x_1, y_1)$ and the remaining observations ${(x_2, y_2), \ldots, (x_n, y_n)}$ make up the training set.  The statistical learning method of interest is then fit on the $n-1$ training observations, and a prediction $\hat{y}$ is made for the single excluded validation observation $x_1$.  Because $(x_1, y_1)$ was not used to fit the model, $MSE_1=(y_1 - \hat{y}_1)^2$ provides an approximately unbiased estimate for the test error.  Of course, even though $MSE_1$ is unbiased for the test error, it is based on a single observation and is thus highly variable.
 
 To address this issue, we repeat this procedure by creating $n$ paired training and validation sets, where each validation set contains a single observations $(x_i, y_i)$.  For each validation set, we then calculate $MSE_i=(y_i - \hat{y}_i)^2$ such that we have $n$ values $MSE_1, MSE_2, \ldots, MSE_n$.  The LOOCV estimate of the test error is the average of these $n$ test error estimates:
 
 $$
 \begin{aligned} 
-CV_(n) = \frac{1}{n} \sum_{i=1}^{n} MSE_i.
+CV_{(n)} = \frac{1}{n} \sum_{i=1}^{n} MSE_i.
 \end{aligned}
 $$
 
@@ -53,7 +53,7 @@ However, LOOCV can be computation expensive, since the model has to be fit $n$ t
 
 $$
 \begin{aligned} 
-CV_(n) = \frac{1}{n} \sum_{i=1}^{n} (\frac{y_i-\hat{y_1}}{1-h_i})^2,
+CV_{(n)} = \frac{1}{n} \sum_{i=1}^{n} (\frac{y_i-\hat{y_1}}{1-h_i})^2,
 \end{aligned}
 $$
 
@@ -63,17 +63,17 @@ In general, LOOCV can be used with any kind of predictive model.  However, the a
 
 ### $k$-Fold Cross-Validation
 
-An alternative to LOOCV is $k$-fold cross-validation.  This method involves dividing the set of observations into $k$ groups, or *folds*, of approximately equal size.  The first fold is treated as a validation set, and the statistical learning method of interest is fit on the remaining $k-1$ folds.  The $MSE_1$ is then computed on the observations in the validation set, and this procedure is repeated $k$ times using a different fold as the validation set each time.  This procedure produces $k$ estimates of the test error $MSE_1, MSE_2, \ldots, \MSE_k$.  The $k$-fold cross-validation test error estimate is then computed as the average of these values:
+An alternative to LOOCV is $k$-fold cross-validation.  This method involves dividing the set of observations into $k$ groups, or *folds*, of approximately equal size.  The first fold is treated as a validation set, and the statistical learning method of interest is fit on the remaining $k-1$ folds.  The $MSE_1$ is then computed on the observations in the validation set, and this procedure is repeated $k$ times using a different fold as the validation set each time.  This procedure produces $k$ estimates of the test error $MSE_1, MSE_2, \ldots, MSE_k$.  The $k$-fold cross-validation test error estimate is then computed as the average of these values:
 
 $$
 \begin{aligned} 
-CV_(k) = \frac{1}{k} \sum_{i=1}^{k} MSE_i.
+CV_{(k)} = \frac{1}{k} \sum_{i=1}^{k} MSE_i.
 \end{aligned}
 $$
 
 LOOCV is, of course, a special case of $k$-fold cross-validation in which $k=n$.
 
-In practice, $k$-fold cross-validation is typically performed using $k=5$ or $k=10$.  The most obvious advantage of using $5$ or $10$ instead of $n$ as the value of $k$ is computational.  Instead of fitting the model $n$ times, the model need only be fit $5$ or $10$ times.
+In practice, $k$-fold cross-validation is typically performed using $k=5$ or $k=10$.  The most obvious advantage of using 5 or 10 instead of $n$ as the value of $k$ is computational.  Instead of fitting the model $n$ times, the model need only be fit 5 or 10 times.
 
 A less obvious but potentially more important advantage of $k$-fold cross-validation over LOOCV is that $k$-fold cross-validation often gives more accurate test error estimates.  This advantage has to do with the bias-variance tradeoff.  
 
@@ -93,8 +93,8 @@ In the above post, I've mostly considered cross-validation in the regression set
 
 $$
 \begin{aligned} 
-CV_(k) = \frac{1}{k} \sum_{i=1}^{k} Err_i
+CV_{(k)} = \frac{1}{k} \sum_{i=1}^{k} \text{Err}_i
 \end{aligned}
 $$
 
-where $Err_i = I(y_i \neq \hat{y)_i$.  Here $I()$ is an *indicator* function, which takes a value of 1 when $y_i$ does not equal $\hat{y)_i$, and 0 otherwise.
+where $\text{Err}_i = I(y_i \neq \hat{y)_i$.  Here $I()$ is an *indicator* function, which takes a value of 1 when $y_i$ does not equal $\hat{y)_i$, and 0 otherwise.

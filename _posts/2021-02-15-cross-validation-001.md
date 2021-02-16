@@ -1,27 +1,9 @@
 ---
 layout: post
 title: "Cross-Validation #1"
-subtitle: Validation Sets, Leave-One-Out Cross-Validation, and *k*-Fold Cross-Validation
+subtitle: Validation Sets, Leave-One-Out Cross-Validation, and k-Fold Cross-Validation
 comments: false
 ---
-
-### Big Header
-
-### Small Header
-
-The structure of this post was influenced by the fifth chapter of *An Introduction to Statistical Learning: with Applications in R* by Gareth James, Daniela Witten, Trevor Hastie, and Robert Tibshirani.
-
-$$
-\begin{aligned} 
-Y = \beta_0 + \beta_1X_1 + \beta_2X_2 + ... + \beta_pX_p + \epsilon 
-\end{aligned}
-$$
-
-| ![2021-01-08-multiple-linear-regression-001-fig-1.png](/assets/img/2021-01-08-multiple-linear-regression-001-fig-1.png){: .mx-auto.d-block :} |
-| :--: |
-| <sub><sup>**Source:** *Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani. An Introduction to Statistical Learning: with Applications in R. New York: Springer, 2013.* |
-
-### Start Below
 
 *Resampling methods* are a crucial tool used commonly in modern statistics and data science.  These methods involve taking repeated samples from a training dataset and refitting a model of interest on each individual sample to obtain additional information about the fitted model.  These methods allow us to learn new information about the model that might not be available from a single fit of the model.
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Cross Validation #2"
-subtitle: scikit-learn's KFold, StratifiedKFold, LeaveOneOut, GroupKFold, and TimeSeriesSplit
+subtitle: scikit-learn's KFold, StratifiedKFold, LeaveOneOut, GroupKFold, and TimeSeriesSplit Classes
 comments: false
 ---
 
@@ -98,7 +98,7 @@ A related technique to $k$-fold cross-validation is stratified $k$-fold cross-va
 
 We can use scikit-learn's `cross_val_score` function to perform these types of cross-validation techniques.  `cross_val_score` will perform $k$-Fold cross validation, unless the `estimator` is a classifier and `y` is binary or multiclass, in which case stratified $k$-fold cross-validation is used.
 
-Using our same `lda` estimator from above, we can use `cross_val_score to perform stratified 10-fold cross-validation.
+Using our same `lda` estimator from above, we can use `cross_val_score` to perform stratified 10-fold cross-validation.
 
 ```python
 >>> from sklearn.model_selection import cross_val_score

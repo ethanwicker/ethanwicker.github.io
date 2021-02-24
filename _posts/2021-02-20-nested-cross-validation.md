@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Nested Cross-Validation"
-subtitle: An Introduction and Overview, Plus scikit-learn Example
+subtitle: An Introduction, Overview, and scikit-learn Example
 comments: false
 ---
 
@@ -96,7 +96,7 @@ Each of the above three values represent an unbiased test error estimate for our
 
 Note, this evaluation tells us how well our model is performing **with hyperparameter tuning as a part of the fitting procedure**.  By definition, the nested cross-validation procedure allows us to evaluate model performance where hyperparameter turning is an integral part of the fitting procedure.
 
-If we interested in what the overall optimal value of `C` is - or any other hyperparameters in the general case - we should instead perform $k$-fold cross-validation on the entire dataset, and select the hyperparameter values that result in the lowest test error estimates.
+If we are interested in what the overall optimal value of `C` is - or any other hyperparameters in the general case - we should instead perform $k$-fold cross-validation on the entire dataset, and select the hyperparameter values that result in the lowest test error estimates.
 
 ### Drawbacks of Nested Cross-Validation
 

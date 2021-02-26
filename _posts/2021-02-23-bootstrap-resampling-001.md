@@ -239,13 +239,13 @@ plt.figure(figsize=(12, 8))
 
 # Plotting each model
 for m in model.estimators_:
-    plt.plot(X, m.predict(X), color='grey', alpha=0.2, zorder=1)
+    plt.plot(X, m.predict(X), color="grey", alpha=0.2, zorder=1)
 
 # Plotting data
 plt.scatter(X, y, color="orange")
 
 # Bagged model prediction
-plt.plot(X, model.predict(X), color='red')
+plt.plot(X, model.predict(X), color="red")
 ```
 
 ![2021-02-23-bootstrapped-resampling-001-fig-3.png](/assets/img/2021-02-23-bootstrapped-resampling-001-fig-3.png){: .mx-auto.d-block :}

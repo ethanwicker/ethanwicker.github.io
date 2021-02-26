@@ -1,13 +1,13 @@
 ---
 layout: post
-title: "Bootstrapped Resampling"
+title: "Bootstrap Resampling"
 subtitle: An Overview and Example With scikit-learn's resample and BaggingRegressor
 comments: false
 ---
 
 The *bootstrap* is a widely used resampling technique first introduced by Bradley Efron in 1979 commonly used to quantify the uncertainty associated with a given estimator or statistical learning method.  The bootstrap can be applied to many problems and methods, and is commonly used to estimate the standard errors of the coefficients estimated from regression model fits, or the distribution of $R^2$ values from those fits.
 
-Using bootstrap resampling, we can estimate the uncertainty - or variability - associated with a given method by taking repeated samples from a dataset with replacement and applying the method.  For example, to estimate the uncertainly of a coefficient estimate $\hat{\beta_1}$ from a linear regression fit, we take $n$ repeated samples with replacement from our dataset and train our linear regression model $n$ times and record each value $\hat{\beta}_1^{*1}, \ldots, \hat{\beta}_1^{*n}$.  With enough resampling - typically 1000 or 10,000 - we can plot the distribution of these bootstrapped estimates $\hat{\beta}_1^{*1}, \ldots, \hat{\beta}_1^{*n}$.  Then, we can use the resulting distribution to quantify the variability of this estimate by calculating useful summary statistics, such as standard errors and confidence intervals.  Often, this distribution will approach the Gaussian distribution.
+Using bootstrap resampling, we can estimate the uncertainty - or variability - associated with a given method by taking repeated samples from a dataset with replacement and applying the method.  For example, to estimate the uncertainly of a coefficient estimate $\hat{\beta_1}$ from a linear regression fit, we take $n$ repeated samples with replacement from our dataset and train our linear regression model $n$ times and record each value $\hat{\beta}_1^{\ast 1}, \ldots, \hat{\beta}_1^{\ast n}$.  With enough resampling - typically 1000 or 10,000 - we can plot the distribution of these bootstrapped estimates $\hat{\beta}_1^{\ast 1}, \ldots, \hat{\beta}_1^{\ast n}$.  Then, we can use the resulting distribution to quantify the variability of this estimate by calculating useful summary statistics, such as standard errors and confidence intervals.  Often, this distribution will approach the Gaussian distribution.
 
 The power of the bootstrap lies in the ability to take repeated samples of the dataset, instead of collecting a new dataset each time.  Also, in contrast to standard error estimates typically reported with statistical software that rely on algebraic methods and underlying assumptions, bootstrapped standard error estimates are more accurate as they are calculated computationally.  For example, the common standard error estimate for a linear regression fit is dependent upon an unknown parameter $\sigma_2$ that is estimated using the residual sum of squares values.  Bootstrapped standard error estimates do not rely on these assumptions and unknown parameters, so they are likely to produce more accurate results.
 

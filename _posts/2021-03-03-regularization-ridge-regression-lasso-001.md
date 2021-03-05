@@ -122,7 +122,7 @@ $\Vert\hat{\beta}_{\lambda}^R\Vert_2 / \Vert \hat{\beta} \Vert_2}$
 
 $\beta$
 
-$\Vert\hat{\beta}_{\lambda}^R\Vert_2$
+$\Vert\hat{\beta}_{\lambda}^R\Vert_2$ $/$ $\Vert \hat{\beta} \Vert_2$
 
 $\Vert\hat{\beta}\Vert$
 

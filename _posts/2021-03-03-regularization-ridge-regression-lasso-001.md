@@ -69,7 +69,7 @@ $$
 \end{aligned}
 $$
 
-Notice ridge regression and the lasso solve similar optimization problems.  The only difference is the $\beta_j^2$ in the ridge regression penalty has been replaced by $\|\beta_j\|$ in the lasso penalty.  The lasso uses an $l_1$ penalty instead of an $l_2$.  The $l_2$ norm of a coefficient vector $\beta$ is given by $\| \beta \|_1 = \sum_|\beta_j|$.
+Notice ridge regression and the lasso solve similar optimization problems.  The only difference is the $\beta_j^2$ in the ridge regression penalty has been replaced by $\|\beta_j\|$ in the lasso penalty.  The lasso uses an $l_1$ penalty instead of an $l_2$.  The $l_2$ norm of a coefficient vector $\beta$ is given by $\lvert\lvert \beta \rvert\rvert_1 = \sum_|\beta_j|$.
 
 Due to the $l_1$ penalty, the lasso performs coefficient shrinkage but also has the effect of forcing some of the coefficient estimates to be exactly equal to zero when $\lambda$ is sufficiently large.  Hence, the lasso performs *variable selection*, and produces models that are much easier to interpret than those produced by ridge regression.  As in ridge regression, cross-validation is often used to select an optimal value of $\lambda$.
 
@@ -101,7 +101,7 @@ $$
 \end{aligned}
 $$
 
-respectively.  When $p=2$, the lasso coefficient estimates have the smallest RSS out of all points that lie within the diamond defined by $\lvert \beta_1 \rvert + \lvert \beta_2 \rvert \leq s$.  Similar, the ridge regression estimates have the smallest RSS out of all points that lie within the circle defined by $\beta_1^2 + \beta_2^2 \leq s$.  This is illustrated in the below figure showing the contours of the errors and constraint functions for the lasso (left) and ridge regression (right).  The solid blue areas are the constraint regions $\abs{\beta_1} + \abs{\beta_2} \leq s$ and $\beta_1^2 + \beta_2^2 \leq s$, while the red ellipses are the contours of the RSS produced from different model fits.  The least squares solution is marked as $\hat{\beta}$.
+respectively.  When $p=2$, the lasso coefficient estimates have the smallest RSS out of all points that lie within the diamond defined by $\lvert \beta_1 \rvert + \lvert \beta_2 \rvert \leq s$.  Similar, the ridge regression estimates have the smallest RSS out of all points that lie within the circle defined by $\beta_1^2 + \beta_2^2 \leq s$.  This is illustrated in the below figure showing the contours of the errors and constraint functions for the lasso (left) and ridge regression (right).  The solid blue areas are the constraint regions $\lvert \beta_1 \rvert + \lvert \beta_2 \rvert \leq s$ and $\beta_1^2 + \beta_2^2 \leq s$, while the red ellipses are the contours of the RSS produced from different model fits.  The least squares solution is marked as $\hat{\beta}$.
 
 | ![2021-03-03-regularization-ridge-regression-lasso-001-fig-4.png](/assets/img/2021-03-03-regularization-ridge-regression-lasso-001-fig-4.png){: .mx-auto.d-block :} |
 | :--: |
@@ -116,5 +116,3 @@ For $p > 2$, the ideas depicted in the above figure still hold.  However, the la
 While the lasso has the advantage of performing variable selection over ridge regression (and thus producing a simpler and more interpretable model), it is not always clear which method leads to better prediction accuracy.
 
 In general, we can expect the lasso to perform better when a relatively small number of predictors are related to the response.  In contrast, we can expect ridge regression to perform better when a relatively large number of the predictors are related to the response.  However, in practice, it is rarely known which predictors are related to the response *a priori*.  Thus, a technique such as cross-validation should be used to determine which approach is better on a particular data set.  Note, when performing hyperparameter tuning and model evaluation simultaneously, a [nested cross-validation procedure](https://ethanwicker.com/2021-02-20-nested-cross-validation/) should be used.
-
-$\norm{v}$

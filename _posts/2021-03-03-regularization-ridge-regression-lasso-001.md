@@ -120,7 +120,7 @@ In general, we can expect the lasso to perform better when a relatively small nu
 x
 $\Vert\hat{\beta}_{\lambda}^R\Vert_2 / \Vert \hat{\beta} \Vert_2}$
 y
-$\Vert\hat{\beta}{\lambda}^R\Vert_2/\Vert \hat{\beta} \Vert_2$
+$\Vert\hat{\beta}_{\lambda}^R\Vert_2/\Vert \hat{\beta} \Vert_2$
 z
 $\beta$
 a

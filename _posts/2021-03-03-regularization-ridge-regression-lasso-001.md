@@ -37,11 +37,11 @@ Outside the statistical literature, ridge regression is known as Tikhonov regula
 | :--: |
 | <sub><sup>**Source:** *Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani. An Introduction to Statistical Learning: with Applications in R. New York: Springer, 2013.* |
 
-The figure above shows ridge regression performed on the Credit data set (available via the ISLR R package).  The left plot shows the standardized coefficients as a function of $\lambda$, while the right plot shows the same coefficients as a function of $\Vert \hat{\beta_{\lambda}^R \Vert_2 / \Vert \hat{}\beta \Vert_2}$.  Here, $\Vert \beta \Vert_2 = \sqrt{\sum_{j=1}^{p} \beta_j^2}$ is the $l_2$ $norm$ and measures the distance of $\beta$ from zero.  From the image, we can see that the `Income`, `Limit`, `Rating` and `Student` variable approach zero as  $\lambda$ increases, while the other variables (dulled out in gray) maintain values near zero for all values of $\lambda$ shown.
+The figure above shows ridge regression performed on the Credit data set (available via the ISLR R package).  The left plot shows the standardized coefficients as a function of $\lambda$, while the right plot shows the same coefficients as a function of $\Vert \hat{\beta}_{\lambda}^R \Vert_2 / \Vert \hat{\beta} \Vert_2}$.  Here, $\Vert \beta \Vert_2 = \sqrt{\sum_{j=1}^{p} \beta_j^2}$ is the $l_2$ $norm$ and measures the distance of $\beta$ from zero.  From the image, we can see that the `Income`, `Limit`, `Rating` and `Student` variable approach zero as  $\lambda$ increases, while the other variables (dulled out in gray) maintain values near zero for all values of $\lambda$ shown.
 
 #### Standardizing Predictor Variables
 
-Note, the ridge regression coefficient estimates are influenced by the scale of the predictor variables.  As such, it is best to apply ridge regression after all predictor variables have been scaled such that they each have a mean of zero and a standard deviation of one.  While, it is not necessary to also standardize the response variable - and it can make model interpretation slightly more challenging - it does not effect model accuracy.
+Note, the ridge regression coefficient estimates are influenced by the scale of the predictor variables.  As such, it is best to apply ridge regression after all predictor variables have been scaled such that they each have a mean of zero and a standard deviation of one.  While, it is not necessary to also standardize the response variable - and it can make model interpretation slightly more challenging - it does not affect model accuracy.
 
 #### Improvements over Least Squares
 

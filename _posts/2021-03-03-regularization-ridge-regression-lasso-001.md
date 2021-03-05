@@ -119,7 +119,7 @@ In general, we can expect the lasso to perform better when a relatively small nu
 
 
 $\Vert\hat{\beta}_{\lambda}^R\Vert_2 / \Vert \hat{\beta} \Vert_2}$
-
+$\Vert\hat{\beta}{\lambda}^R\Vert_2/\Vert \hat{\beta} \Vert_2
 $\beta$
 
 $\Vert\hat{\beta}_{\lambda}^R\Vert_2$ $/$ $\Vert \hat{\beta} \Vert_2$

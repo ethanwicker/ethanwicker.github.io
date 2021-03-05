@@ -118,16 +118,27 @@ While the lasso has the advantage of performing variable selection over ridge re
 In general, we can expect the lasso to perform better when a relatively small number of predictors are related to the response.  In contrast, we can expect ridge regression to perform better when a relatively large number of the predictors are related to the response.  However, in practice, it is rarely known which predictors are related to the response *a priori*.  Thus, a technique such as cross-validation should be used to determine which approach is better on a particular data set.  Note, when performing hyperparameter tuning and model evaluation simultaneously, a [nested cross-validation procedure](https://ethanwicker.com/2021-02-20-nested-cross-validation/) should be used.
 
 x
+
 $\Vert\hat{\beta}_{\lambda}^R\Vert_2 / \Vert \hat{\beta} \Vert_2}$
+
 y
 $\Vert\hat{\beta}_{\lambda}^R\Vert_2/\Vert \hat{\beta} \Vert_2$
+
 z
+
 $\beta$
+
+
 a
+
 $\Vert\hat{\beta}_{\lambda}^R\Vert_2$ $/$ $\Vert \hat{\beta} \Vert_2$
+
 b
+
 $\Vert$ $\hat{\beta}_{\lambda}^R$ $\Vert_2$ $/$ $\Vert$ $\hat{\beta}$ $\Vert_2$
+
 c
+
 $\Vert\hat{\beta}\Vert$
 
 

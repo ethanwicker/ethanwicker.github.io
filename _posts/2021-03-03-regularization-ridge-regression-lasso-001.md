@@ -101,7 +101,7 @@ $$
 \end{aligned}
 $$
 
-respectively.  When $p=2$, the lasso coefficient estimates have the smallest RSS out of all points that lie within the diamond defined by $\|\beta_1\| + \|\beta_2\| \leq s$.  Similar, the ridge regression estimates have the smallest RSS out of all points that lie within the circle defined by $\beta_1^2 + \beta_2^2 \leq s$.  This is illustrated in the below figure showing the contours of the errors and constraint functions for the lasso (left) and ridge regression (right).  The solid blue areas are the constraint regions $|\beta_1| + |\beta_2| \leq s$ and $\beta_1^2 + \beta_2^2 \leq s$, while the red ellipses are the contours of the RSS produced from different model fits.  The least squares solution is marked as $\hat{\beta}$.
+respectively.  When $p=2$, the lasso coefficient estimates have the smallest RSS out of all points that lie within the diamond defined by $\abs{\beta_1} + \abs{\beta_2} \leq s$.  Similar, the ridge regression estimates have the smallest RSS out of all points that lie within the circle defined by $\beta_1^2 + \beta_2^2 \leq s$.  This is illustrated in the below figure showing the contours of the errors and constraint functions for the lasso (left) and ridge regression (right).  The solid blue areas are the constraint regions $\abs{\beta_1} + \abs{\beta_2} \leq s$ and $\beta_1^2 + \beta_2^2 \leq s$, while the red ellipses are the contours of the RSS produced from different model fits.  The least squares solution is marked as $\hat{\beta}$.
 
 | ![2021-03-03-regularization-ridge-regression-lasso-001-fig-4.png](/assets/img/2021-03-03-regularization-ridge-regression-lasso-001-fig-4.png){: .mx-auto.d-block :} |
 | :--: |

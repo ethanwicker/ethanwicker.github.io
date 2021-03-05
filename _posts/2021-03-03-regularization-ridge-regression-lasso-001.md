@@ -69,7 +69,7 @@ $$
 \end{aligned}
 $$
 
-Notice ridge regression and the lasso solve similar optimization problems.  The only difference is the $\beta_j^2$ in the ridge regression penalty has been replaced by $\|\beta_j\|$ in the lasso penalty.  The lasso uses an $l_1$ penalty instead of an $l_2$.  The $l_1$ norm of a coefficient vector $\beta$ is given by $\Vert \beta \Vert}_1 = \sum_|\beta_j|$.
+Notice ridge regression and the lasso solve similar optimization problems.  The only difference is the $\beta_j^2$ in the ridge regression penalty has been replaced by $\|\beta_j\|$ in the lasso penalty.  The lasso uses an $l_1$ penalty instead of an $l_2$.  The $l_1$ norm of a coefficient vector $\beta$ is given by $\Vert\beta\Vert_1 = \sum_|\beta_j|$.
 
 Due to the $l_1$ penalty, the lasso performs coefficient shrinkage but also has the effect of forcing some of the coefficient estimates to be exactly equal to zero when $\lambda$ is sufficiently large.  Hence, the lasso performs *variable selection*, and produces models that are much easier to interpret than those produced by ridge regression.  As in ridge regression, cross-validation is often used to select an optimal value of $\lambda$.
 
@@ -116,5 +116,3 @@ For $p > 2$, the ideas depicted in the above figure still hold.  However, the la
 While the lasso has the advantage of performing variable selection over ridge regression (and thus producing a simpler and more interpretable model), it is not always clear which method leads to better prediction accuracy.
 
 In general, we can expect the lasso to perform better when a relatively small number of predictors are related to the response.  In contrast, we can expect ridge regression to perform better when a relatively large number of the predictors are related to the response.  However, in practice, it is rarely known which predictors are related to the response *a priori*.  Thus, a technique such as cross-validation should be used to determine which approach is better on a particular data set.  Note, when performing hyperparameter tuning and model evaluation simultaneously, a [nested cross-validation procedure](https://ethanwicker.com/2021-02-20-nested-cross-validation/) should be used.
-
-$\Vert\beta\Vert$

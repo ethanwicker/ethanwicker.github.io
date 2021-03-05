@@ -37,7 +37,7 @@ Outside the statistical literature, ridge regression is known as Tikhonov regula
 | :--: |
 | <sub><sup>**Source:** *Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani. An Introduction to Statistical Learning: with Applications in R. New York: Springer, 2013.* |
 
-The figure above shows ridge regression performed on the Credit data set (available via the ISLR R package).  The left plot shows the standardized coefficients as a function of $\lambda$, while the right plot shows the same coefficients as a function of $\Vert$ $\hat{\beta}_\lambda^R$ $\Vert_2$ $/$ $\Vert$ $\hat{\beta}$ $\Vert_2$.  TTTTTESTHere, $\Vert \beta \Vert_2 = \sqrt{\sum_{j=1}^{p} \beta_j^2}$ is the $l_2$ $norm$ and measures the distance of $\beta$ from zero.  From the image, we can see that the `Income`, `Limit`, `Rating` and `Student` variable approach zero as  $\lambda$ increases, while the other variables (dulled out in gray) maintain values near zero for all values of $\lambda$ shown.
+The figure above shows ridge regression performed on the Credit data set (available via the ISLR R package).  The left plot shows the standardized coefficients as a function of $\lambda$, while the right plot shows the same coefficients as a function of the $l_2$ $norm$ of the ridge regression coefficient estimates over the $l_2$ $norm$ of the least squares coefficient estimates.  From the image, we can see that the `Income`, `Limit`, `Rating` and `Student` variable approach zero as  $\lambda$ increases, while the other variables (dulled out in gray) maintain values near zero for all values of $\lambda$ shown.
 
 #### Standardizing Predictor Variables
 
@@ -116,29 +116,3 @@ For $p > 2$, the ideas depicted in the above figure still hold.  However, the la
 While the lasso has the advantage of performing variable selection over ridge regression (and thus producing a simpler and more interpretable model), it is not always clear which method leads to better prediction accuracy.
 
 In general, we can expect the lasso to perform better when a relatively small number of predictors are related to the response.  In contrast, we can expect ridge regression to perform better when a relatively large number of the predictors are related to the response.  However, in practice, it is rarely known which predictors are related to the response *a priori*.  Thus, a technique such as cross-validation should be used to determine which approach is better on a particular data set.  Note, when performing hyperparameter tuning and model evaluation simultaneously, a [nested cross-validation procedure](https://ethanwicker.com/2021-02-20-nested-cross-validation/) should be used.
-
-x
-y
-$\Vert\hat{\beta}_{\lambda}^R\Vert_2/\Vert \hat{\beta} \Vert_2$
-
-z
-
-$\beta$
-
-
-a
-
-$\Vert\hat{\beta}_{\lambda}^R\Vert_2$ $/$ $\Vert \hat{\beta} \Vert_2$
-
-b
-
-$\Vert$ $\hat{\beta}_{\lambda}^R$ $\Vert_2$ $/$ $\Vert$ $\hat{\beta}$ $\Vert_2$
-
-c
-
-$\Vert\hat{\beta}\Vert$
-
-
-
-
-

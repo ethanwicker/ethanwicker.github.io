@@ -89,7 +89,7 @@ The lasso and ridge regression coefficient estimates can be shown to solve the p
 
 $$
 \begin{aligned} 
-\text{minimize} \{RSS\} \text{ subject to } \sum_{j=1}^{p} |beta_j| \leq s
+\text{minimize} \{RSS\} \text{ subject to } \sum_{j=1}^{p} |\beta_j| \leq s
 \end{aligned}
 $$
 
@@ -116,3 +116,5 @@ For $p > 2$, the ideas depicted in the above figure still hold.  However, the la
 While the lasso has the advantage of performing variable selection over ridge regression (and thus producing a simpler and more interpretable model), it is not always clear which method leads to better prediction accuracy.
 
 In general, we can expect the lasso to perform better when a relatively small number of predictors are related to the response.  In contrast, we can expect ridge regression to perform better when a relatively large number of the predictors are related to the response.  However, in practice, it is rarely known which predictors are related to the response *a priori*.  Thus, a technique such as cross-validation should be used to determine which approach is better on a particular data set.  Note, when performing hyperparameter tuning and model evaluation simultaneously, a [nested cross-validation procedure](https://ethanwicker.com/2021-02-20-nested-cross-validation/) should be used.
+
+$\norm{v}

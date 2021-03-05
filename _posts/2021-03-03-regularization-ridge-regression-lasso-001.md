@@ -69,7 +69,7 @@ $$
 \end{aligned}
 $$
 
-Notice ridge regression and the lasso solve similar optimization problems.  The only difference is the $\beta_j^2$ in the ridge regression penalty has been replaced by $\|\beta_j\|$ in the lasso penalty.  The lasso uses an $l_1$ penalty instead of an $l_2$.  The $l_1$ norm of a coefficient vector $\beta$ is given by $\Vert\beta\Vert_1 = \sum_|\beta_j|$.
+Notice ridge regression and the lasso solve similar optimization problems.  The only difference is the $\beta_j^2$ in the ridge regression penalty has been replaced by $\|\beta_j\|$ in the lasso penalty.  The lasso uses an $l_1$ penalty instead of an $l_2$.  The $l_1$ norm of a coefficient vector $\beta$ is given by $\Vert\beta\Vert_1 = \sum_\vert\beta_j\vert$.
 
 Due to the $l_1$ penalty, the lasso performs coefficient shrinkage but also has the effect of forcing some of the coefficient estimates to be exactly equal to zero when $\lambda$ is sufficiently large.  Hence, the lasso performs *variable selection*, and produces models that are much easier to interpret than those produced by ridge regression.  As in ridge regression, cross-validation is often used to select an optimal value of $\lambda$.
 

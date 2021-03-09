@@ -5,7 +5,7 @@ subtitle: A Working Example using scikit-learn, GridSearchCV, seaborn and statsm
 comments: false
 ---
 
-This is the second post in a short series discussing the common regularization methods of ridge regression and the lasso.  [In an earlier post] (https://ethanwicker.com/2021-03-03-regularization-ridge-regression-lasso-001/), I introduced much of the theory surrounding these methods.  For a more detailed overview of regularization, please see that earlier post.
+This is the second post in a short series discussing the common regularization methods of ridge regression and the lasso.  [In an earlier post](https://ethanwicker.com/2021-03-03-regularization-ridge-regression-lasso-001/), I introduced much of the theory surrounding these methods.  For a more detailed overview of regularization, please see that earlier post.
 
 In this post, I'll explore examples of ridge regression and the lasso using both scikit-learn and statsmodels.  scikit-learn's implementation of these two particular methods is more robust, so I'll spend most of the below post discussing and using that package.
 
@@ -144,7 +144,7 @@ ridge_reg_cv.intercept_   # intercept when alpha=100
 
 ### Plotting Standardized Coefficients as Function of $\lambda$
 
-To see how different values of $\lambda (`alpha`) are regularizing the coefficients, we can plot the standardized coefficients as a function of $\lambda$.  Below, I'm using `lambda` and `alpha` to refer to the same penalty controlling parameter. 
+To see how different values of $\lambda$ (`alpha`) are regularizing the coefficients, we can plot the standardized coefficients as a function of $\lambda$.  Below, I'm using `lambda` and `alpha` to refer to the same penalty controlling parameter. 
 
 ```python
 import seaborn as sns

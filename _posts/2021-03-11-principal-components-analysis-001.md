@@ -265,13 +265,6 @@ $$
 \end{aligned}
 $$
 
-b
-
-$$
-\begin{aligned} 
-\stackrel{\text{maximize}}{\phi_{11}, \ldots, \phi_{p1}}
-\end{aligned}
-$$
 
 c
 
@@ -289,37 +282,14 @@ $$
 \end{aligned}
 $$
 
-e
+ee
 
 $$
 \begin{aligned} 
-\frac{1}{n}\sum_{i=1}^{n}{\bigg( \sum_{j=1}^{p}{\phi_{j1}x_{ij}}
+\frac{1}{n}\sum_{i=1}^{n}\ \bigg( \sum_{j=1}^{p}\phi_{j1}x_{ij} \bigg)^2
 \end{aligned}
 $$
 
-f
-
-$$
-\begin{aligned} 
-\text{ subject to } \sum_{j=1}^{p}{\phi_{j1}^2 = 1},
-\end{aligned}
-$$
-
-g
-
-$$
-\begin{aligned} 
-\sum_{i=1}^{n}{\bigg( \sum_{j=1}^{p}{\phi_{j1}x_{ij}}
-\end{aligned}
-$$
-
-h
-
-$$
-\begin{aligned} 
-\sum_{i=1}^{n}( \sum_{j=1}^{p}{\phi_{j1}x_{ij} )^2
-\end{aligned}
-$$
 
 ii
 

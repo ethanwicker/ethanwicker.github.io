@@ -253,5 +253,6 @@ from statsmodels.multivariate.pca import PCA
 # Initializing, standardize=False because X already standarized
 results = PCA(X, standardize=False)
 
-results.loadings  # principal components represented vertically (vs. horizontally in scikit-learn)
+results.loadings  # principal components represented vertically (vs. horizontally in scikit-learn) 
 ```
+ 

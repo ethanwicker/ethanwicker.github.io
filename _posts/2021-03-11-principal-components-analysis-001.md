@@ -317,6 +317,6 @@ h
 
 $$
 \begin{aligned} 
-\sum_{i=1}^{n}{( \sum_{j=1}^{p}{\phi_{j1}x_{ij}} )^2
+\sum_{i=1}^{n}( \sum_{j=1}^{p}{\phi_{j1}x_{ij} )^2
 \end{aligned}
 $$

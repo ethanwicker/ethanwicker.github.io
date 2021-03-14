@@ -285,7 +285,7 @@ ff
 
 $$
 \begin{aligned} 
-\{\frac{1}{n}\sum_{i=1}^{n}\ \bigg( \sum_{j=1}^{p}\phi_{j1}x_{ij} \bigg)^2\}
+\stackrel{\text{maximize}}{\phi_{11}, \ldots, \phi_{p1}} \{\frac{1}{n}\sum_{i=1}^{n}\ \bigg( \sum_{j=1}^{p}\phi_{j1}x_{ij} \bigg)^2\}
 \end{aligned}
 $$
 

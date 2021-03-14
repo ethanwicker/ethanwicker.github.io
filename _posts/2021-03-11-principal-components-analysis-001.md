@@ -328,3 +328,27 @@ $$
 \sum_{i=1}^{n}\bigg( \sum_{j=1}^{p}{\phi_{j1}x_{ij} \bigg)^2
 \end{aligned}
 $$
+
+j
+
+$$
+\begin{aligned} 
+\sum_{i=1}^{n}
+\end{aligned}
+$$
+
+j
+
+$$
+\begin{aligned} 
+\bigg( \sum_{j=1}^{p}{\phi_{j1}x_{ij} \bigg)^2
+\end{aligned}
+$$
+
+$$
+\begin{aligned} 
+\sum_{j=1}^{p}
+\end{aligned}
+$$
+
+

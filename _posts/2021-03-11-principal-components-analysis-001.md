@@ -265,12 +265,11 @@ $$
 \end{aligned}
 $$
 
-
-c
+ccc
 
 $$
 \begin{aligned} 
-\bigg\{ \big\ \frac{1}{n}\sum_{i=1}^{n}{\bigg( \sum_{j=1}^{p}{\phi_{j1}x_ij} \bigg)^2}\bigg\}}} \text{ subject to } \sum_{j=1}^{p}{\phi_{j1}^2 = 1},
+\bigg\{ \big\ \frac{1}{n}\sum_{i=1}^{n}\ \bigg( \sum_{j=1}^{p}\phi_{j1}x_{ij} \bigg)^2\bigg\}}} \text{ subject to } \sum_{j=1}^{p}{\phi_{j1}^2 = 1},
 \end{aligned}
 $$
 
@@ -290,7 +289,6 @@ $$
 \end{aligned}
 $$
 
-
 ii
 
 $$
@@ -298,54 +296,3 @@ $$
 \sum_{i=1}^{n}\ \bigg( \sum_{j=1}^{p}\phi_{j1}x_{ij} \bigg)^2
 \end{aligned}
 $$
-
-jj
-
-$$
-\begin{aligned} 
-\bigg( \sum_{j=1}^{p}\phi_{j1}x_{ij} \bigg)^2
-\end{aligned}
-$$
-
-k
-
-$$
-\begin{aligned} 
-\sum_{j=1}^{p}
-\end{aligned}
-$$
-
-ll
-
-$$
-\begin{aligned} 
-\bigg( {\phi_{j1} x_{ij} \bigg)^2}
-\end{aligned}
-$$
-
-mm
-
-$$
-\begin{aligned} 
-{\phi_{j1} x_{ij}}
-\end{aligned}
-$$
-
-n
-
-$$
-\begin{aligned} 
-\phi_{j1} x_{ij}
-\end{aligned}
-$$
-
-o
-
-
-$$
-\begin{aligned} 
-\phi_{j1} x_{ij}
-\end{aligned}
-$$
-
-

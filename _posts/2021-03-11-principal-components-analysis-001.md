@@ -361,11 +361,11 @@ $$
 \end{aligned}
 $$
 
-m
+mm
 
 $$
 \begin{aligned} 
-{\phi_{j1} x_{ij}
+{\phi_{j1} x_{ij}}
 \end{aligned}
 $$
 
@@ -373,7 +373,7 @@ n
 
 $$
 \begin{aligned} 
-\phi_{j1} x_{ij
+\phi_{j1} x_{ij}
 \end{aligned}
 $$
 

@@ -5,6 +5,8 @@ subtitle: An Overview with scikit-learn and statsmodels Examples
 comments: false
 ---
 
+test
+
 *Principal components analysis* (PCA) is a technique that computes the *principal components* of a dataset and then subsequently uses these components in understanding the data.  PCA is an unsupervised approach.  In a future post, I'll explore *principal components regression*, a related supervised technique that makes uses of the principal components when fitting a linear regression model.  PCA is commonly used during exploratory data analysis to understand and project multidimensional data into a low-dimensional space, and as a preprocessing step for regression, classification, and clustering techniques.  When using PCA as a preprocessing step for other techniques, we often get *less noisy* results, as it is often the case that the signal (in contrast to the noise) in a dataset is concentrated in its first few principal components.
 
 In the below post, I'll expand on this and provide an overview of PCA that includes an explanation of principal components, as well as a geometric interpretation of the principal components.

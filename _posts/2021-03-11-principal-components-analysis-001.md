@@ -37,11 +37,11 @@ $$
 \end{aligned}
 $$
 
-which is solvable via eigen decomposition.  The above objective function is equivalent to maximizing the sample variance of the $n$ values $z_{11}, z_{21}, \ldots, z_{n1}.  We refer to the values $z_{11}, z_{21}, \ldots, z_{n1 as the *scores* of the first principal component.
+which is solvable via eigen decomposition.  The above objective function is equivalent to maximizing the sample variance of the $n$ values $z_{11}, z_{21}, \ldots, z_{n1}$.  We refer to the values $z_{11}, z_{21}, \ldots, z_{n1 as the *scores* of the first principal component.
 
-There is a nice geometric interpretation of the first principal component as well.  The loading vector $\pi_1$ with elements $\phi_{11}, \phi_{21}, \ldots, \phi{p1}$ defines a direction in feature space along which the data *vary the most*.  Projecting the $n$ data points $x_1, \ldots, \x_n$ onto this direction gives us the principal component scores $z_{11}, \ldots, z_{n1}$ themselves.
+There is a nice geometric interpretation of the first principal component as well.  The loading vector $\pi_1$ with elements $\phi_{11}, \phi_{21}, \ldots, \phi_{p1}$ defines a direction in feature space along which the data *vary the most*.  Projecting the $n$ data points $x_1, \ldots, x_n$ onto this direction gives us the principal component scores $z_{11}, \ldots, z_{n1}$ themselves.
 
-After calculating the first principal component $Z_1$ of the features, we can find the second principal component $Z_2$.  The second principal component is the linear combination of $X_1, \ldots, \X_p$ that has maximal variance out of all linear combinations that are *uncorrelated* with $Z_1$.  Constraining $Z_2$ to be uncorrelated with $Z_1$ is equivalent to constraining the second principal component loading vector $\phi_2$ with elements $\phi_{12}, \phi_{22}, \ldots, \phi{p2}$ to be orthogonal with the direction $\phi_1$.  We calculate additional principal components in the same way as above, with the constraint that they are uncorrelated with earlier principal components.
+After calculating the first principal component $Z_1$ of the features, we can find the second principal component $Z_2$.  The second principal component is the linear combination of $X_1, \ldots, X_p$ that has maximal variance out of all linear combinations that are *uncorrelated* with $Z_1$.  Constraining $Z_2$ to be uncorrelated with $Z_1$ is equivalent to constraining the second principal component loading vector $\phi_2$ with elements $\phi_{12}, \phi_{22}, \ldots, \phi_{p2}$ to be orthogonal with the direction $\phi_1$.  We calculate additional principal components in the same way as above, with the constraint that they are uncorrelated with earlier principal components.
 
 After computing the principal components, we can plot them against each other to produce low-dimensional views of the data.  Geometrically, this is equivalent to projecting the original data down onto the subspace spanned by $\phi_1$, $\phi_2$, and $\phi_3$ (in the event where we calculated the first three principal components), and plotting the projected points. 
 
@@ -235,7 +235,7 @@ We can also plot the cumulative proportion of variance explained versus principa
 
 ### Deciding How Many Principal Components to Use
 
-In general, a $n x p$ data matrix $\mathbf{X}$ has $\text{min}(n-1, p)$ distinct principal components.  However, when performing PCA, we are typically interested in using the smallest number of principal components required to understand the data.  However, this is a subjective measure, and when performing PCA in an unsupervised manner (as part of exploratory data analysis, for example), there is no single or simple answer to selecting the number of required principal components.
+In general, a $n \times p$ data matrix $\mathbf{X}$ has $\text{min}(n-1, p)$ distinct principal components.  However, when performing PCA, we are typically interested in using the smallest number of principal components required to understand the data.  However, this is a subjective measure, and when performing PCA in an unsupervised manner (as part of exploratory data analysis, for example), there is no single or simple answer to selecting the number of required principal components.
 
 One method of determining the number of required principal components is by examining a *scree plot* plotting PVE versus principal component, such as the one above.  We choose the smallest number of principal components that are required in order to explain a sizable amount of the variation in the data.  To do this, we eyeball the scree plot and look for a point in which the PVE explained by each subsequent principal component drops off.  This point is often referred to as an *elbow* of the scree plot.
 
@@ -253,6 +253,7 @@ from statsmodels.multivariate.pca import PCA
 # Initializing, standardize=False because X already standarized
 results = PCA(X, standardize=False)
 
-results.loadings  # principal components represented vertically (vs. horizontally in scikit-learn) 
+# Principal components represented vertically (vs. horizontally in scikit-learn) 
+results.loadings
 ```
  

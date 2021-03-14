@@ -337,11 +337,11 @@ $$
 \end{aligned}
 $$
 
-j
+jj
 
 $$
 \begin{aligned} 
-\bigg( \sum_{j=1}^{p}{\phi_{j1}x_{ij} \bigg)^2
+\bigg( \sum_{j=1}^{p}\phi_{j1}x_{ij} \bigg)^2
 \end{aligned}
 $$
 

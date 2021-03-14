@@ -257,11 +257,11 @@ results = PCA(X, standardize=False)
 results.loadings
 ```
  
-a
+aa
 
 $$
 \begin{aligned} 
-\stackrel{\text{maximize}}{\phi_{11}, \ldots, \phi_{p1}} \bigg\{ \big\ \frac{1}{n}\sum_{i=1}^{n}{\bigg( \sum_{j=1}^{p}{\phi_{j1}x_ij} \bigg)^2}\bigg\}}} \text{ subject to } \sum_{j=1}^{p}{\phi_{j1}^2 = 1},
+\stackrel{\text{maximize}}{\phi_{11}, \ldots, \phi_{p1}} \bigg\{ \big\ \frac{1}{n}\sum_{i=1}^{n}\bigg( \sum_{j=1}^{p}{\phi_{j1}x_{ij} \bigg)^2}\bigg\}}} \text{ subject to } \sum_{j=1}^{p}{\phi_{j1}^2 = 1},
 \end{aligned}
 $$
 
@@ -353,11 +353,11 @@ $$
 \end{aligned}
 $$
 
-l
+ll
 
 $$
 \begin{aligned} 
-\bigg( {\phi_{j1} x_{ij} \bigg)^2
+\bigg( {\phi_{j1} x_{ij} \bigg)^2}
 \end{aligned}
 $$
 

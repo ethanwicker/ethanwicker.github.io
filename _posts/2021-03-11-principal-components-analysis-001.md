@@ -369,9 +369,20 @@ $$
 \end{aligned}
 $$
 
+n
+
 $$
 \begin{aligned} 
 \phi_{j1} x_{ij
+\end{aligned}
+$$
+
+o
+
+
+$$
+\begin{aligned} 
+\phi_{j1} x_{ij}
 \end{aligned}
 $$
 

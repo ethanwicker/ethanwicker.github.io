@@ -345,9 +345,33 @@ $$
 \end{aligned}
 $$
 
+k
+
 $$
 \begin{aligned} 
 \sum_{j=1}^{p}
+\end{aligned}
+$$
+
+l
+
+$$
+\begin{aligned} 
+\bigg( {\phi_{j1} x_{ij} \bigg)^2
+\end{aligned}
+$$
+
+m
+
+$$
+\begin{aligned} 
+{\phi_{j1} x_{ij}
+\end{aligned}
+$$
+
+$$
+\begin{aligned} 
+\phi_{j1} x_{ij
 \end{aligned}
 $$
 

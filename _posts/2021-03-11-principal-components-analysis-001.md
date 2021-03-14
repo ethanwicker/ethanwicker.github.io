@@ -293,7 +293,7 @@ e
 
 $$
 \begin{aligned} 
-\frac{1}{n}\sum_{i=1}^{n}{\bigg( \sum_{j=1}^{p}{\phi_{j1}x_ij}
+\frac{1}{n}\sum_{i=1}^{n}{\bigg( \sum_{j=1}^{p}{\phi_{j1}x_{ij}}
 \end{aligned}
 $$
 
@@ -301,6 +301,22 @@ f
 
 $$
 \begin{aligned} 
- \text{ subject to } \sum_{j=1}^{p}{\phi_{j1}^2 = 1},
+\text{ subject to } \sum_{j=1}^{p}{\phi_{j1}^2 = 1},
+\end{aligned}
+$$
+
+g
+
+$$
+\begin{aligned} 
+\sum_{i=1}^{n}{\bigg( \sum_{j=1}^{p}{\phi_{j1}x_{ij}}
+\end{aligned}
+$$
+
+h
+
+$$
+\begin{aligned} 
+\sum_{i=1}^{n}{( \sum_{j=1}^{p}{\phi_{j1}x_{ij}} )^2
 \end{aligned}
 $$

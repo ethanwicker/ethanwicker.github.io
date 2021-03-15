@@ -37,7 +37,7 @@ $$
 \end{aligned}
 $$
 
-which is solvable via eigen decomposition.  The above objective function is equivalent to maximizing the sample variance of the $n$ values $z_{11}, z_{21}, \ldots, z_{n1}$.  We refer to the values $z_{11}, z_{21}, \ldots, z_{n1 as the *scores* of the first principal component.
+which is solvable via eigen decomposition.  The above objective function is equivalent to maximizing the sample variance of the $n$ values $z_{11}, z_{21}, \ldots, z_{n1}$.  We refer to the values $z_{11}, z_{21}, \ldots, z_{n1}$ as the *scores* of the first principal component.
 
 There is a nice geometric interpretation of the first principal component as well.  The loading vector $\pi_1$ with elements $\phi_{11}, \phi_{21}, \ldots, \phi_{p1}$ defines a direction in feature space along which the data *vary the most*.  Projecting the $n$ data points $x_1, \ldots, x_n$ onto this direction gives us the principal component scores $z_{11}, \ldots, z_{n1}$ themselves.
 
@@ -245,12 +245,12 @@ Of course, both of the above methods are inherently subjective.  However, if we 
 
 ### statsmodels
 
-We can use the statsmodels package to perform principal components analysis.
+We can also use the statsmodels package to perform principal components analysis.
 
 ```python
 from statsmodels.multivariate.pca import PCA
 
-# Initializing, standardize=False because X already standarized
+# Initializing, standardize=False because X already standardized
 results = PCA(X, standardize=False)
 
 # Principal components represented vertically (vs. horizontally in scikit-learn) 

@@ -15,7 +15,7 @@ Principal components regression (PCR) involves first performing principal compon
 
 The underlying idea behind PCR is that often a small number of principal components can sufficiently explain most of the variability in the data, as well as the predictor's relationship with the response.  Thus, we assume that *the directions in which $X_1, \ldots, X_p$ show the most variation are the directions that are associated with $Y$*.  This assumption is often not guaranteed, but does turn out to be a reasonable enough approximation and provide good results.  If the assumption does hold, then fitting a least squares model to $Z_1, \ldots, Z_M$ will lead to better results that fitting a least squares model to $X_1, \ldots, X_p$, and we will also be able to mitigate overfitting.  As with PCA, it is recommended to standardize each predictor before performing PCR.
 
-For clarity, we use the actual principal component scores when performing principal components regression.  Just as when performing ordinary linear regression with two predictors, we fit $Y$ onto $X_1$ and $X_2$ where $X_1$ is a vector containing the values $x_1, X_2, \ldots, X_n$, when performing PCR with two principal components we fit $Y$ onto $Z_1$ and $Z_2$ where $Z_1$ is a vector containing the principal component scores $z_1, z_2, \ldots, z_n$.
+For clarity, we use the actual principal component scores when performing principal components regression.  Just as when performing ordinary linear regression with one predictor, we fit $Y$ onto $X_1$ where $X_1$ is a vector containing the values $x_1, x_2, \ldots, x_n$, when performing PCR with one principal components we fit $Y$ onto $Z_1$ where $Z_1$ is a vector containing the principal component scores $z_1, z_2, \ldots, z_n$.
 
 ```python
 import pandas as pd
@@ -45,9 +45,6 @@ pc_scores = pca.fit_transform(X)
 # Initializing estimator
 lin_reg = LinearRegression()
 
-# neg_mean_squared_error instead of just mean_squared_error because cross_val_score tries to maximize scores.
-# But we want a low MSE, or a high negative MSE
-
 # Creating lists to hold results
 components_used = []
 mean_squared_errors = []
@@ -63,6 +60,8 @@ for i in range(1, 11):
                                 scoring="neg_mean_squared_error")
 
     # Calculating average of negative mean squared error, and turning positive
+    # Note: scikit-learn offers negative MSE because cross_val_scores attempts to maximize the score
+    # Since we want a low MSE, we want a high negative MSE
     cv_mean_squared_error = cv_scores.mean() * -1
 
     # Appending results

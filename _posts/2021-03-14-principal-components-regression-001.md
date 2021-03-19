@@ -60,7 +60,7 @@ for i in range(1, 11):
                                 scoring="neg_mean_squared_error")
 
     # Calculating average of negative mean squared error, and turning positive
-    # Note: scikit-learn offers negative MSE because cross_val_scores attempts to maximize the score
+    # Note: scikit-learn offers negative MSE because cross_val_score attempts to maximize a scoring metric
     # Since we want a low MSE, we want a high negative MSE
     cv_mean_squared_error = cv_scores.mean() * -1
 

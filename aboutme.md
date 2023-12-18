@@ -8,7 +8,7 @@ Hi, I'm Ethan.  I'm a Data Scientist living in Denver, CO.
 
 In a past life, I was a high school AP Statistics and mathematics teacher, but now I work in anomaly detection.  
 
-This blog serves as an outlet to summarize and expand on everything I've learned on my journey into data science over the past three years.  Having used R professionally since 2018, I decided to learn Python in 2020, so this blog is also a place for me to dive deep in Python.
+This blog serves as an outlet to summarize and expand on everything I've learned on my journey into data science.  Having used R professionally since 2018, I decided to learn Python in 2020, so this blog is also a place for me to dive deep in Python.
 
 This blog is a constant work in progress.  Following Bloom's taxonomy, I'll be creating many small projects to solidify my understanding of the intricacies of each topic I review.  Topics for near-future posts include: linear discriminant analysis, ridge and lasso regression, principal component regression, splines, isolation forests, and boosting techniques.  
 

@@ -25,7 +25,6 @@ For this example, we'll make use of the common Boston housing dataset.  For this
 
 ```python
 import pandas as pd
-
 from sklearn.datasets import load_boston
 
 # Loading boston dataset

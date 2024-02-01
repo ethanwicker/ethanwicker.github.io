@@ -52,7 +52,6 @@ Note, that the singular value decomposition used to solve for principal componen
 The below code snippet was modified from Jake VanderPlas' [*Python Data Science Handbook*](https://jakevdp.github.io/PythonDataScienceHandbook/05.09-principal-component-analysis.html).
 
 ```python
-
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd

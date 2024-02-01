@@ -76,7 +76,6 @@ Below, we find the best ridge regression performance occurs when `alpha=100`.
 
 ```python
 import numpy as np 
-
 from sklearn.model_selection import GridSearchCV
 
 # Defining grid of candidate alpha values (powers of 10, from 0.00001 to 1000000)

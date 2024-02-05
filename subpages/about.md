@@ -11,4 +11,4 @@ Opportunity is abundant, but it is not evenly distributed.  I'm on a mission to 
 Reach out at ethanwicker@gmail.com if you want to learn more of my story.  I'd love to learn about yours.
 
 Ethan<br>
-[Resume](https://drive.google.com/file/d/1cut1X_NjxkpnEbUiyMSDMutx_wKSjaKq/view?usp=drive_link){:target="_blank"}
+📄 [Resume](https://drive.google.com/file/d/1cut1X_NjxkpnEbUiyMSDMutx_wKSjaKq/view?usp=drive_link){:target="_blank"}

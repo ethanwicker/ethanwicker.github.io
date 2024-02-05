@@ -37,8 +37,8 @@ round-avatar: true
 # Uncomment the links you want to show and add your information to each one.
 social-network-links:
   email: "ethanwicker@gmail.com"
-  github: ethanwicker
   linkedin: ethanwicker
+  github: ethanwicker
   stackoverflow: "9650832/ethan-wicker"
 #  patreon: yourname
 #  youtube: yourname

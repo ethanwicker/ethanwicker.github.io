@@ -14,6 +14,7 @@ author: Ethan Wicker
 # --- List of links in the navigation bar --- #
 
 navbar-links:
+  EdTech Database: edtech_database
   About: "about"
 
 # --- Logo --- #

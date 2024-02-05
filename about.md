@@ -8,5 +8,5 @@ But...the educator in me misses the impact I found teaching.  I've been plotting
 
 Reach out at ethanwicker@gmail.com if you want to learn more of my story.  I'd love to learn about yours.
 
-Ethan
+Ethan\n
 [Resume](https://drive.google.com/file/d/1cut1X_NjxkpnEbUiyMSDMutx_wKSjaKq/view?usp=drive_link)

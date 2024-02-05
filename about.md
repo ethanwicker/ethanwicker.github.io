@@ -1,9 +1,3 @@
----
-layout: page
-title: About
-subtitle: I think data is neat.
----
-
 Hi, I'm Ethan.  I'm a Data Scientist living in Denver, CO.
 
 In a past life, I was a high school AP Statistics and mathematics teacher, but now I work in anomaly detection.  

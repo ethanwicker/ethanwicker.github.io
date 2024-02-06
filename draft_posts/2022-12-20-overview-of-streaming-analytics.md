@@ -1,30 +1,41 @@
 ---
 layout: post
 title: "Streaming Analytics"
-subtitle: "An Overview"
+subtitle: "A Quick Overview"
 comments: false
 ---
 
-Streaming Analytics refers to the processing and analyzing of data records continuously instead of in regular batches. Streams are triggered by specific events as the result of an action or set of actions. Examples of these triggering events might include financial transactions, thermostat readings, website purchases, or phone calls. Streaming Analytics is also known as event stream processing.
-In the Streaming Analytics paradigm, it can be helpful to think of data being streamed through a query. This is in contrast to the batch processing paradigm, where a query can be thought of as being submitted over an entire table or dataset. This is an embellishment and oversimplification, but helpful to illustrate the paradigm switch between streaming and batch processing.
-As an example, imagine we’re interested in sending consumers an alert anytime their indoor home temperature is below 55 degrees. In this example, data is collected from thermostats every hour and streamed through a SQL query that returns TRUE anytime temp is less than or equal to 55 degrees. If a TRUE is returned, a downstream process is kicked off to send a mobile alert to the home owner. In this streaming example, the query can be thought of as always being active and waiting for new data to be sent through it. In contrast, a batch application might store these hourly thermostat readings in a database, and a scheduled query might run over all the new readings every six hours.
+Streaming Analytics refers to the processing and analyzing of data records continuously, as opposed to regular batches. Streams are triggered by specific events as the result of an action or set of actions. Examples of these triggering events might include financial transactions, thermostat readings, website purchases, or phone calls. Streaming Analytics is also known as event stream processing.
 
-TOC HERE?
+In the Streaming Analytics paradigm, it can be helpful to think of data being streamed through a query. This is in contrast to the batch processing paradigm, where a query can be thought of as being submitted over an entire table or dataset. This is an embellishment and oversimplification, but helpful to illustrate the paradigm switch between streaming and batch processing.
+
+As an example, imagine an instructor is accessing student understanding via some online activity.  We might be interested in sending an alert to the instructors tablet anytime a student is performing poorly on the assessment, regardless of if the student has entirely completed the assessment. By doing so, the instructor or a TA can provide immediate support to the student while there is still time remaining in class.  In this example, student responses are continually streamed through a query that returns `TRUE` anytime a student is scoring below 60% on the assessment, as long as the student has attempted at least 10 questions.  In this streaming example, the query can be thought of as always being active and waiting for new data to be sent through it.  In constrast, a batch application might store the student responses in a database, and a scheduled query would send the instructor a summary email the following morning.
+
+- [Stream Processing Tools](#stream-processing-tools)
+- [Stream Processing Engines](#stream-processing-engines)
+- [The Three V’s of Streaming Analytics](#the-three-v-s-of-streaming-analytics)
+- [Spark Structured Streaming](#spark-structured-streaming)
+  * [Fault Tolerance](#fault-tolerance)
+  * [Window Operations on Event Time](#window-operations-on-event-time)
+  * [Handling Late Data and Watermarking](#handling-late-data-and-watermarking)
+  * [Types of Time Windows](#types-of-time-windows)
+  * [Join Operations](#join-operations)
+- [Considerations](#considerations)
 
 ### Stream Processing Tools
 
-For Streaming Analytics, a stream processing tool is needed to manage the movement of the streaming data. Examples of these include Apache Kafka, Amazon Kinesis, and Google Cloud Dataflow. Apache Kafka might be the most common of these. Apache Kafka is almost always configured to process (move) data in parallel threads. Apache Kafka is typically configured to guarantee data that will be delivered at least once or exactly once, but it does guarantee how that data will be sent. It might be sent over one thread or multiple threads. Because of this, data can be received late, out-or-order, or (sometimes) duplicated. This point is crucial in the context of streaming analytics and stream processing engines.
+For Streaming Analytics, a stream processing tool is needed to manage the movement of the streaming data. Examples of these include Apache Kafka, Amazon Kinesis, and Google Cloud Dataflow. Apache Kafka might be the most common of these. Apache Kafka is almost always configured to process (move) data in parallel threads. Apache Kafka is typically configured to guarantee data will be delivered at least once or exactly once, but it does guarantee how that data will be sent. It might be sent over one thread or multiple threads. Because of this, data can be received late, out-or-order, or (sometimes) duplicated. This architecture is crucial in the context of streaming analytics and stream processing engines.
 
 ### Stream Processing Engines
 
-In addition to stream processing tools like Apache Kafka, a stream processing engine is needed to facilitate queries on top of streamed data. Examples of these include Apache Spark Structured Streaming (formerly Spark Streaming), Apache Flink (which is also a stream processing tool), Apache Storm, Spark SQL, and RapidMind. Because data can be received late, out-of-order, or duplicated, the streaming processing engine must be able to handle and reason about all of this.
+In addition to stream processing tools like Apache Kafka, a stream processing engine is needed to facilitate queries on top of streamed data. Examples of these include Apache Spark Structured Streaming (formerly Spark Streaming), Apache Flink (which is also a stream processing tool), Apache Storm, Spark SQL, and RapidMind. Because data can be received late, out-of-order, or duplicated, the streaming processing engine must be able to handle and reason about all of these.
 
 ### The Three V’s of Streaming Analytics
 
 Occasionally discussed, the three V’s of Streaming Analytics refer to:
-- Volume - refers to the (sometimes extremely large) amount of data being stored by many modern organizations
-- Velocity - refers to the amount of data being streamed
-- Variety - refers to the variety of data and formats being streamed (e.g., JSON, binary, raw text, images, etc.)
+- Volume - the (sometimes extremely large) amount of data being stored by many modern organizations
+- Velocity - the amount of data being streamed
+- Variety - the variety of data and formats being streamed (e.g., JSON, binary, raw text, images, etc.)
 
 ### Spark Structured Streaming
 
@@ -32,31 +43,30 @@ Occasionally discussed, the three V’s of Streaming Analytics refer to:
 
 Spark Structured Streaming (formerly Spark Streaming) is a stream processing engine built on the Spark SQL engine. Structured Streaming is scalable, fault-tolerant, supports event-time windows and stream-to-batch joins, and guarantees exactly-once stream processing. Internally, Structured Streaming processes queries using a micro-batch processing engine which can achieve end-to-end latencies as low as 100 milliseconds.
 
-FOR MORE DETAILS SEE https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html
+This post only provides a high-level overview of Spark Structured Streaming.  For more details, please see the [official documentation](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html).
 
 #### Fault Tolerance
 
 In the event Structured Streaming fails (i.e., a fault occurs), end-to-end exactly-once guarantees are ensured. Upon restarting, Structured Streaming will not duplicate or miss any processing. This is achieved via checkpoint and write-ahead logging. This is in contrast to some engines that ensure at-least-once guarantees under a failure, in which data will not be missed but may be duplicated.
-When processing streaming data, Structured Streaming will generate a Result Table. Whenever this Result Table is updated, we might to write it to external storage. Structured Streaming provides three output modes:
-- Complete Mode - the entire Result Table will be written to external storage
-- Append Mode - only the new rows appended in the Result Table since the last trigger will be written to the external storage 
-- Update Mode - only the rows that were updated in the Result Table since the last trigger will be written to the external storage
+
+When processing streaming data, Structured Streaming will generate a *result sable*. Whenever this result table is updated, we might write it to external storage. Structured Streaming provides three output modes:
+- complete - the entire Result Table will be written to external storage
+- append - only the new rows appended in the Result Table since the last trigger will be written to the external storage 
+- update - only the rows that were updated in the Result Table since the last trigger will be written to the external storage
 
 #### Window Operations on Event Time
 
-Event time refers to the actual time the event occurred. This is in contrast to the actual time Spark Structured Streaming receives and
-processes the event, commonly referred to as processing time.
+*Event time* refers to the actual time the event occurred. This is in contrast to the actual time Spark Structured Streaming receives and processes the event, commonly referred to as *processing time*.
 
 Aggregations over a sliding event time window are conceptually very similar to grouped aggregations, and are referred to as window operations.
 
-For example, we may be interested in counting the number of detected furnace ignitor failures every 10 minutes. The tumbling window here would be 10 minutes.
+For example, we may be interested in counting the total number of student responses every 10 minutes across all classes of a given school to monitoring application uptime.  
 
 #### Handling Late Data and Watermarking
 
-Late-arriving data can be handled via watermarking. Watermarks tell Structure Streaming how long to wait for late-arriving data, and require
-a *threshold* value.
+Late-arriving data can be handled via *watermarking*. Watermarks tell Structure Streaming how long to wait for late-arriving data, and require a *threshold* value.
 
-For example, if we are counting the number of detected furnace ignitor failures via a 10 minute sliding window, we could define a watermark threshold to be 5 minutes. If an event that occurred at 12:08 was received at 12:13, the event would be correctly included in the count of furnace ignitor failures for the 12:00-12:10 interval. However, if the event arrived at 12:17 - which is past our 5 minute watermark threshold - the event would be dropped entirely and would not be included in our count at all.
+For example, if we are counting the total number of student responses via a 10 minute sliding window, we could define a watermark threshold to be 5 minutes. If an event that occurred at 12:08 was received at 12:13, the event would be correctly included in the count of furnace ignitor failures for the 12:00-12:10 interval. However, if the event arrived at 12:17 - which is past our 5 minute watermark threshold - the event would be dropped entirely and would not be included in our count at all.
 
 #### Types of Time Windows
 
@@ -78,7 +88,7 @@ Structured Streaming supports a variety of join operations, including streaming-
 
 In general, streaming applications can require more planning and forethought than batch processing applications. For example, thought must be given to how to handle delayed data, and what amount of incoming data latency is acceptable.
 
-Below are some considerations for building and managing streaming applications:
+Some other considerations for building and managing streaming applications are:
 - Does the business problem actually require some action or information within a few seconds or few minutes? Does the current batch processing infrastructure support this need and is a streaming approach actually required? Could a batch processing job that runs every x minutes be a simpler approach for your problem?
 - For different applications and problems, what degree of data latency is acceptable? Seconds? Minutes? If the streaming processing engine is slowed or disrupted, how detrimental will this be?
 - Who will manage the streaming application when deployed in production? Will the management of the application be reasonable? How will your application handle delayed data? After what length of time is it appropriate to ignore delayed data?

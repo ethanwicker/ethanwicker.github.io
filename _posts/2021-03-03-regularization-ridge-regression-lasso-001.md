@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Regularization via Ridge Regression and the Lasso #1"
+title: "Regularization via ridge regression and the lasso #1"
 subtitle: An introduction and overview
 comments: false
 ---
@@ -11,7 +11,7 @@ In the below post, I'll provide an overview of both of these methods.  In a futu
 
 The structure of this post was influenced by the sixth chapter of *An Introduction to Statistical Learning: with Applications in R* by Gareth James, Daniela Witten, Trevor Hastie, and Robert Tibshirani.
 
-### Ridge Regression
+### Ridge regression
 
 Ridge regression can be viewed as an extension of the least squares fitting procedure.  The least squares fitting procedure estimates the coefficients $\beta_0, \beta_1, ... \beta_p$ as the values that minimize 
 
@@ -43,7 +43,7 @@ The figure above shows ridge regression performed on the Credit data set (availa
 
 Note, the ridge regression coefficient estimates are influenced by the scale of the predictor variables.  As such, it is best to apply ridge regression after all predictor variables have been scaled such that they each have a mean of zero and a standard deviation of one.  While, it is not necessary to also standardize the response variable - and it can make model interpretation slightly more challenging - it does not affect model accuracy.
 
-#### Improvements over Least Squares
+#### Improvements over least squares
 
 Ridge regression tends to perform better than least squares fitting.  This advantage is rooted in the *bias-variance trade-off*.  As $\lambda$ increases, the flexibility of the ridge regression fit decreases, leading to decreased variance but increased bias.  This is illustrated in the figure below, where the squared bias is show in black, variance in green, and test mean squared error (MSE) in purple for the ridge regression predictions on a simulated dataset.  As $\lambda$ increases, the shrinkage of the ridge regression coefficients towards zero leads to a reduction in the variance of the predictions, at the expense of a slight increase in bias.  The test MSE, which is a function of the variance plus squared bias, decreases and then rapidly increases.  A minimum value of the test MSE is obtained at approximately $\lambda = 30$.
 
@@ -83,7 +83,7 @@ In the above figure, we see the standardized coefficient estimates produced from
 
 Note, that similar to ridge regression, the lasso should be preformed on standardized predictor variables that have been scaled such that they each have a mean of zero and a standard deviation of one.
 
-#### The variable selection property of the Lasso
+#### The variable selection property of the lasso
 
 The lasso and ridge regression coefficient estimates can be shown to solve the problems
 
@@ -111,7 +111,7 @@ Because the lasso and ridge regression minimize the RSS subject to their respect
 
 For $p > 2$, the ideas depicted in the above figure still hold.  However, the lasso's constraint region becomes a polytope, while ridge regression's constraint region becomes a hypersphere.
 
-### Comparing the Lasso and Ridge Regression
+### Comparing the lasso and ridge regression
 
 While the lasso has the advantage of performing variable selection over ridge regression (and thus producing a simpler and more interpretable model), it is not always clear which method leads to better prediction accuracy.
 

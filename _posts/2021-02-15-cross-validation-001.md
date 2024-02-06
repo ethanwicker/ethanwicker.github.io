@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Cross-Validation #1"
-subtitle: Validation Sets, Leave-One-Out Cross-Validation, and k-Fold Cross-Validation
+title: "Cross-validation #1"
+subtitle: Validation sets, leave-one-out cross-validation, and k-fold cross-validation
 comments: false
 ---
 
@@ -13,7 +13,7 @@ Cross-validation is often used to estimate the *test error* associated with a ce
 
 The structure of this post was influenced by the fifth chapter of *An Introduction to Statistical Learning: with Applications in R* by Gareth James, Daniela Witten, Trevor Hastie, and Robert Tibshirani.
 
-### The Validation Set Approach
+### The validation set approach
 
 To evaluate a model's performance or select optimal flexibility, we are often interested in how the model performs on a test dataset.  That is, a dataset that was not used to train the model, and thus contains *new* data the model has not seen before.  In particular, we are often interested in selecting a model with low test error.  
 
@@ -31,7 +31,7 @@ The validation set approach is conceptually quite simple and easy to implement, 
 
 2. Since a subset of observations is intentionally left out of model training, the model is trained on less data.  Because models tend to perform better when more data is available, the resulting validation set error rate will tend to overestimate the test error rate.  If the same model were fit on all available observations, it would likely provide a lower test error rate in practice.
 
-### Leave-One-Out Cross-Validation
+### Leave-one-out cross-validation
 
 Leave-one-out cross-validation (LOOCV) is a related method to the above described validation set approach, but it attempts to address that method's drawbacks.
 
@@ -61,7 +61,7 @@ where $\hat{y}$ is the $i$th fitted value from the original least squares fit, a
 
 In general, LOOCV can be used with any kind of predictive model.  However, the above formula only holds in the case of least squares linear or polynomial regression.  In the general case, the model must be fit $n$ times to calculate the LOOCV test error estimate.
 
-### $k$-Fold Cross-Validation
+### $k$-fold cross-validation
 
 An alternative to LOOCV is $k$-fold cross-validation.  This method involves dividing the set of observations into $k$ groups, or *folds*, of approximately equal size.  The first fold is treated as a validation set, and the statistical learning method of interest is fit on the remaining $k-1$ folds.  The $MSE_1$ is then computed on the observations in the validation set, and this procedure is repeated $k$ times using a different fold as the validation set each time.  This procedure produces $k$ estimates of the test error $MSE_1, MSE_2, \ldots, MSE_k$.  The $k$-fold cross-validation test error estimate is then computed as the average of these values:
 
@@ -87,7 +87,7 @@ In contrast, when performing $k$-fold cross-validation with $k<n$, we are averag
 
 In summary, LOOCV will produce an unbiased estimate of the test error rate since the training sets contain nearly all observations.  However, the spread or variance of these test error rates will be lower when estimated via $k$-fold cross-validation with $k<n$ because of the averaging of the less correlated $MSE_i$ quantities.  Typically, we find the decrease in bias of LOOCV does not offset the increased variance, and thus $k$-fold cross-validation produces more accurate test error estimates.
 
-### Cross-Validation on Classification Problems
+### Cross-validation on classification problems
 
 In the above post, I've mostly considered cross-validation in the regression setting where the response $Y$ is qualitative.  As such, the measure of model performance has been mean squared error.  However, cross-validation is also appropriate for the classification setting where $Y$ is qualitative.  Instead of using MSE to quantify test error, we instead use the number of misclassified observations.  For example, in the classification setting, the $k$-fold cross-validation error rate is given by
 

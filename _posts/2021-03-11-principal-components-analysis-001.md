@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Principal Components Analysis"
+title: "Principal components analysis"
 subtitle: An overview with scikit-learn and statsmodels examples
 comments: false
 ---

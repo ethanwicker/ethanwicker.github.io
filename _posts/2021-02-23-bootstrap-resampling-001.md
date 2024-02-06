@@ -166,7 +166,7 @@ plt.axvline(x=ci[1], color="red")
 
 ![2021-02-23-bootstrapped-resampling-001-fig-2.png](/assets/img/2021-02-23-bootstrapped-resampling-001-fig-2.png){: .mx-auto.d-block :}
 
-#### Bootstrapped $R^2$ estimates for Lasso Regression
+#### Bootstrapped $R^2$ estimates for lasso regression
 
 As a simple extension, we can also use Lasso regression instead of linear regression.  Below, I show similar code as above that calculates 1000 bootstrapped $R^2$ estimates.
 

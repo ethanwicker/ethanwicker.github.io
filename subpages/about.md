@@ -6,7 +6,7 @@ I taught myself to code and studied statistics, machine learning, and software e
 
 But...the educator in me misses the impact I found teaching.  I've been plotting to transition into EdTech for years, and the time has come to make that dream happen.  
 
-Opportunity is abundant, but it is not evenly distributed.  I'm on a mission to change the world by combining analytics, machine learning, data science, and education, one student learning outcome at a time.
+Opportunity is abundant, but is not evenly distributed.  I'm on a mission to change the world by combining analytics, machine learning, data science, and education, one student learning outcome at a time.
 
 Reach out at ethanwicker@gmail.com if you want to learn more of my story.  I'd love to learn about yours.
 

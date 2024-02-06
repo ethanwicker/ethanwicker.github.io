@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Multiple Linear Regression #5"
+title: "Multiple linear regression #5"
 subtitle: Using scikit-learn, statsmodels, seaborn, and plotly
 comments: false
 ---
@@ -9,7 +9,7 @@ This is the fifth post in a series on the multiple linear regression model.  In 
 
 In this post, I'll once again compare scikit-learn and statsmodels, and will explore how to include interaction terms and non-linear relationships in the model.  I'll also discuss nuances and potential problems of the resulting models, and possible areas for improvement using more sophisticated techniques.
 
-### Boston Housing Dataset
+### Boston housing sataset
 
 I'll make use of the classic Boston Housing Dataset for this working example.  This dataset, originally published by Harrison, D. and Rubinfeld, D.L in 1978 has become one of the more common toy datasets for regression analysis.  The dataset contains information on 506 census tracts around the Boston, MA area, and is available via scikit-learn.
 
@@ -56,7 +56,7 @@ y_df = pd.DataFrame(boston.target, columns=["MEDV"])
 boston_df = pd.concat(objs=[X_df, y_df], axis=1)
 ```
 
-### Qualitative Predictors & Dummy Encoding
+### Qualitative predictors & dummy encoding
 
 Most of the predictors in the Boston housing dataset are quantitative.  The `CHAS` variable however, indicating if the census tract is bounded by the Charles River or not is qualitative and has been pre-encoded as 0 or 1.
 
@@ -115,7 +115,7 @@ It is also possible to achieve a similar result using pandas `get_dummies()`.
 pd.get_dummies(boston_df["crime_label"], drop_first=True)
 ```
 
-### Removing the Additive Assumption: Interaction Terms
+### Removing the additive assumption: Interaction terms
 
 Next, I'll explore relaxing the additive assumption of the multiple linear regression model.  In particular, I'll train a model on `MEDV` versus `ZN`, `CHAS` and `RM`.  For ease of use, user readability, and statistical inference results, I'll use the formula interface provided by statsmodels first, and then scikit-learn's interface further below.
 
@@ -235,7 +235,7 @@ result.summary()
 
 In below examples, I'll show how polynomial regression models can be fit via the scikit-learn API.
 
-### Removing the Linear Assumption: Polynomial Regression
+### Removing the linear assumption: Polynomial regression
 
 In addition to relaxing the additive assumption of the linear regression model, next I'll explore relaxing the linear assumption by including some polynomial terms.
 
@@ -296,11 +296,11 @@ fig.show()
 
 ![2021-01-20-multiple-linear-regression-005-fig-2.png](/assets/img/2021-01-20-multiple-linear-regression-005-fig-2.png){: .mx-auto.d-block :}
 
-### Potential Pitfalls
+### Potential pitfalls
 
 Below, I'll briefly discuss and explore some potential pitfalls of the linear regression model.  I'll attempt to quantify some of these potential issues, to see if they are truly problematic for my working example.
 
-#### Non-linearity of the Response-Predictor Relationships
+#### Non-linearity of the response-predictor relationships
 
 I have already shown above a residual plot used to quantify non-linearity between the response and predictors.  For comparison, below I'll create the residual plot for the model above with the highest value of $R^2$.  This model involves multiple polynomial terms and is non-linear by definition, but viewing its residual plot can still inform as to the overall model fit.
 
@@ -317,7 +317,7 @@ sns.scatterplot(x=y_hat, y=resid).set(xlabel="Predicted Value",
 
 This most recent residual plot has less of a pattern than the one shown earlier, indicating the polynomial fit captures the overall relationship of the data better than the simpler model discussed earlier.  If we ignore the diagonal line in the top right of the plot caused by the abundance of 0 `ZN` values, the residual plot looks quite ideal.
 
-#### Correlation of Error Terms
+#### Correlation of error terms
 
 When viewing the results of a linear regression fit, we should take care to also investigate if any correlation among the error terms is present.  
 
@@ -339,7 +339,7 @@ sns.scatterplot(x=boston_df["RM"], y=resid, ax=axs[1]).set(ylabel="Residual")
 
 The above plots show the residuals versus the predictor variables `ZN` and `RM`, respectfully.  Overall, these plots do not appear to show any strong patterns, and the residuals are mostly randomly and symmetrically distributed around zero.
 
-#### Non-constant Variance of Error Terms (Heteroscedasticity)
+#### Non-constant variance of error terms (heteroscedasticity)
 
 Heteroscedasticity (sometimes spelled Heteroskedasticity) refers to the non-constant variance of the error terms of a model.  It is often useful to visually inspect the residual plot for heteroscedasticity.  From the above residual plot, we can see that the residual variance does seem to increased as the value of $\hat{y}$ increases, although the pattern isn't obvious.
 
@@ -400,7 +400,7 @@ result_no_outliers.summary()
 
 After removing these 6 points, the $R^2$ statistic of the model jumps from .582 to 0.677, which is a notable improvement.  Of course, in practice, care should be taken when removing outliers, and it should only be done within reason.
 
-#### High Leverage Points
+#### High leverage points
 
 In contrast to outliers, high leverage points are those that have usual predictor values $x_i$.  High level points can have drastic effects on model fit, so they are important to identify.  We can calculate the leverage statistic to quantify the leverage of a point.  However, it can be more useful to make use of statsmodels `influence_plot` method, which plots studentized residuals versus leverage.
 

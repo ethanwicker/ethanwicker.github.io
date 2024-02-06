@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Regularization via Ridge Regression and the Lasso #2"
-subtitle: A Working Example using scikit-learn, GridSearchCV, seaborn and statsmodels
+subtitle: A working example using scikit-learn, GridSearchCV, seaborn and statsmodels
 comments: false
 ---
 
@@ -9,7 +9,7 @@ This is the second post in a short series discussing the common regularization m
 
 In this post, I'll explore examples of ridge regression and the lasso using both scikit-learn and statsmodels.  scikit-learn's implementation of these two particular methods is more robust, so I'll spend most of the below post discussing and using that package.
 
-### Boston Housing Dataset
+### Boston housing dataset
 
 For the below examples, I'll use the common Boston housing dataset, available via scikit-learn.
 
@@ -20,7 +20,7 @@ from sklearn.datasets import load_boston
 X, y = load_boston(return_X_y=True)
 ```
 
-### Scaling Features
+### Scaling features
 
 When performing regularization, it's important to scale our predictors.  For regularization, we do not have to scale our response variable, but it doesn't hurt to do so either.  Below I'll just scale the array of predictors `X`.
 
@@ -52,7 +52,7 @@ ridge_reg.intercept_   # intercept
 ridge_reg.predict(X)   # getting predictions
 ```
 
-### $k$-Fold Cross-Validation
+### $k$-fold cross-validation
 
 To better evaluate how our above ridge regression model is perform when `alpha=0.1`, we can perform $k$-fold cross-validation using `cross_val_score`.
 
@@ -68,7 +68,7 @@ cv_scores.mean()
 cv_scores.std()
 ```
 
-### Determining Optimal `alpha` via `GridSearchCV`
+### Determining optimal `alpha` via `GridSearchCV`
 
 To determine an ideal value of `alpha`, we can use scikit-learn's `GridSearchCV`.  This estimator takes a grid of candidate `alpha` values and performs cross-validation to determine which value is performing the best.  Of course, other parameters can be evaluated using `GridSearchCV` as well.
 
@@ -119,7 +119,7 @@ grid_search_results
 10       0.000577      0.000002         0.000338        0.000005  100000.00000  {'alpha': 100000.0}           0.019317          -0.041785          -0.967471          -0.093025          -2.332985        -0.683190        0.900650               11
 ```
 
-### Determining Optimal `alpha` via `RidgeCV`
+### Determining optimal `alpha` via `RidgeCV`
 
 We can also use the `RidgeCV` estimator to perform the same grid search functionality as `GridSearchCV`.  `GridSearchCV` is a more robust class however that can be used for many more types of problems and estimators.
 
@@ -141,7 +141,7 @@ ridge_reg_cv.coef_        # standardized coefficients when alpha=100
 ridge_reg_cv.intercept_   # intercept when alpha=100
 ```
 
-### Plotting Standardized Coefficients as Function of $\lambda$
+### Plotting standardized coefficients as function of $\lambda$
 
 To see how different values of $\lambda$ (`alpha`) are regularizing the coefficients, we can plot the standardized coefficients as a function of $\lambda$.  Below, I'm using `lambda` and `alpha` to refer to the same penalty controlling parameter. 
 

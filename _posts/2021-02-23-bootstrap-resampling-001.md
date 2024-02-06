@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Bootstrap Resampling"
-subtitle: An Overview and Example With scikit-learn's resample and BaggingRegressor
+title: "Bootstrap resampling"
+subtitle: An overview and example with scikit-learn's resample and BaggingRegressor
 comments: false
 ---
 
@@ -13,13 +13,13 @@ The power of the bootstrap lies in the ability to take repeated samples of the d
 
 There are quite a few varieties of the bootstrap, including bootstrap resampling procedures appropriate for time series data.  The particular variety of bootstrapping discussed in this post is *case resampling*, and is likely the most commonly used in practice.
 
-### Calculating Bootstrapped Estimates using scikit-learn's `resample`
+### Calculating bootstrapped estimates using scikit-learn's `resample`
 
 Unlike in R, which has the boot package to perform bootstrap resampling, I was not able to find any similar robust Python package.  I did find a few packages on PyPI for bootstrap resampling in Python, but they all seemed underdeveloped and not commonly used.
 
 However, thankful, scikit-learn does provide a `resample` function that can be used to perform bootstrap resampling.  `resample` specifically resamples a dataset `n_samples` times, with the default option to sample with replacement.  Therefore, we can use this function in our own loop to perform bootstrap resampling.
 
-#### Bootstrapped Standard Error Estimates & Confidence Intervals
+#### Bootstrapped standard error estimates & confidence intervals
 
 For this example, we'll make use of the common Boston housing dataset.  For this first working example, we'll only concern ourselves with two predictor fields to keep it simple. 
 
@@ -166,7 +166,7 @@ plt.axvline(x=ci[1], color="red")
 
 ![2021-02-23-bootstrapped-resampling-001-fig-2.png](/assets/img/2021-02-23-bootstrapped-resampling-001-fig-2.png){: .mx-auto.d-block :}
 
-#### Bootstrapped $R^2$ Estimates for Lasso Regression
+#### Bootstrapped $R^2$ estimates for lasso regression
 
 As a simple extension, we can also use Lasso regression instead of linear regression.  Below, I show similar code as above that calculates 1000 bootstrapped $R^2$ estimates.
 

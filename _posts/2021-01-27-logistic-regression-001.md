@@ -1,13 +1,13 @@
 ---
 layout: post
-title: "Logistic Regression #1"
-subtitle: A Brief Introduction, Maximum Likelihood Estimation, Multiclass Logistic Regression, and More
+title: "Logistic regression #1"
+subtitle: A brief introduction, maximum likelihood estimation, multiclass logistic regression, and more
 comments: false
 ---
 
 This is the first post in a series on the logistic regression model.  The structure of this post was influenced by the fourth chapter of *An Introduction to Statistical Learning: with Applications in R* by Gareth James, Daniela Witten, Trevor Hastie, and Robert Tibshirani.
 
-### Logistic Regression
+### Logistic regression
 
 In contrast to linear regression, which attempts to model the response $Y$ directly, logistic regression attempts to model the probability that $Y$ belongs to a particular category, or class.
 
@@ -51,7 +51,7 @@ $$
 
 Here, the left-hand side is referred to as the *log-odds* or *logit*.  The logistic regression model has a logit that is linear with respect to $X$.  Thus, increasing $X$ by one unit changes the log odds by $B_1$, or equivalently, multiples the odds by $e^{B_1}$. 
 
-#### Estimating the Regression Coefficients
+#### Estimating the regression coefficients
 
 In the multiple linear regression model, we used the method of least squares to estimate the linear regression coefficients.  In the logistic regression model, we could also use a (non-linear) least squares fitting procedure, but it is preferred to use the more general method of *maximum likelihood* due to its statistical properties.
 
@@ -71,11 +71,11 @@ Maximum likelihood is a general approach used to fit many non-linear models.  In
 
 When performing statistical inference, the summary of a logistic regression model can be interpreted in much the same way as that of a linear regression model.  In particular, coefficient p-values used to infer if the particular predictor is associated with the response are interpreted in the same manner.  It is worth noting, the estimated intercept values are of little interest; their main use is to adjust the average fitted probabilities to the proportion of those in the data.
 
-#### Using Qualitative Predictors
+#### Using qualitative predictors
 
 Similar to the linear regression model, qualitative predictors can be included in the logistic regression model via the one-hot encoding (or dummy variable) method.
 
-### Multiple Logistic Regression
+### Multiple logistic regression
 
 The logistic regression model easily extends to multiple predictor variables as well.  We can generalize the logistic function as 
 
@@ -95,7 +95,7 @@ $$
 
 Similar to the linear regression setting, it will sometimes be the case that results obtained using one predictor may be quite different from those obtained using multiple predictors, especially when there is correlation among the predictors.  In general, this phenomenon is known as *confounding*.
 
-### Multiclass Logistic Regression
+### Multiclass logistic regression
 
 Logistic regression is readily extendable to the case where there are greater than two response classes.  This is known as *multiclass logistic regression* or *multinomial logistic regression*.  One such extension has the form
 

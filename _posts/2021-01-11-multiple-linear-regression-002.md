@@ -1,17 +1,17 @@
 ---
 layout: post
-title: "Multiple Linear Regression #2"
-subtitle: A Comparison of Python's scikit-learn and statsmodels Libraries
+title: "Multiple linear regression #2"
+subtitle: A Comparison of python's scikit-learn and statsmodels libraries
 comments: false
 ---
 
 This post is the second in a series on the multiple linear regression model.  In a [previous post](https://ethanwicker.com/2021-01-08-multiple-linear-regression-001/), I introduced the model and much of it's associated theory.  In this post, I'll continue exploring the multiple linear regression model with an example in Python, including a comparison of the scikit-learn and statsmodels libraries.
 
-### Introducing the Example
+### Introducing the example
 
 As a working example, I'll explore the effect weather had on airline flights leaving three New York City airports in 2013.  In particular, I'll join the `airlines`, `flights`, and `weather` datasets from the [nycflights13](https://pypi.org/project/nycflights13/) Python package and investigate the relationship wind speed, precipitation and visibility has on departure delay.
 
-### Preparing the Data
+### Preparing the data
 
 Fortunately, the datasets I'll be working with do not require much cleaning and organization before applying the model.  After renaming the fields for clarity and converting the `timestamp_hour` fields to a `datetime64` data type, I'll join the dataframes via pandas' `merge` and name it `nyc`.  I'll also drop missing values using `pd.dropna()`.  In practice, a more thorough investigation into these missing values would be needed, but I'll ignore this for demonstration purposes. 
 
@@ -101,7 +101,7 @@ memory usage: 20.0+ MB
 4 2013-01-01 11:00:00+00:00          LGA    Delta Air Lines Inc.             -6.0        16.11092                   0.0              10.0
 ```
 
-### Exploratory Data Analysis
+### Exploratory data analysis
 
 Before diving into modeling, it's good practice to perform some initial exploratory data analysis.  I'll use the seaborn data visualization library to create some plots.
 
@@ -168,7 +168,7 @@ It is worth noting that there is a somewhat strong correlation between average p
 
 From the heatmap as well, we can also see there is a small degree of correlation between average precipitation and average departure delay, with a Pearson correlation of 0.22, and a comparable negative correlation between average visibility and average departure delay with a Pearson correlation of -0.21. 
 
-### Multiple Linear Regression via scikit-learn
+### Multiple linear regression via scikit-learn
 
 After some exploratory analysis, we're ready for modeling.  I'll first train the model using scikit-learn, and then train the same model using statsmodels.  While scikit-learn is an excellent machine learning package, it isn't intended for statistical inference.  For this reason, I'll explore the model summary of statsmodels in-depth to learn more about the regression in the next section.
 

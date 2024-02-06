@@ -57,7 +57,7 @@ In addition, when $p$ > $n$, the least squares coefficient estimates do not have
 
 Ridge regression is also computational advantageous over methods like best subset selection, which requires searching through $2^p$ models.
 
-### The Lasso
+### The lasso
 
 Although ridge regression can perform well, it does have one obvious disadvantage.  The method will always include all $p$ predictors in the final model.  While the penalty $\lambda \sum_{j=1}^{p} \beta_j^2$ will shrink coefficients towards zero, it will not set any of them exactly to zero (unless $\lambda = \inf$).  This may not be a problem for prediction accuracy, but can make model interpretability (and management) challenging when $p$ is large.
 

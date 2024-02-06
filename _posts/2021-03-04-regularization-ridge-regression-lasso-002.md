@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Regularization via Ridge Regression and the Lasso #2"
+title: "Regularization via ridge regression and the lasso #2"
 subtitle: A working example using scikit-learn, GridSearchCV, seaborn and statsmodels
 comments: false
 ---
@@ -32,7 +32,7 @@ standard_scaler = StandardScaler()
 X = standard_scaler.fit_transform(X)
 ```
 
-### Ridge Regression
+### Ridge regression
 
 To begin, I'll simply perform ridge regression using scikit-learn's `Ridge` estimator.  We can control the penalty term of our ridge regression using the `alpha` parameter.  This parameter is often denoted as $\lambda$ in the statistical literature.
 
@@ -199,7 +199,7 @@ sns.lineplot(data=coefficients,
 
 ![2021-03-04-regularization-ridge-regression-lasso-002-fig-1.png](/assets/img/2021-03-04-regularization-ridge-regression-lasso-002-fig-1.png){: .mx-auto.d-block :}
 
-### The Lasso
+### The lasso
 
 The scikit-learn API provides parallel functions for performing the lasso instead of ridge regression.  For example, we can also use `GridSearchCV` to determine an optimal `alpha` value for the lasso.
 

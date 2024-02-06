@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Principal Components Regression"
-subtitle: An Overview and scikit-learn Example
+subtitle: An overview and scikit-learn example
 comments: false
 ---
 
@@ -81,6 +81,6 @@ The above plot indicates that PCR performed with an appropriate choice of $M$ ca
 
 Note, PCR is *not* a feature selection method.  This is because each of the $M$ principal components used in the regression model is a linear combination of all of the original predictors $p$.  Thus, PCR is more closely related to ridge regression than the lasso.
 
-### Choosing the Number of Principal Components
+### Choosing the number of principal components
 
 In contrast to principal components analysis, which is inherently an unsupervised approach, PCR is a supervised approached.  In PCR, the number of principal components $M$ is typically chosen via cross-validation.  A method such as $k$-fold cross-validation or leave-one-out cross-validation should be used.

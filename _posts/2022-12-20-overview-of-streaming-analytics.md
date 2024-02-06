@@ -26,18 +26,18 @@ In this streaming example, the query can be thought of as always being active an
 
 ### Stream Processing Tools
 
-For atreaming analytics, a *stream processing tool* is needed to manage the movement of the streaming data.  Examples of these include Apache Kafka, Amazon Kinesis, and Google Cloud Dataflow. Apache Kafka might be the most common of these. Apache Kafka is almost always configured to process (move) data in parallel threads.  Apache Kafka is typically configured to guarantee data will be delivered at least once or exactly once, but it does guarantee how that data will be sent.  It might be sent over one thread or multiple threads.  Because of this, data can be received late, out-or-order, or (sometimes) duplicated.  This architecture is crucial in the context of streaming analytics and stream processing engines.
+For streaming analytics, a *stream processing tool* is needed to manage the movement of the streaming data.  Examples of these include Apache Kafka, Amazon Kinesis, and Google Cloud Dataflow. Apache Kafka might be the most common of these. Apache Kafka is almost always configured to process (move) data in parallel threads.  Apache Kafka is typically configured to guarantee data will be delivered at least once or exactly once, but it does guarantee how that data will be sent.  It might be sent over one thread or multiple threads.  Because of this, data can be received late, out-or-order, or (sometimes) duplicated.  This architecture is crucial in the context of streaming analytics and stream processing engines.
 
 ### Stream Processing Engines
 
-In addition to stream processing tools like Apache Kafka, a stream processing engine is needed to facilitate queries on top of streamed data.  Examples of these include Apache Spark Structured Streaming (formerly Spark Streaming), Apache Flink (which is also a stream processing tool), Apache Storm, Spark SQL, and RapidMind.  Because data can be received late, out-of-order, or duplicated, the streaming processing engine must be able to handle and reason about all of these.
+In addition to stream processing tools like Apache Kafka, a *stream processing engine* is needed to facilitate queries on top of streamed data.  Examples of these include Apache Spark Structured Streaming (formerly Spark Streaming), Apache Flink (which is also a stream processing tool), Apache Storm, Spark SQL, and RapidMind.  Because data can be received late, out-of-order, or duplicated, the streaming processing engine must be able to handle and reason about all of these.
 
 ### The Three V’s of Streaming Analytics
 
 Occasionally discussed, the three V’s of streaming analytics refer to:
-- Volume - the (sometimes extremely large) amount of data being stored by many modern organizations
-- Velocity - the amount of data being streamed
-- Variety - the variety of data and formats being streamed (e.g., JSON, binary, raw text, images, etc.)
+- volume - the (sometimes extremely large) amount of data being stored by many modern organizations
+- velocity - the amount of data being streamed
+- variety - the variety of data and formats being streamed (e.g., JSON, binary, raw text, images, etc.)
 
 ### Spark Structured Streaming
 

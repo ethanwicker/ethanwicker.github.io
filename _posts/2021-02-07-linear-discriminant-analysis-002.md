@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Linear Discriminant Analysis #2"
-subtitle: scikit-learn, Precision, Recall, F-scores, ROC Curves, and a comparison to Logistic Regression
+title: "Linear discriminant analysis #2"
+subtitle: scikit-learn, precision, recall, F-scores, ROC curves, and a comparison to logistic regression
 comments: false
 ---
 
@@ -9,7 +9,7 @@ This post is the second in a series on linear discriminant analysis (LDA) for cl
 
 Several other Python libraries do support LDA.  However, scikit-learn in by far the best option.  The libraries mlpy and MDP have not been updated since 2012 and 2016, respectively.  The library PyMVPA has been updated more recently, but has only 66 downloads from PyPI over the past 30 days, compared to scikit-learn's 7.3 million downloads.
 
-### Titanic Dataset
+### Titanic dataset
 
 For this working example, I’ll be using the same slimmed down Titanic dataset used in a previous [logistic regression post](https://ethanwicker.com/2021-01-27-logistic-regression-002/).
 
@@ -30,7 +30,7 @@ For this working example, I’ll be using the same slimmed down Titanic dataset 
 [714 rows x 5 columns]
 ```
 
-### Linear Discriminant Analysis with One Predictor
+### Linear discriminant analysis with one predictor
 
 To begin, let's explore linear discriminant analysis with just one predictor.  We'll classify whether a passenger `survived` the Titanic sinking or not based on the `fare` that passenger paid.  We might expect passengers who paid a higher fare would be more likely to survive.
 
@@ -64,7 +64,7 @@ array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 
 Our current model correctly predicts whether a passenger survives or not about 65% of the time.  Below we'll investigate if this model is performing well or not.
 
-### Linear Discriminant Analysis with Multiple Predictors
+### Linear discriminant analysis with multiple predictors
 
 Because linear discriminant analysis assumes that the random variable $X = (X_1, X_2, \ldots, X_p)$ is drawn from a multivariate Gaussian distribution, it does not tend to perform well with encoded categorical predictors.  Similarly, because of this assumption, LDA is also not guaranteed to find an optimal solution for non-Gaussian distributed predictor variables.  It should be noted that LDA is somewhat robust to such predictor variables - and may even perform fairly well on classification tasks - but it will likely not find LDA decision boundaries near the optimal Bayes decision boundaries.
 
@@ -104,7 +104,7 @@ The correct classification rate for this model, obtained via the `score()` metho
 
 It should be noted, that the correct classification rate here is the rate on the training data.  We would expect our model to perform better on training data than test data, so the `score` value here is likely inflated.
 
-### Null Error Rate
+### Null error rate
 
 Worth discussing before we continue is the null error rate determined by the *null classifier*.  The null classifier is simply a classifier that always classifies an observation to the majority class.  For our use case, the null classifier would predict that every passenger died on the Titanic, and it would be correct for 59% of our training data.
 
@@ -114,11 +114,11 @@ sum(titanic["survived"] == 0) / len(titanic)   # 0.594
 
 As such, or best LDA classification rate of 65.3% above is not much better than the null error rate. 
 
-### Classification Metrics
+### Classification metrics
 
 Next, we'll explore some common metrics to access the performance of our binary classifier.  In particular, we'll explore *accuracy*, *precision*, *recall*, and the $F_1$ score.
 
-#### Confusion Matrices
+#### Confusion matrices
 
 First however, let's create a *confusion matrix* of our observed and predicted values.  A confusion matrix is a special type of contingency table that shows the number of true positives, false positives, false negatives, and true negatives from a binary classification task.  We can use scikit-learn's `confusion_matrix()` function for this.
 
@@ -227,7 +227,7 @@ Did not survive       0.64      0.94      0.76       424
 
 Note that our manually calculated values of precision, recall, and the $F_1$ score align with the `Survived` row above.  For completeness, *support* simply refers to the number of observations in each class.  For our working example, that is number of observations that did not survive (424) or that did survive (290) present in our training data.
 
-### ROC Curves
+### ROC curves
 
 As a final topic for discussion, let's compare our two-predictor LDA model above with the corresponding logistic regression model.  First, let's train our logistic regression model.
 

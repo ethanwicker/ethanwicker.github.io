@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Multiple Linear Regression #1"
-subtitle: A Brief Introduction
+title: "Multiple linear regression #1"
+subtitle: A brief introduction
 comments: false
 ---
 
@@ -13,7 +13,7 @@ In future posts, I'll compare and contrast the Python packages scikit-learn and 
 
 The structure of this post was influenced by the third chapter of *An Introduction to Statistical Learning: with Applications in R* by Gareth James, Daniela Witten, Trevor Hastie, and Robert Tibshirani.
 
-### Multiple Linear Regression
+### Multiple linear regression
 
 In contrast to simple linear regression, multiple linear regression is able to handle multiple predictor variables, which is a much more common situation in practice.  In general, the multiple linear regression model takes the form 
 
@@ -25,7 +25,7 @@ $$
 
 where $X_j$ represents the $j$th predictor and $\beta_j$ quantifies the association between that variable and the response.  $\beta_j$ is interpreted as the average effect on $Y$ of a one unit increase in $X_j$ *holding all other predictors fixed*.
 
-#### Estimating Coefficients
+#### Estimating coefficients
 
 The multiple linear regression model is typically fit via the least squares method.  This method approximates the values $\beta_0$, $\beta_1$,..., $\beta_p$ by determining the values $\hat{\beta_0}$, $\hat{\beta_1}$,..., $\hat{\beta_p}$ that minimize the sum of squared residuals 
 
@@ -41,7 +41,7 @@ For simple linear regression in a two-dimensional space, this fitting method res
 | :--: |
 | <sub><sup>**Source:** *Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani. An Introduction to Statistical Learning: with Applications in R. New York: Springer, 2013.* |
 
-#### Standard Errors
+#### Standard errors
 
 After finding our estimated coefficients $\hat{\beta_0}$, $\hat{\beta_1}$,..., $\hat{\beta_p}$, it is natural to wonder how accurately each value estimates the true values $\beta_0$, $\beta_1$,..., $\beta_p$.  In general, the *standard error* of the estimate can be calculated to answer this question.  Continuing with the comparison to simple linear regression, the intercept estimate $\hat{\beta_0}$ and the coefficient estimate $\hat{\beta_1}$ under the simple linear regression model can be computed via the following formulas:
 
@@ -56,7 +56,7 @@ where $\sigma^2 = Var(\epsilon)$.
 
 Note, these standard error formulas assume that the errors $\epsilon_i$ for each observation are uncorrelated and have the same variance $\sigma^2$.  This assumption is rare in practice, but these standard error estimations still turn out to be a good approximation.  Similarly, in general, $\sigma^2$ is typically not known, but can be estimated from the data.  This estimation is known as the *residual standard error* and is given by $RSE = \sqrt{RSS/(n-2)}$.
 
-#### Confidence Intervals and Hypothesis Testing
+#### Confidence intervals and hypothesis testing
 
 Returning to the multiple linear regression model, standard errors can also be used to computer confidence intervals and perform hypothesis tests.  For linear regression, a 95% confidence interval for $\beta_j$ is approximately equivalent to 
 
@@ -92,17 +92,17 @@ $$
 
 This t-statistic is a measurement of the number of standard deviations that $\hat{\beta_j}$ is away from 0.  From the Central Limit Theorem, we know that for large sample sizes, the t-distribution will approximate a Gaussian distribution, and thus we can calculate a *p-value* for $\hat{\beta_j}$.  For p-values below a predefined significance level - commonly 0.05 or 0.01 - we *reject the null hypothesis*. 
 
-### Assessing Model Accuracy
+### Assessing model accuracy
 
 The quality of a multiple linear regression fit is typically assessed via two values: the residual standard error (RSE) and the $R^2$ statistic.  These values are included as standard output in most statistical software, including Python's statsmodels module and the base R distribution.  In a future post, I'll explore examples and discuss these values in detail, but for now I'll constrain my discussion to only theory.
 
-#### Residual Standard Error
+#### Residual standard error
 
 The residual standard error was briefly introduced above in the context of calculating standard error values.  RSE, as defined above, is a measure of the standard deviation of the *irreducible error* term $\epsilon$.  If a model fit is quite accurate and predictions obtained from the model are very close to the true response values, RSE is quite small.  However, is a model fit is poor and predictions obtained from the model are far from the true response values, we can expect RSE to be quite high.  Thus, RSE is considered a measure of the *lack of fit* of the model.
 
 Note, the RSE is measured in the units of $Y$, and what is considered *high* or *low* is dependent on the problem at hand.
 
-#### $R^2$ Statistic
+#### $R^2$ statistic
 
 The $R^2$ statistic, commonly called the coefficient of determination or coefficient of multiple correlation, is an alternative measure of model fit.  In contrast to RSE which is measured in the units of $Y$, the $R^2$ statistic is a proportion.  The $R^2$ statistic indicates the proportion of variance explained by the model and is independent of the scale of $Y$.  $R^2$ is calculated via the formula 
 
@@ -118,7 +118,7 @@ The $R^2$ statistic measures the *proportion of variability in* $Y$ *that can be
 
 An extension of the $R^2$ statistic known as *adjusted* $R^2$ and denoted $R_{adj}^2$ will be discussed in a future post.
 
-### Determining if a Relationship Exists Between $X$ and $Y$
+### Determining if a relationship exists between $X$ and $Y$
 
 A question we have yet to explore is that of whether there exists a relationship between the response and predictor variables.  It might be tempting to use the individual predictor p-values discussed above to make this assessment and claim that if any individual predictor p-values are small, then at least one of the predictors is related to the response.  However, this logic is flawed, especially when the number of predictors $p$ is large.  As the number of predictors increases, the chance that the p-value of a single predictor will appear significant increases, even if there is no true association between the predictors and the response.
 
@@ -172,7 +172,7 @@ To determine whether to reject the null hypothesis, we can calculate a p-value f
 
 In the event where the F-statistic is low and we cannot claim that a relationship exists between the response and the predictors, we should not interpret any individual predictor p-values as significant.
 
-### Variable Selection
+### Variable selection
 
 If, after fitting a multiple linear regression model and calculating the F-statistic and associated p-values, we determine that at least one of the predictors is related to the response, the natural progression is to determine *which* predictor variables are actually associated with the response.  It can be informative to look at the individual p-values, but as discussed above, this can be problematic when $p$ is large.
 
@@ -184,11 +184,11 @@ As $p$ increases, the model space grows exponentially and thus trying out many p
 
 Many other techniques exist as well to perform variable and model selection.  Examples of such techniques are *ridge regression*, *lasso regression*, and *principal component analysis*
 
-### Considerations for Prediction
+### Considerations for prediction
 
 Once a multiple linear regression model has been fit, it is trivial to predict the response $Y$.  However, there are three types of uncertainty associated with this prediction we should be aware of.
 
-#### Reducible Error
+#### Reducible error
 
 The least squares plane 
 
@@ -208,10 +208,10 @@ $$
 
 The coefficient estimates $\hat{\beta_0}$, $\hat{\beta_1}$,..., $\hat{\beta_p}$ will have some inaccuracies and is thus related to the *reducible error*.  That is, it might be possible to estimate the true population regression plane more accurately under different conditions.  For example, if we had more data, this might lead to a more accurate estimation.  To quantify this error, we can calculate a confidence interval that determines how close $\hat{Y}$ will be to $f(X)$.
 
-#### Model Bias
+#### Model bias
 
 Another source of potentially reducible error is *model bias*.  In practice, assuming a linear model for $f(X)$ is almost always an approximation.  Thus, the assumed linear model may be biased and perhaps a better model could *reduce the error*.
 
-#### Irreducible Error
+#### Irreducible error
 
 Lastly, the third type of prediction uncertainty is related to the random error $\epsilon$.  In the extreme event where we knew $f(X)$ exactly, we would still not be able to perfectly predict the response value.  We refer to this as the *irreducible error*.  To quantify how much $Y$ will vary from $\hat{Y}$, we use *prediction intervals*.  Because prediction intervals incorporates both the reducible error and the irreducible error, they will always be larger than confidence intervals.

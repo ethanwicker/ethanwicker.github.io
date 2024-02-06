@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Multiple Linear Regression #3"
-subtitle: Qualitative Predictors, Interaction Terms, and Non-linear Relationships
+title: "Multiple linear regression #3"
+subtitle: Qualitative predictors, interaction terms, and non-linear relationships
 comments: false
 ---
 
@@ -11,11 +11,11 @@ In this post, I'll explore qualitative predictors.  I'll also explore classical 
 
 The structure of this post was influenced by the third chapter of *An Introduction to Statistical Learning: with Applications in R* by Gareth James, Daniela Witten, Trevor Hastie, and Robert Tibshirani.
 
-#### Qualitative Predictors
+#### Qualitative predictors
 
 Depending on the context, qualitative predictors are sometimes referred to as categorical or factors variables.  The most common methods of implementing these predictors in a linear model is via *indicator* or *dummy variables*.  Below, I'll introduce this topic in the context of qualitative predictors with only two levels, where a *level* refers to a unique value the qualitative variable can take.  I'll then extend the concept to qualitative predictors with multiple levels.
 
-##### Qualitative Predictors with Two Levels
+##### Qualitative predictors with two levels
 
 In the case where we have a predictor variable with two possible levels, it is straightforward to create a dummy variable that takes on two possible numerical values, $0$ and $1$:
 
@@ -43,7 +43,7 @@ $$
 
 Alternatively, instead of encoding our dummy variable as $0$ or $1$, we could instead have encoded it as $-1$ or $1$.  Doing so would have changed the coefficient estimates of the model, and the interpretation, but not the predictions.  In addition, when performing statistical inference, we interpret the corresponding p-values of qualitative predictors exactly as we do quantitative predictors.
 
-##### Qualitative Predictors with More than Two Levels
+##### Qualitative predictors with more than two levels
 
 In the case where a qualitative predictor has more than two levels, we cannot use a single dummy variable to represent all possible levels.  In this situation, we simply create additional dummy variables.  For example, if we have a predictor variables with three possible levels, we can encode these levels into two dummy variables
 
@@ -86,11 +86,11 @@ There will always be one fewer dummy variables than the number of levels of the 
 
 With the dummy variable approach, we can incorporate both quantitative and qualitative predictors into the multiple regression model.  Graphically, this results in parallel hyperplanes in the variable space.  As mentioned above, the interpretation of the p-values does not change for these qualitative predictors, but the p-values themselves do depend on the choice of dummy variable encoding.  However, we can still use the F-test to test $H_0: \beta_1 = \beta_2 = \ldots = \beta_p = 0\$ to determine if any relationship exists between the predictors and the response.
 
-#### Extensions of the Linear Model
+#### Extensions of the linear model
 
 The standard linear model provides interpretable results and has been shown to perform well on many real-world problems.  However, it makes several strict assumptions that are often not true in practice.  Two such assumptions are that the relationship between the predictors and response are additive and linear.  In future posts, I'll explore more sophisticated methods of relaxing these assumptions, but below I'll introduce two classical strategies.
 
-##### Removing the Additive Assumption: Interaction Terms
+##### Removing the additive assumption: Interaction terms
 
 In the standard linear regression model with two predictor variables
 
@@ -117,7 +117,7 @@ In the event an interaction term is significant, but the *main effects* are not,
 
 The concept of interaction terms is also applicable to qualitative variables, or a combination of qualitative and quantitative variables.  In particular, an interaction between qualitative and quantitative variables has a particularly nice interpretation.  Instead of two parallel hyperplanes, we get two intersecting hyperplanes.
 
-##### Removing the Linear Assumption: Non-linear Relationships
+##### Removing the linear assumption: Non-linear relationships
 
 In future posts, I'll explore more sophisticated methods of modeling non-linear relationships in general settings.  However, below, I'll briefly introduce *polynomial regression*, which is a simple method to extend the linear model to capture non-linear relationships.  
 

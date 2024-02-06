@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Nested Cross-Validation"
-subtitle: An Introduction, Overview, and scikit-learn Example
+title: "Nested cross-validation"
+subtitle: An introduction, overview, and scikit-learn example
 comments: false
 ---
 
@@ -19,7 +19,7 @@ After performing this nested cross-validation procedure, we typically report the
 
 Next, let's explore a working example to clarify the nested cross-validation technique.
 
-### Breast Cancer Data
+### Breast cancer data
 
 For this working example, I'll use the common breast cancer dataset available within scikit-learn's `datasets` module.  The breast cancer dataset was assembled by the University of Wisconsin and contains 569 observations and 30 predictor features.  The target variable is encoded as `1` or `0`, indicating whether the observation was found to have malignant or benign breast cancer.
 
@@ -39,7 +39,7 @@ standard_scaler = StandardScaler()
 X = standard_scaler.fit_transform(X)
 ```
 
-### Inner $l$-Fold Cross-Validation Loop (Hyperparameter Tuning)
+### Inner $l$-fold cross-validation loop (hyperparameter tuning)
 
 To perform our inner $l$-fold Cross-Validation procedure, we'll first construct a `LogisticRegression` estimator and a `GridSearchCV` object, both from scikit-learn.
 
@@ -73,7 +73,7 @@ log_reg_grid.fit(X=X, y=y)
 log_reg_grid.best_estimator_.C  # 0.3593813663804626
 ```
 
-### Outer $k$-Fold Cross-Validation Loop (Model Evaluation)
+### Outer $k$-fold cross-validation loop (model evaluation)
 
 Now that we have constructed our inner $l$-fold cross-validation loop using `GridSearchCV`, we can implement it into an outer $k$-fold cross-validation loop using scikit-learn's `cross_val_score`.  Here, `cross_val_score` will iteratively perform cross-validation on the outer $k$ folds of our data to determine how well the optimal model with a particular `C` value found on the inner loop is performing.
 
@@ -98,7 +98,7 @@ Note, this evaluation tells us how well our model is performing **with hyperpara
 
 If we are interested in what the overall optimal value of `C` is - or any other hyperparameters in the general case - we should instead perform $k$-fold cross-validation on the entire dataset, and select the hyperparameter values that result in the lowest test error estimates.
 
-### Drawbacks of Nested Cross-Validation
+### Drawbacks of nested cross-validation
 
 While nested cross-validation is a useful procedure, it does have some drawbacks.  The most obvious drawback is that it can be very computationally expensive.  To fit a nested cross-validation procedure with $k$ outer folds, $l$ inner folds, and $m$ unique hyperparameter combinations, we need to perform $k \cdot l \cdot m$ model fits.  In our above example with 3 outer folds, 5 inner folds, and 10 unique `C` candidates, we fit our logistic regression model 150 times.  Of course, on our small dataset, and with a simple model fitting procedure, this was not too expensive.  On larger datasets or models with more complex fitting procedure, nested cross-validation can be much more computationally expensive.
 

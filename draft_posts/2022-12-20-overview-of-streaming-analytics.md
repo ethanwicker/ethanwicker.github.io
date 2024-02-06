@@ -5,14 +5,6 @@ subtitle: "An Overview"
 comments: false
 ---
 
-
-| ![2021-01-08-multiple-linear-regression-001-fig-1.png](/assets/img/2021-01-08-multiple-linear-regression-001-fig-1.png){: .mx-auto.d-block :} |
-| :--: |
-| <sub><sup>**Source:** *Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani. An Introduction to Statistical Learning: with Applications in R. New York: Springer, 2013.* |
-
-
----
-
 Streaming Analytics refers to the processing and analyzing of data records continuously instead of in regular batches. Streams are triggered by specific events as the result of an action or set of actions. Examples of these triggering events might include financial transactions, thermostat readings, website purchases, or phone calls. Streaming Analytics is also known as event stream processing.
 In the Streaming Analytics paradigm, it can be helpful to think of data being streamed through a query. This is in contrast to the batch processing paradigm, where a query can be thought of as being submitted over an entire table or dataset. This is an embellishment and oversimplification, but helpful to illustrate the paradigm switch between streaming and batch processing.
 As an example, imagine we’re interested in sending consumers an alert anytime their indoor home temperature is below 55 degrees. In this example, data is collected from thermostats every hour and streamed through a SQL query that returns TRUE anytime temp is less than or equal to 55 degrees. If a TRUE is returned, a downstream process is kicked off to send a mobile alert to the home owner. In this streaming example, the query can be thought of as always being active and waiting for new data to be sent through it. In contrast, a batch application might store these hourly thermostat readings in a database, and a scheduled query might run over all the new readings every six hours.
@@ -36,9 +28,7 @@ Occasionally discussed, the three V’s of Streaming Analytics refer to:
 
 ### Spark Structured Streaming
 
-| ![2021-01-08-multiple-linear-regression-001-fig-1.png](/assets/img/2021-01-08-multiple-linear-regression-001-fig-1.png){: .mx-auto.d-block :} |
-| :--: |
-| <sub><sup>**Source:** *Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani. An Introduction to Statistical Learning: with Applications in R. New York: Springer, 2013.* |
+![2022-12-20-oveview-of-streaming-analytics-fig-1.png](/assets/img/2022-12-20-oveview-of-streaming-analytics-fig-1.png){: .mx-auto.d-block :}
 
 Spark Structured Streaming (formerly Spark Streaming) is a stream processing engine built on the Spark SQL engine. Structured Streaming is scalable, fault-tolerant, supports event-time windows and stream-to-batch joins, and guarantees exactly-once stream processing. Internally, Structured Streaming processes queries using a micro-batch processing engine which can achieve end-to-end latencies as low as 100 milliseconds.
 
@@ -76,7 +66,7 @@ Spark Structured Streaming supports three types of time windows:
 - Sliding Windows - similar to the tumbling windows from the point of being “fixed-sized”, but windows can overlap if the duration of slide is smaller than the duration of window, and in this case an input can be bound to the multiple windows
 - Session Windows - have a dynamic size of the window length, depending on the inputs. A session window starts with an input, and expands itself if following input has been received within gap duration. For static gap duration, a session window closes  when there’s no input received within gap duration after receiving the latest input
 
-| ![2021-01-08-multiple-linear-regression-001-fig-1.png](/assets/img/2021-01-08-multiple-linear-regression-001-fig-1.png){: .mx-auto.d-block :} |
+| ![2022-12-20-oveview-of-streaming-analytics-fig-2.png](/assets/img/2022-12-20-oveview-of-streaming-analytics-fig-2.png){: .mx-auto.d-block :} |
 | :--: |
 | <sub><sup>**Source:** [Apache Spark structured streaming programming guide](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html) |
 

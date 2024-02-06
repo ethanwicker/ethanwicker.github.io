@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Multiple Linear Regression #4"
-subtitle: "Potential Problems: Heteroscedasticity, Collinearity, and More"
+title: "Multiple linear regression #4"
+subtitle: "Potential problems: Heteroscedasticity, collinearity, and more"
 comments: false
 ---
 
@@ -18,7 +18,7 @@ In this post, I'll briefly discuss potential problems that can occur when fittin
 
 The structure of this post was influenced by the third chapter of *An Introduction to Statistical Learning: with Applications in R* by Gareth James, Daniela Witten, Trevor Hastie, and Robert Tibshirani.
 
-##### Non-linearity of the Response-Predictor Relationships
+##### Non-linearity of the response-predictor relationships
 
 A key assumption made by the linear regression model is linearity between the predictors and response.  If this assumption is not true for a particular dataset, then we should be skeptical of nearly all conclusions drawn from the model fit.
 
@@ -32,13 +32,13 @@ Above are two residual plots.  The left panel shows the resulting residual plot 
 
 If the residual plot indicates a non-linear relationship in the data, a simple solution is to include a non-linear transformation of the predictors in the regression model.  In future posts, I'll explore more advanced non-linear approaches for addressing this issue. 
 
-##### Correlation of Error Terms
+##### Correlation of error terms
 
 An assumption of the linear regression model is that the error terms, $\epsilon_1, \epsilon_2, \ldots, \epsilon_n$ are uncorrelated.  In particular, the standard errors that are calculated for the regression coefficient estimates and fitted values are based on this assumption.
 
 If the assumption of uncorrelated error terms is not true, then the estimated standard errors will tend to underestimate the true standard errors and the resulting confidence and prediction intervals will be narrower than they should be.  Likewise, the associated p-values will also be lower than they should be, causing us to falsely conclude that a model term is significant.  In general, correlated error terms can lead us to believe our model fit is better than it truly is.
 
-##### Non-constant Variance of Error Terms
+##### Non-constant variance of error terms
 
 Another important assumption of the linear regression model is that the error terms have a constant variance, $Var(\epsilon_i) = \sigma^2$.  This constant error term variance is referred to as *homoscedasticity*.  This assumption is key to standard errors, confidence intervals, and hypothesis tests associated with the model.
 
@@ -52,7 +52,7 @@ An *outlier* is a point for which $y_i$ is far from the value predicted by the m
 
 Various methods can be used to detect the presence of outliers, including a simple residual plot.  To quantify how extreme an outlier is, we can calculate its *studentized residual* by dividing each residual $e_i$ by its estimated standard error.  In some contexts, a studentized residual is also known as a *standardized residual*.
 
-##### High Leverage Points
+##### High leverage points
 
 In contrast to outliers, observations with *high leverage* have an unusual value of $x_i$.  Observations with high leverage tend to have a substantial impact on the least squares regression line and may invalidate the entire fit.  Thus, it's important to identify high leverage observations.
 

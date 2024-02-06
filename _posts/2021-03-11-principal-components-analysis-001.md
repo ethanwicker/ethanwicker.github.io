@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Principal Components Analysis"
-subtitle: An Overview with scikit-learn and statsmodels Examples
+subtitle: An overview with scikit-learn and statsmodels examples
 comments: false
 ---
 
@@ -11,7 +11,7 @@ In the below post, I'll expand on this and provide an overview of PCA that inclu
 
 The structure of this post was influenced by the tenth chapter of *An Introduction to Statistical Learning: with Applications in R* by Gareth James, Daniela Witten, Trevor Hastie, and Robert Tibshirani.
 
-### Principal Components
+### Principal components
 
 When attempting to understand $n$ observations measured over $p$ features $X_1, X_2, \ldots, X_p$, $p$ is often quite large.  When this is the case, it is not feasible to plot our data entirely via two or three-dimensional scatter plots and accurately understand the larger dataset.  By only viewing two or three features at a time, we simply lose too much information, especially when $p$ is greater than 10 or 20.  
 
@@ -145,7 +145,7 @@ fig, ax = model.biplot(y=y_df["target_names"])
 
 ![2021-03-11-principal-components-analysis-001-fig-2.png](/assets/img/2021-03-11-principal-components-analysis-001-fig-2.png){: .mx-auto.d-block :}
 
-### Another Interpretation of Principal Components
+### Another interpretation of principal components
 
 Earlier, I described the principal component loading vectors as the direction in feature space which the data vary the most, and the principal component scores as projections along these directions.  However, it is also accurate to interpret the principal components as providing low-dimensional linear surfaces that are *closest* to the observations.
 
@@ -153,13 +153,13 @@ To expand on this, the first principal component loading vector is the line in $
 
 This concept extents beyond just the first principal component.  For example, the first two principal components of a dataset span the plan that is closest to the $n$ observations.  The first three principal components of a data set span a three-dimensional hyperplane that is closest to the $n$ observations, and so forth.
 
-### Scaling the Variables
+### Scaling the variables
 
 When performing PCA, the variables should be scaled such that they have mean zero and standard deviation one.  If we did not scale the variables such that they had standard deviation one, we would find that unscaled variables with high variance would be disproportionally representing in the first few principal components.   This is particularly true when some features are measured in much smaller units, and thus can take one a much larger range of values (such as dollars compared to thousands of dollars).
 
 In addition, we would find that changing the units of our variables also changes the principal components.  Because it is undesirable for our principal components to depend on an arbitrary choice of variable scaling, we typically scale each variable to have standard deviation one before we perform PCA.  In situations where all the variables are measured in the same unit, we may not do this, but we should still center our variables such that their column means are zero.
 
-### The Proportion of Variance Explained
+### The proportion of variance explained
 
 When performing PCA, we are often interested in knowing how much of the variance in our dataset is or is not explained in the first few principal components.  More generally, we are interested in knowing the *proportion of variance explained* (PVE) by each principal component.  Assuming the variables have been centered to have mean zero, the *total variance* in a dataset is defined as
 
@@ -232,7 +232,7 @@ We can also plot the cumulative proportion of variance explained versus principa
 
 ![2021-03-11-principal-components-analysis-001-fig-4.png](/assets/img/2021-03-11-principal-components-analysis-001-fig-4.png){: .mx-auto.d-block :}
 
-### Deciding How Many Principal Components to Use
+### Deciding how many principal components to use
 
 In general, a $n \times p$ data matrix $\mathbf{X}$ has $\text{min}(n-1, p)$ distinct principal components.  However, when performing PCA, we are typically interested in using the smallest number of principal components required to understand the data.  However, this is a subjective measure, and when performing PCA in an unsupervised manner (as part of exploratory data analysis, for example), there is no single or simple answer to selecting the number of required principal components.
 

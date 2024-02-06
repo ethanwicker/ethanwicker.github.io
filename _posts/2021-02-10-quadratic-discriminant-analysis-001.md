@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Quadratic Discriminant Analysis"
-subtitle: An Introduction, the Bias-Variance Trade-Off, and a Comparison to Linear Discriminant Analysis Using scikit-learn 
+title: "Quadratic discriminant analysis"
+subtitle: An introduction, the bias-variance trade-off, and a comparison to linear discriminant analysis using scikit-learn 
 comments: false
 ---
 
@@ -9,7 +9,7 @@ In this post, I'll be exploring quadratic discriminant analysis.  I'll compare a
 
 The structure of this post was influenced by the fourth chapter of *An Introduction to Statistical Learning: with Applications in R* by Gareth James, Daniela Witten, Trevor Hastie, and Robert Tibshirani.
 
-### Quadratic Discriminant Analysis
+### Quadratic discriminant analysis
 
 As discussed in earlier posts, linear discriminant analysis (LDA) assumes that the observations are drawn from a multivariate Gaussian distribution with a class specific mean vector, and a covariance matrix $\Sigma$ that is common across all $K$ classes.  In contrast, quadratic discriminant analysis (QDA) uses a different approach.  While both LDA and QDA assume the observations are drawn from a multivariate Gaussian distribution with a class specific mean vector, QDA assumes that each class $k$ has its own covariance matrix $\Sigma_k$.  Thus, QDA assumes an observation from the $k$th class is of the form $X \sim N(\mu_k, \Sigma_k)$.
 
@@ -26,7 +26,7 @@ is largest.
 
 So, the QDA classifier takes estimates for $\Sigma_k$, $\mu_k$, and $\pi_k$ and plugs them into the above equation to calculate $\delta_k$.  Then, the observation is assigned to the class for which $\delta_k$ is largest.  Unlike in linear discriminant analysis, $x$ appears as a *quadratic* function in the above equation.  This is why QDA is named as it is.
 
-### When to Prefer LDA or QDA
+### When to prefer LDA or QDA
 
 When would we prefer LDA over QDA, or vice-versa?  In general, LDA tends to perform better than QDA when there are relatively few training observations.  In contrast, QDA is recommended when the training set is very large, or if the assumption of a common covariance matrix for all $K$ classes is clearly not reasonable.
 
@@ -44,7 +44,7 @@ The above image shows the performance of LDA and QDA in two scenarios.  In the l
 
 In the left-hand panel, we see that the black dotted LDA decision boundary approximates the purple dashed Bayes decision boundary quite well.  The green solid QDA decision boundary does not perform as well because it suffers from higher variance without a corresponding decrease in bias.  However, in the right-hand panel, we see the Bayes decision boundary is now quadratic, so QDA more accurately approximates this boundary than does LDA.
 
-### A scikit-learn Example
+### A scikit-learn example
 
 Next, let's explore using scikit-learn to perform quadratic discriminant analysis on our `titanic` dataset.
 

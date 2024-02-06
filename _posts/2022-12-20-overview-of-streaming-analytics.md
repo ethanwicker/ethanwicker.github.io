@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Streaming Analytics"
-subtitle: "A Brief Overview"
+title: "Streaming analytics"
+subtitle: "A brief overview"
 comments: false
 ---
 
@@ -13,26 +13,26 @@ As an example, imagine an instructor is accessing student understanding via some
 
 In this streaming example, the query can be thought of as always being active and waiting for new data to be sent through it.  In constrast, a batch application might store the student responses in a database, and a scheduled query and application would send the instructor a summary email the following morning.
 
-- [Stream Processing Tools](#stream-processing-tools)
-- [Stream Processing Engines](#stream-processing-engines)
-- [The Three V’s of Streaming Analytics](#the-three-v-s-of-streaming-analytics)
+- [Stream processing tools](#stream-processing-tools)
+- [Stream processing engines](#stream-processing-engines)
+- [The three v’s of streaming analytics](#the-three-v-s-of-streaming-analytics)
 - [Spark Structured Streaming](#spark-structured-streaming)
-  * [Fault Tolerance](#fault-tolerance)
-  * [Window Operations on Event Time](#window-operations-on-event-time)
-  * [Handling Late Data and Watermarking](#handling-late-data-and-watermarking)
-  * [Types of Time Windows](#types-of-time-windows)
-  * [Join Operations](#join-operations)
+  * [Fault tolerance](#fault-tolerance)
+  * [Window operations on event time](#window-operations-on-event-time)
+  * [Handling late data and watermarking](#handling-late-data-and-watermarking)
+  * [Types of time windows](#types-of-time-windows)
+  * [Join operations](#join-operations)
 - [Considerations](#considerations)
 
-### Stream Processing Tools
+### Stream processing tools
 
 For streaming analytics, a *stream processing tool* is needed to manage the movement of the streaming data.  Examples of these include Apache Kafka, Amazon Kinesis, and Google Cloud Dataflow. Apache Kafka might be the most common of these. Apache Kafka is almost always configured to process (move) data in parallel threads.  Apache Kafka is typically configured to guarantee data will be delivered at least once or exactly once, but it does guarantee how that data will be sent.  It might be sent over one thread or multiple threads.  Because of this, data can be received late, out-or-order, or (sometimes) duplicated.  This architecture is crucial in the context of streaming analytics and stream processing engines.
 
-### Stream Processing Engines
+### Stream processing engines
 
 In addition to stream processing tools like Apache Kafka, a *stream processing engine* is needed to facilitate queries on top of streamed data.  Examples of these include Apache Spark Structured Streaming (formerly Spark Streaming), Apache Flink (which is also a stream processing tool), Apache Storm, Spark SQL, and RapidMind.  Because data can be received late, out-of-order, or duplicated, the streaming processing engine must be able to handle and reason about all of these.
 
-### The Three V’s of Streaming Analytics
+### The three v’s of streaming analytics
 
 Occasionally discussed, the three V’s of streaming analytics refer to:
 - volume - the (sometimes extremely large) amount of data being stored by many modern organizations
@@ -47,7 +47,7 @@ Spark Structured Streaming (formerly Spark Streaming) is a stream processing eng
 
 This post only provides a high-level overview of Spark Structured Streaming.  For more details, please see the [official documentation](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html).
 
-#### Fault Tolerance
+#### Fault tolerance
 
 In the event Structured Streaming fails (i.e., a fault occurs), end-to-end exactly-once guarantees are ensured.  Upon restarting, Structured Streaming will not duplicate or miss any processing.  This is achieved via checkpoint and write-ahead logging. This is in contrast to some engines that ensure at-least-once guarantees under a failure, in which data will not be missed but may be duplicated.
 
@@ -56,7 +56,7 @@ When processing streaming data, Structured Streaming will generate a *result tab
 - append - only the new rows appended in the result table since the last trigger will be written to the external storage 
 - update - only the rows that were updated in the result table since the last trigger will be written to the external storage
 
-#### Window Operations on Event Time
+#### Window operations on event time
 
 *Event time* refers to the actual time the event occurred.  This is in contrast to the actual time Spark Structured Streaming receives and processes the event, commonly referred to as *processing time*.
 
@@ -64,13 +64,13 @@ Aggregations over a sliding event time window are conceptually very similar to g
 
 For example, to monitor application uptime, we may be interested in counting the total number of student responses every 10 minutes across all sections of a large school.  
 
-#### Handling Late Data and Watermarking
+#### Handling late data and watermarking
 
 Late-arriving data can be handled via *watermarking*.  Watermarks tell Structure Streaming how long to wait for late-arriving data, and require a *threshold* value.
 
 For example, if we are counting the total number of student responses via a 10 minute sliding window, we could define a watermark threshold to be 5 minutes.  If an event that occurred at 12:08 was received at 12:13, the event would be correctly included in the total number of student responses for the 12:00-12:10 interval.  However, if the event arrived at 12:17 - which is past our 5 minute watermark threshold - the event would be dropped entirely and would not be included in our count at all.
 
-#### Types of Time Windows
+#### Types of time windows
 
 Spark Structured Streaming supports three types of time windows:
 
@@ -82,7 +82,7 @@ Spark Structured Streaming supports three types of time windows:
 | :--: |
 | <sub><sup>**Source:** [Apache Spark structured streaming programming guide](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html) |
 
-#### Join Operations
+#### Join operations
 
 Structured Streaming supports a variety of join operations, including streaming-to-static data joins and streaming-to-streaming data joins.
 

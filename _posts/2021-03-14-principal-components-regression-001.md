@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Principal Components Regression"
+title: "Principal components regression"
 subtitle: An overview and scikit-learn example
 comments: false
 ---
@@ -9,7 +9,7 @@ comments: false
 
 The structure of this post was influenced by the sixth chapter of *An Introduction to Statistical Learning: with Applications in R* by Gareth James, Daniela Witten, Trevor Hastie, and Robert Tibshirani.
 
-### Principal Components Regression
+### Principal components regression
 
 Principal components regression (PCR) involves first performing principal components analysis on our data set to obtain the first $M$ principal components $Z_1, \ldots, Z_M$.  These components are then used as the predictors in a linear regression model fit using least squares.
 

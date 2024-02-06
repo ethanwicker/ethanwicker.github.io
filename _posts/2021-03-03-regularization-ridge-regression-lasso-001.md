@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Regularization via Ridge Regression and the Lasso #1"
-subtitle: An Introduction and Overview
+subtitle: An introduction and overview
 comments: false
 ---
 
@@ -39,7 +39,7 @@ Outside the statistical literature, ridge regression is known as Tikhonov regula
 
 The figure above shows ridge regression performed on the Credit data set (available via the ISLR R package).  The left plot shows the standardized coefficients as a function of $\lambda$, while the right plot shows the same coefficients as a function of the $l_2$ $norm$ of the ridge regression coefficient estimates over the $l_2$ $norm$ of the least squares coefficient estimates.  From the image, we can see that the `Income`, `Limit`, `Rating` and `Student` variable approach zero as  $\lambda$ increases, while the other variables (dulled out in gray) maintain values near zero for all values of $\lambda$ shown.
 
-#### Standardizing Predictor Variables
+#### Standardizing predictor variables
 
 Note, the ridge regression coefficient estimates are influenced by the scale of the predictor variables.  As such, it is best to apply ridge regression after all predictor variables have been scaled such that they each have a mean of zero and a standard deviation of one.  While, it is not necessary to also standardize the response variable - and it can make model interpretation slightly more challenging - it does not affect model accuracy.
 
@@ -79,11 +79,11 @@ Due to the $l_1$ penalty, the lasso performs coefficient shrinkage but also has 
 
 In the above figure, we see the standardized coefficient estimates produced from the lasso on the same Credit data set described above.  We see that as $\lambda$ increases, the coefficient estimates for various predictor variables are each forced to zero.
 
-#### Standardizing Predictor Variables
+#### Standardizing predictor variables
 
 Note, that similar to ridge regression, the lasso should be preformed on standardized predictor variables that have been scaled such that they each have a mean of zero and a standard deviation of one.
 
-#### The Variable Selection Property of the Lasso
+#### The variable selection property of the Lasso
 
 The lasso and ridge regression coefficient estimates can be shown to solve the problems
 

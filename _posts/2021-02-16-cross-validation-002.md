@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Cross Validation #2"
-subtitle: scikit-learn's KFold, StratifiedKFold, LeaveOneOut, GroupKFold, and TimeSeriesSplit Classes
+title: "Cross validation #2"
+subtitle: scikit-learn's KFold, StratifiedKFold, LeaveOneOut, GroupKFold, and TimeSeriesSplit classes
 comments: false
 ---
 
@@ -13,7 +13,7 @@ In the below examples, I am only interested in the various cross-validation proc
 
 In a future post, I will explore nested cross-validation, which is a technique used to simultaneously perform model hyperparameter turning and evaluation. 
 
-### Iris Dataset
+### Iris dataset
 
 For the below examples, I will train a number of classifiers on the well known Iris dataset.  The Iris dataset presents a simple and easy classification task, and is ubiquitous across machine-learning examples.
 
@@ -48,7 +48,7 @@ sns.scatterplot(x="sepal length (cm)",
 
 Note the Iris dataset contains four predictor fields in total.  `petal length(cm)` and `petal width(cm)` are not shown on the above two-dimensional scatter plot.
 
-### Validation Set Approach
+### Validation set approach
 
 First, let's explore the simple validation set approach.  For detail on this approach, please see my [earlier post](https://ethanwicker.com/2021-02-15-cross-validation-001/).  
 
@@ -88,7 +88,7 @@ On the training set, our accuracy is approximately 98.214%, while on the test se
 
 Note as well, under a different random validation set split, we would expect different training and error rates.
 
-### $k$-Fold and Stratified $k$-Fold Cross-Validation
+### $k$-fold and stratified $k$-fold cross-validation
 
 Next, let's explore $k$-fold cross-validation.  $k$-fold cross-validation and it's related techniques are probably the most popular techniques used in practice for model assessment and selection.  For a detailed introduction to the $k$-fold cross-validation, please refer to my [earlier post on the concept](https://ethanwicker.com/2021-02-15-cross-validation-001/).
 
@@ -168,7 +168,7 @@ The Python standard library pprint is useful for viewing dictionary objects like
        0.99934156, 0.99983539, 0.99917695, 0.99901235, 0.99901235])}
 ```
 
-### Comments on Repeated $k$-Fold Cross-Validation
+### Comments on repeated $k$-fold cross-validation
 
 At this point, it would be useful to briefly discuss the repeated $k$-fold cross-validation technique, and the lack of use it provides.  
 
@@ -184,7 +184,7 @@ $\sigma_2$ has both bias (because $S$ is a subset taken from $P$; a new subset $
 
 The authors argue that repeating the $k$-fold cross-validation process can reduce the variance, but not the bias.  Instead, the repeated $k$-fold cross-validation process produces an accurate estimate of the mean of all $k$-fold cross-validation test error estimates, across all possible $k$-fold cross-validations, denoted $\mu_k$.  However, we are interested in $\sigma_2$, and $\mu_k$ is not necessarily an accurate estimate of $\sigma_2$.
 
-#### Not Useful Example of Repeated $k$-Fold Cross-Validation
+#### Not useful example of repeated $k$-fold cross-validation
 
 After reading the above paper, I was still interested in applying the method of repeated $k$-fold cross-validation for my own knowledge and exploration.  **With the understanding that the below method does not produce meaningful results in practice**, below is an example demonstrating how to apply repeated stratified $k$-fold cross-validation to compare four classifiers.  
 
@@ -304,7 +304,7 @@ Lastly, we can plot our results via a boxplot.
 
 Due to the easy nature of this classification task, all of our accuracy values are quite high.  It does appear that the quadratic logistic regression model is (not surprisingly) overfitting the data, and is performing worse on the validation sets.
 
-### Leave-One-Out Cross Validation
+### Leave-one-out cross validation
 
 To implement leave-one-out cross-validation (LOOCV), we can use scikit-learn's `LeaveOneOut` class.  For a more detailed introduction to LOOCV, please refer to my [previous post on cross-validation](https://ethanwicker.com/2021-02-15-cross-validation-001/).
 
@@ -316,7 +316,7 @@ scores = cross_val_score(lda, X, y, cv=cv_loo)
 scores.mean()  # 0.98
 ```
 
-### Other Cross-Validation Techniques
+### Other cross-validation techniques
 
 Lastly, I wanted to briefly discuss some other cross-validation techniques supported by scikit-learn.
 
@@ -338,6 +338,6 @@ Therefore, with time series data, we must evaluate our models using "future" obs
 
 The `TimeSeriesSplit` class achieves this by returning the first $k$ folds as a training set and the $k+1$th fold as a validation set.  Then, for each cross-validation iteration, successive training sets are supersets of earlier training sets, and the new validation set becomes the next fold in temporal order.
 
-#### Other Techniques
+#### Other techniques
 
 In addition to the techniques discussed above, a variety of other scikit-learn cross-validation methods [can be found here](https://scikit-learn.org/stable/modules/cross_validation.html).

@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Linear Discriminant Analysis #1"
-subtitle: A Brief Introduction
+title: "Linear discriminant analysis #1"
+subtitle: A brief introduction
 comments: false
 ---
 
@@ -9,7 +9,7 @@ This post is the first in a series on the linear discriminant analysis method.  
 
 The structure of this post was influenced by the fourth chapter of *An Introduction to Statistical Learning: with Applications in R* by Gareth James, Daniela Witten, Trevor Hastie, and Robert Tibshirani.
 
-### Linear Discriminant Analysis
+### Linear discriminant analysis
 
 In logistic regression, we model $Pr(Y=k \vert X=x)$ using the logistic function.  Specifically, we model the conditional distribution of the response $Y$, given the predictors $X$.
 
@@ -23,7 +23,7 @@ If logistic regression and linear discriminant analysis end up taking such simil
 
 * In the case where we have more than two response classes, linear discriminant analysis is an attractive approach over multiclass logistic regression.
 
-### Bayes' Theorem for Classification
+### Bayes' theorem for classification
 
 Next, we'll explore using Bayes' theorem for classification.  Bayes' theorem will allow us to perform the "flip" discussed above to determine estimates for $Pr(Y=k \vert X=x)$.  I'll simultaneously introduce the theory and discuss a working example to clarify understanding.
 
@@ -126,7 +126,7 @@ is largest.
 
 The classifier is referred to as *linear* because the *discriminant functions* $\hat{\delta}_k$ are linear functions of $x$.
 
-### Linear Discriminant Analysis with Multiple Predictors
+### Linear discriminant analysis with multiple predictors
 
 Next, let's extend the LDA classifier to the case of multiple predictors.  For this, we'll assume that $X = (X_1, X_2, \ldots, X_p)$ is drawn from a *multivariate Gaussian* distribution with a class-specific mean vector and a common covariance matrix.
 

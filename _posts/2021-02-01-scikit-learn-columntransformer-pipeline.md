@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Exploring a pandas to scikit-learn Workflow"
-subtitle: "Using scikit-learn's ColumnTransformer and Pipeline for Encoding, Imputing and Scaling Features"
+title: "Exploring a pandas to scikit-learn workflow"
+subtitle: "Using scikit-learn's ColumnTransformer and Pipeline for encoding, imputing and scaling features"
 comments: false
 ---
 
@@ -84,7 +84,7 @@ array([['male'],
 True
 ```
 
-### Applying Transformations to Training & Test Sets
+### Applying transformations to training & test sets
 
 Whenever we transform a training field, we must also transform the corresponding field in the test set.  We must do this *after* splitting up the training and test datasets, instead of performing the transformation first and then splitting the data.  If we used the latter method here, some information from our test set would leak over into our training set.  This mistake is sometimes referred to as *data leakage*.
 
@@ -157,7 +157,7 @@ array([[0., 0.],
        [0., 1.]])
 ```
 
-#### Problem #2: Missing Values
+#### Problem #2: Missing values
 
 Handling missing values in our test set is similar to handling unknown values in our test set.  If we initialize our encoder with `handle_unknown="ignore"`, these missing observations will be gracefully handled and encoded as rows of all 0's.
 
@@ -185,7 +185,7 @@ array([[0., 0.],
        [0., 1.]])
 ```
 
-#### Imputing Missing Values
+#### Imputing missing values
 
 In the event where we do have missing data, it can be useful to *impute* the missing values.  We can use scikit-learn's `SimpleImputer` transformer for this from the `impute` module.
 
@@ -248,7 +248,7 @@ After fitting the `Pipeline` on the training data, it is easy to transform the t
 pipeline.transform(sex_test)
 ```
 
-#### Transforming Multiple Categorical Columns
+#### Transforming multiple categorical columns
 
 It is simple as well to use our `Pipeline` on multiple categorical columns.  Just refit the `Pipeline` and run the transformation.
 
@@ -257,7 +257,7 @@ multiple_fields = titanic_train[["sex", "ticket_class"]]
 pipeline.fit_transform(multiple_fields)
 ```
 
-#### Accessing Steps in our Pipeline
+#### Accessing steps in our `Pipeline`
 
 We can also access the individual steps of our `Pipeline` via the `named_steps` attribute.  For example, we can access the feature names via `get_feature_names()` method after specifying `encoder`.
 
@@ -326,7 +326,7 @@ To get the feature names of our encoded variables as we have done before, we nee
     .get_feature_names())
 ```
 
-#### Transforming Numeric Columns
+#### Transforming numeric columns
 
 Next, let's transform our numeric columns.  We'll impute missing numeric values using the median of that column, and then standardize the values.
 
@@ -366,7 +366,7 @@ array([[-0.52929637, -0.52052854],
        [ 1.79910688,  0.90626108]])
 ```
 
-### Combining Categorical and Numeric Column Transformers
+### Combining categorical and numeric column transformers
 
 Next, let's modify our `ColumnTransformer` structure so that we can perform both the categorical and numeric transformations in parallel.  The two resulting transformed NumPy arrays will be concatenated together into one array. 
 
@@ -390,7 +390,7 @@ array([[ 0.        ,  1.        ,  0.        , ...,  1.        , -0.52929637    
        [ 1.        ,  0.        ,  1.        , ...,  0.        ,  1.79910688        ,0.90626108]])
 ```
 
-### Training a Machine Learning Model
+### Training a machine learning model
 
 Next, let's update our `Pipeline` to feed our transformed data into a machine learning model.  We'll train a logistic regression model below.  Unlike in my prior posts, this time I will make use of `LogisticRegression()`'s default regularization since we standardized our numeric predictor variables.
 
@@ -441,7 +441,7 @@ Of course, the above correct classification rate value indicates the results on 
 0.785513078470825
 ```
 
-### Grid Search
+### Grid search
 
 Lastly, let's perform a grid search to determine the optimal values of our transformation and fitting procedures.  We'll pass a dictionary object to scikit-learn's `GridSearchCV`.  We'll need to put double underscores between the name of each layer in our `Pipeline`, as well as the actual parameter name.
 

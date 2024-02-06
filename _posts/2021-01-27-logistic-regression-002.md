@@ -1,13 +1,13 @@
 ---
 layout: post
-title: "Logistic Regression #2"
-subtitle: scikit-learn, statsmodels, Plotly, One-Hot Encoding & Multiclass Logistic Regression 
+title: "Logistic regression #2"
+subtitle: scikit-learn, statsmodels, plotly, one-hot encoding & multiclass logistic regression 
 comments: false
 ---
 
 This post is the second in a series on the logistic regression model.  In this post, I'll work through an example using the well known Titanic dataset, scikit-learn and statsmodels.  I'll discuss one-hot encoding, create a 3D logistic regression plot using Plotly, and demonstrate multiclass logistic regression with scikit-learn.
 
-### Titanic Dataset
+### Titanic dataset
 In this example, I'll be using the Kaggle's Titanic training dataset
 The Titanic dataset is available from many sources.  In this example, I'll be using Kaggle's Titanic training dataset.  You can download the data manually, or use Kaggle's command line interface.  After reading in the data as `titanic`, let's take a quick peek at it.
 
@@ -83,7 +83,7 @@ titanic["survived"].value_counts()
 
 Out of the 714 passengers in our current dataset, only 290 survived, or about 41%.  In many classification problems, we might be interested in equaling out these binary classes to produce a better predictive model.  A variety of upsampling and downsampling techniques exist for this, which I'll explore in future posts.  For this example however, we'll just take the class frequencies as it, but keep in mind that better results may be possible with more robust methods.
 
-### Simple Logistic Regression
+### Simple logistic regression
 
 To keep it simple at first, let's start out with a logistic regression model with only a single predictor, `age`.  
 
@@ -207,7 +207,7 @@ result = model.fit()
 result.summary()
 ```
 
-### Multiple Logistic Regression
+### Multiple logistic regression
 
 Next, let's explore using multiple predictors to improve our model fit.  In particular, we'll include `sex` and `fare` in addition to `age`.  Because `sex` is a categorical feature, we'll need to encode it via scikit-learn's `OneHotEncoder`.  In a future post, I'll explore creating scikit-learn `Pipeline`s and making use of the new `ColumnTransformer`.  However, for this demonstration, I'll keep it simple and perform this encoding in discrete steps
 
@@ -320,7 +320,7 @@ While our prediction surface is a little jerky, this plot does provide a useful 
 
 It is important to note here that this prediction surface does not actually represent the model.  In particular, since `sex` is binary, it doesn't make sense for an observation to have a sex value of 0.5.  A more accurate representation would be two logistic regression functions on either end of the visible plane - one when `sex == 0` and another when `sex == 1`.  However, I think the plane does provide a good representation of the relationship between these two functions.
 
-### Multiclass Logistic Regression
+### Multiclass logistic regression
 
 As a last exploration into the logistic regression model, I'll explore a multiclass logistic regression.  
 

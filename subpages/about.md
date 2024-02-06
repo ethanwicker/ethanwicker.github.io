@@ -4,7 +4,7 @@ I have a BS in Mathematics, a BS in Mathematics Education, and a minor in Philos
 
 I taught myself to code and studied statistics, machine learning, and software engineering on my nights and weekends.  Along the way, I've worked in telecommunications, logistics, and smart home automation.  I've even been fortunate enough to [earn a couple patents](https://patents.google.com/?inventor=Ethan+Wicker){:target="_blank"}.  I've built and led analytical teams, trained and deployed production models, and have worked with some truly wonderful, bright, and inspiring people.
 
-But...the educator in me misses the impact I found teaching.  I've been plotting a transition into EdTech for years, and the time has come to make that dream happen.  
+But...the educator in me misses the impact I found teaching.  I've been plotting a transition into EdTech for years, and the time has come to make that dream a reality.  
 
 Opportunity is abundant, but is not evenly distributed.  I'm on a mission to change the world by combining analytics, machine learning, data science, and education, one student learning outcome at a time.
 

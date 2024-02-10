@@ -78,7 +78,7 @@ In particular, [pinball loss](https://www.lokad.com/pinball-loss-function-defini
 
 The traditional ROC curve focuses only on the positive class and doesn't show how well your model did on the negative class.  [Davis and Goadrich](https://www.biostat.wisc.edu/~page/rocpr.pdf) suggested instead that we should plot precision against recall.  They argue this Precision-Recall Curve, provides a better overall summary of an algorithm's performance when a task has heavy class imbalance.
 
-| ![2024-02-09-designing-machine-learning-systems-001-fig-1.png](assets/img/2024-02-09-designing-machine-learning-systems-001-fig-1.png){: .mx-auto.d-block :} |
+| ![2024-02-09-designing-machine-learning-systems-001-fig-1.png](/assets/img/2024-02-09-designing-machine-learning-systems-001-fig-1.png){: .mx-auto.d-block :} |
 | :--: |
 | <sub><sup>**Source:** [Machine Learning Mastery](https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-imbalanced-classification/) |
 

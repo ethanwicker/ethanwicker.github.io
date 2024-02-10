@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "10 takeaways from Chip Huyen's Designing Machine Learning Systems"
+title: "10 takeaways from Designing Machine Learning Systems"
 subtitle: Semi-supervision, active learning, the hashing trick and more
 comments: true
 ---

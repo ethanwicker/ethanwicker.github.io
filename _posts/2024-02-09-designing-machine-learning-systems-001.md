@@ -2,7 +2,7 @@
 layout: post
 title: "10 takeaways from Designing Machine Learning Systems"
 subtitle: Semi-supervision, active learning, the hashing trick and more
-comments: true
+comments: false
 ---
 
 I recently read through Chip Huyen's [*Designing Machine Learning Systems*](https://www.oreilly.com/library/view/designing-machine-learning/9781098107956/), first published in 2022.  I found it a highly useful overview of a rapidly evolving field.  As I expected from her [other writings](https://huyenchip.com/blog/), Chip provided clear explanations while straddling the line nicely between technical depth and summarization.  Machine learning engineering and machine learning operations contain a vast ecosystem of solutions, tools, and ever-evolving methods.  Summarizing the relevant concepts is not an easy task to do.

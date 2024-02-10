@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Five takeaways from Chip Huyen's Designing Machine Learning Systems"
-subtitle: Some tidbits of knowledge (or maybe "Active learning, detecting data leakage, and more")
+title: "10 takeaways from Chip Huyen's Designing Machine Learning Systems"
+subtitle: Semi-supervision, active learning, the hashing trick and more
 comments: true
 ---
 

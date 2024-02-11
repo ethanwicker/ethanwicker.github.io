@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "10 takeaways from Designing Machine Learning Systems"
-subtitle: Semi-supervision, active learning, the hashing trick and more
+subtitle: "Semi-supervision, active learning, the hashing trick and more"
 comments: false
 ---
 
@@ -26,9 +26,6 @@ In no particular order, here are some insights I found helpful.  Some of these a
   - [Class-balanced loss](#class-balanced-loss)
   - [Ensembles for class imbalances](#ensembles-for-class-imbalances)
 - [Hashing Trick for encoding categorical features](#hashing-trick-for-encoding-categorical-features)
-
-
-
 
 ### Batch processing is a special case of stream processing
 

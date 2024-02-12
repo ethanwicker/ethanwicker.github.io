@@ -148,3 +148,7 @@ The Hashing Trick is a technique to encode categorical features.  It's particula
 A better approach would be to assign the index value of these fields a random value from a pre-determined [hash table](https://en.wikipedia.org/wiki/Hash_table).  This is advantageous because you can determine how large the hashed space is, and a good hashing function will roughly uniformly assign random hashed values to your categorical features.
 
 The Hashing Trick does have one downside: collision.  Collision occurs when two categorical features are assigned the same index value.  However, [Booking.com has shown](https://booking.ai/dont-be-tricked-by-the-hashing-trick-192a6aae3087) even extreme collision only marginally affects performance.
+
+---
+
+➡️ You can find my second post on 11 more takeaways from Designing Machine Learning Systems [here](https://ethanwicker.com/2024-02-11-designing-machine-learning-systems-002/).

@@ -15,8 +15,8 @@ author: Ethan Wicker
 
 navbar-links:
   About: "subpages/about"
-  Course Notes: "subpages/course_notes"
-  The EdTech Database: "subpages/edtech_database"
+  Course notes: "subpages/course_notes"
+  The Edtech database: "subpages/edtech_database"
 
 # --- Logo --- #
 

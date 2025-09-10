@@ -42,7 +42,9 @@ comments: false
 - The LLM group produced essays that were more similar to each other (as compared to the brain only group)
 - The brain only group also had a greater ability to quote directly from the essay they had just written (although this went away in sessions #2 and #3, as participants knew the question was coming)
 
-**Takeaway:** The paper argues that LLM use off-loads cognitive demand, but too much.  LLMs do the critical thinking for us, while we just synthesis and summarize.  This affects our ability to engage with new material and concepts in meaningful ways.  They make this claim via the EEG results, as well as the greater ability to quote (recall) what was just written for the brain only group.
+## Takeaway
+
+The paper argues that LLM use off-loads cognitive demand, but too much.  LLMs do the critical thinking for us, while we just synthesis and summarize.  This affects our ability to engage with new material and concepts in meaningful ways.  They make this claim via the EEG results, as well as the greater ability to quote (recall) what was just written for the brain only group.
 
 # Thoughts & criticisms
 

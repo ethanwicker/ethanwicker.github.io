@@ -7,7 +7,7 @@ comments: false
 
 I recently presented at a company-wide all-hands on how AI works, how we got here, and a bit on where we're going.  Only an understanding of simple linear algebra was needed to grasp the learning outcomes.  I highted three key concepts for how AI works:
 
-- Numbers in, numbers
+- Numbers in, numbers out
 - Simple linear equations
 - Scale
 

@@ -9,3 +9,5 @@ Opportunity is abundant, but is not evenly distributed.  I'm on a mission to cha
 Reach out at ethanwicker@gmail.com if you want to learn more of my story.  I'd love to learn about yours.
 
 Ethan<br>
+[ORCHID](https://orcid.org/0009-0007-2327-1590)
+[Google Scholar](https://scholar.google.com/citations?user=fo3o-SEAAAAJ)

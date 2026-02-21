@@ -1,4 +1,4 @@
-Hi, I'm Ethan. 👋 I'm the Director of Analytics at [Nectir](https://www.nectir.io/){:target="_blank"}.  I'm also a former high school AP Statistics and mathematics teacher.  I write about AI, ML, learning analytics, and educational technology.
+Hi, I'm Ethan. 👋 I'm the Director of Data & Analytics at [Nectir](https://www.nectir.io/){:target="_blank"}.  I'm also a former high school AP Statistics and mathematics teacher.  I write about AI, ML, learning analytics, and educational technology.
 
 I have a B.S. in Mathematics, a B.S. in Mathematics Education, and a minor in Philosophy.  At NC State University, I was selected as a [Noyce Teaching Scholar](https://www.nsfnoyce.org/){:target="_blank"}, a program that seeks to increase the number of highly qualified teachers in high-needs public schools.  I loved my time teaching, but realized it wasn't my path to long-term happiness, so I made the difficult decision to leave the profession.
 

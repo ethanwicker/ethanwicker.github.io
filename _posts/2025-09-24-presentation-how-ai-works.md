@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Explaining AI presentation"
+title: "Presentation: Explaining AI"
 subtitle: "How AI works...and how we got here"
 comments: false
 ---
